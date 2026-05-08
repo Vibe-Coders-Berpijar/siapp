@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { logout } from '@/app/login/actions';
 
 const ROLES = [
   {
@@ -49,6 +50,11 @@ export default function HomePage() {
           <span className="text-white/80 text-xs font-medium tracking-wide">SIAPP · Demo Mode · Phase 1</span>
         </div>
         <h1 className="text-4xl font-bold text-white">Sistem Informasi Departemen</h1>
+          <form action={logout} className="mt-3 flex justify-center">
+            <button type="submit" className="text-xs text-indigo-400 hover:text-white transition-colors underline underline-offset-2">
+              Keluar dari demo
+            </button>
+          </form>
         <p className="text-indigo-200 mt-2 text-lg">Politik Pemerintahan — Universitas Gadjah Mada</p>
         <p className="text-indigo-300 mt-4 text-sm max-w-md mx-auto">
           Pilih peran untuk masuk ke dashboard masing-masing. Login OTP via{' '}

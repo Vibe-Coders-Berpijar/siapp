@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { logout } from '@/app/login/actions'
 
 const navItems = [
   { href: '/dashboard/kadep', label: 'Dashboard', icon: '⊞', exact: true },
@@ -63,12 +64,14 @@ export function Sidebar({ userName, jabatan }: SidebarProps) {
 
       {/* Logout */}
       <div className="px-3 py-4 border-t border-slate-100">
-        <a
-          href="/"
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-500 hover:bg-red-50 hover:text-red-600 transition-colors"
-        >
-          <span>↩</span> Keluar
-        </a>
+        <form action={logout}>
+          <button
+            type="submit"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-500 hover:bg-red-50 hover:text-red-600 transition-colors"
+          >
+            <span>↩</span> Keluar
+          </button>
+        </form>
       </div>
     </aside>
   )
