@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SIAPP — Vibe Coding Sessions v2 (PRD-aligned, Role-based)</title>
+<style>
+  :root {
+    --ugm-blue: #231F54;
+    --ugm-yellow: #FFCA40;
+    --surface: #f8f7f2;
+    --card: #ffffff;
+    --border: #e5e2d8;
+    --text: #1a1830;
+    --muted: #6b6880;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --indigo: #4f46e5;
+    --purple: #7c3aed;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--surface); color: var(--text); }
+
+  header { background: var(--ugm-blue); color: white; padding: 20px 32px; }
+  header h1 { font-size: 18px; font-weight: 700; }
+  header p { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
+  .tabs { display: flex; gap: 4px; padding: 16px 32px 0; background: var(--ugm-blue); border-bottom: 1px solid rgba(255,255,255,0.1); overflow-x: auto; }
+  .tab { padding: 10px 20px; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.6); border: none; background: transparent; white-space: nowrap; }
+  .tab:hover { color: white; background: rgba(255,255,255,0.08); }
+  .tab.active { color: var(--ugm-blue); background: var(--surface); }
+
+  .pane { display: none; padding: 28px 32px; max-width: 960px; }
+  .pane.active { display: block; }
+
+  .header-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .dev-badge { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+  .badge-a { background: #dbeafe; color: #1e40af; }
+  .badge-b { background: #dcfce7; color: #15803d; }
+  .badge-c { background: #fef3c7; color: #92400e; }
+  .badge-d { background: #ede9fe; color: #5b21b6; }
+  .time-badge { background: var(--border); color: var(--muted); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+
+  .owns-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .own-tag { background: var(--ugm-blue); color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 10px; font-family: monospace; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+  .card-title { font-size: 14px; font-weight: 700; color: var(--ugm-blue); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .session-num { background: var(--ugm-blue); color: white; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 6px; flex-shrink: 0; }
+  .session-title { font-size: 14px; font-weight: 700; }
+
+  .deliverables { list-style: none; margin-bottom: 16px; }
+  .deliverables li { display: flex; align-items: flex-start; gap: 8px; padding: 4px 0; font-size: 13px; color: var(--text); }
+  .deliverables li::before { content: "→"; color: var(--muted); flex-shrink: 0; margin-top: 1px; }
+
+  .prompt-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px; }
+  .prompt-box { background: #0f1117; color: #e2e8f0; border-radius: 10px; padding: 16px; font-size: 12px; font-family: 'JetBrains Mono', 'Fira Code', monospace; line-height: 1.65; white-space: pre-wrap; word-break: break-word; border: 1px solid #2d3748; }
+
+  .ai-pill   { background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; }
+  .rls-pill  { background: #dcfce7; color: #15803d; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; }
+  .wf-pill   { background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; }
+  .shared-pill { background: #dbeafe; color: #1e40af; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; }
+
+  .warn-card  { background: #fff8e1; border: 1px solid #f59e0b; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; font-size: 13px; color: #78350f; }
+  .info-card  { background: #eff6ff; border: 1px solid #3b82f6; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; font-size: 13px; color: #1e3a8a; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  code { background: #f1f0eb; padding: 1px 5px; border-radius: 4px; font-size: 11.5px; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SIAPP — Vibe Coding Sessions v2 (PRD-aligned)</h1>
+  <p>Role-based · 4 Dev Paralel · Kadep · Sekretariat · Dosen · Kaprodi</p>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('a', this)">Dev A — Kadep</button>
+  <button class="tab" onclick="show('b', this)">Dev B — Sekretariat</button>
+  <button class="tab" onclick="show('c', this)">Dev C — Dosen</button>
+  <button class="tab" onclick="show('d', this)">Dev D — Kaprodi + Shared</button>
+</div>
+
+<!-- ===================== DEV A — KADEP ===================== -->
+<div id="pane-a" class="pane active">
+  <div class="header-row">
+    <span class="dev-badge badge-a">Dev A · Kadep (Kepala Departemen)</span>
+    <span class="time-badge">~8 hrs</span>
+  </div>
+  <div class="owns-row">
+    <span class="own-tag">app/(app)/dashboard/kadep/*</span>
+    <span class="own-tag">app/(auth)/*</span>
+    <span class="own-tag">components/layout/*</span>
+    <span class="own-tag">middleware.ts</span>
+    <span class="own-tag">0001_A_*</span>
+  </div>
+
+  <div class="warn-card">
+    <strong>Koordinasi dengan Dev D:</strong> Dev D merges Session 0 (StatusBadge, StatCard, mockAIStream, seed.sql) ke main sebelum Dev A mulai Session 1. Semua dev import dari <code>@/components/shared</code> — jangan buat ulang.
+  </div>
+
+  <!-- SESSION 0 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 0</span>
+      <span class="session-title">Foundation Setup + OTP Auth + AppShell (2.5 hrs) <span class="shared-pill">MERGE FIRST</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>UGM brand tokens di <code>app/globals.css</code>: <code>--ugm-blue: #231F54</code>, <code>--ugm-yellow: #FFCA40</code>, glassmorphic vars</li>
+      <li>Supabase stack: <code>lib/supabase/client.ts</code>, <code>server.ts</code>, <code>middleware.ts</code></li>
+      <li>OTP login page <code>/login</code> — validasi domain <code>@ugm.ac.id</code>, rate limit banner</li>
+      <li>OTP verify page <code>/verify</code> — 6-digit input, resend 60s cooldown, redirect by <code>profiles.primary_role</code></li>
+      <li>AppShell: sidebar collapsible + topbar notifikasi + breadcrumb</li>
+      <li>Middleware protect <code>/(app)/*</code>, redirect role ke dashboard masing-masing</li>
+    </ul>
+    <div class="prompt-label">Prompt (paste ke Claude Code)</div>
+    <div class="prompt-box">You are Dev A on SIAPP — Sistem Informasi Departemen Politik Pemerintahan UGM.
+Stack: Next.js 14 App Router, TypeScript strict, Tailwind CSS 3.4, shadcn/ui, pnpm.
+Read CLAUDE.md carefully — RLS, AI draft pattern, server actions, Bahasa Indonesia UI are non-negotiable.
+
+SESSION 0: Foundation + Auth + AppShell. Your code becomes the base all other devs build on.
+
+TASK 1: UGM Brand Tokens (app/globals.css)
+Add to :root block:
+  --ugm-blue:   244 47% 23%    /* #231F54 */
+  --ugm-yellow: 45 100% 62%    /* #FFCA40 */
+Glassmorphic card class utility:
+  .glass-card { @apply rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow; }
+Status ring utilities: .ring-ok (green), .ring-warn (amber), .ring-err (red)
+
+TASK 2: Supabase Client Stack
+- lib/supabase/client.ts  → createBrowserClient() from @supabase/ssr
+- lib/supabase/server.ts  → createServerClient() using cookies() from next/headers
+- lib/supabase/middleware.ts → updateSession() for token refresh
+- lib/supabase/service.ts → createServiceClient() with SUPABASE_SERVICE_ROLE_KEY (server-only)
+Install: pnpm add @supabase/ssr @supabase/supabase-js
+
+TASK 3: OTP Auth — app/(auth)/login/page.tsx
+LoginForm client component:
+- Email input label "Alamat Email UGM"
+- Validate: must end @ugm.ac.id or @mail.ugm.ac.id → show error inline if not
+- "Kirim Kode OTP" button with loading state
+- Server action requestOtp(email) → supabase.auth.signInWithOtp({email, shouldCreateUser:true})
+- Success → redirect /verify?email=<encoded>
+- Rate limit 429 → "Terlalu banyak percobaan. Coba lagi dalam 1 jam."
+- Page: glassmorphic card centered on gradient bg (ugm-blue → indigo-900)
+
+TASK 4: OTP Verify — app/(auth)/verify/page.tsx
+- 6-digit OTP input (auto-focus, inputMode numeric)
+- "Verifikasi Kode" button
+- "Kirim ulang kode" link with 60s cooldown timer
+- Server action verifyOtp(email, token) → supabase.auth.verifyOtp({email, token, type:'email'})
+- On success: read profiles.primary_role, redirect map:
+    kadep → /dashboard/kadep
+    sekdep / tendik → /dashboard/sekretariat
+    dosen → /dashboard/dosen
+    kaprodi_s1 / kaprodi_s2 / kaprodi_s3 → /dashboard/kaprodi
+    no role → /pending ("Akun Anda sedang diverifikasi admin.")
+- Error: "Kode salah atau sudah kedaluwarsa."
+
+TASK 5: Middleware (root middleware.ts)
+Use updateSession() from lib/supabase/middleware.ts.
+Protect /dashboard/* and /(app)/* — redirect /login if no session.
+Allow /(auth)/*, /api/auth/*, /api/webhooks/* without auth.
+Config matcher: ['/((?!_next/static|_next/image|favicon.ico).*)']
+
+TASK 6: AppShell — components/layout/AppShell.tsx (client component)
+Sidebar (w-64, collapsible to w-16):
+- Top: SIAPP logo (text) + UGM badge
+- Nav groups with Lucide icons:
+    Dashboard (LayoutDashboard)
+    Kepegawaian (Users)
+    Pendidikan (BookOpen)
+    Riset & PkM (FlaskConical)
+    Kesekretariatan (FileText)
+    Akreditasi (Award)
+    Admin (Shield) — only visible for kadep/sekdep roles
+- Active route: ugm-blue bg, white text, left accent bar
+- Bottom: avatar (initials), nama, role badge, logout button
+
+Topbar (h-14, border-b):
+- Hamburger to toggle sidebar
+- Breadcrumb derived from pathname segments
+- Notification bell with unread count badge (hardcoded 3)
+- Avatar dropdown: Profil Saya, Pengaturan, Keluar
+
+TASK 7: app/(app)/layout.tsx
+Server component: check session via createServerClient(). No session → redirect /login.
+Render AppShell wrapping {children}.
+Pass user email + role to AppShell as props.</div>
+  </div>
+
+  <!-- SESSION 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 1</span>
+      <span class="session-title">Kadep Executive Dashboard — KPI, Tridharma, Approval Queue (2.5 hrs)</span>
+    </div>
+    <ul class="deliverables">
+      <li>4 KPI stat cards: Indeks Tridharma, SKS Aktif, Riset & PkM, Coverage Akreditasi</li>
+      <li>Tridharma 12-bulan AreaChart (Recharts, 3 stacked areas: Pendidikan/Riset/PkM)</li>
+      <li>BAN-PT 9 Kriteria progress grid — progress bar per kriteria dengan color-coded coverage</li>
+      <li>Antrian Persetujuan widget — 5 pending items (surat, cuti, booking) dengan tombol Tinjau</li>
+      <li>"Briefing AI Pagi" panel — 3 insight bullets mock, amber tinted glassmorphic card</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev A. Build Kadep executive dashboard.
+Import: StatCard from @/components/shared/StatCard, StatusBadge from @/components/shared/StatusBadge.
+Use glassmorphic card style: rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow
+
+TASK 1: app/(app)/dashboard/kadep/page.tsx
+2-row layout:
+Row 1: 4 StatCards (grid-cols-4, gap-4)
+  1. "Indeks Tridharma"   value:"78 / 100"   trend:"up"   delta:"+3 poin"
+  2. "SKS Mengajar Aktif" value:"148 SKS"    hint:"Semester Ganjil 2025/2026"
+  3. "Riset & PkM Aktif"  value:"12 Kegiatan" trend:"up"
+  4. "Coverage Akreditasi" value:"71%"        trend:"up" hint:"BAN-PT 9 Kriteria"
+
+Row 2: 2-col layout (col-span-7 + col-span-5)
+Left: Tridharma Trend AreaChart
+  - Recharts AreaChart, 12 months Jan–Des 2025
+  - 3 stacked areas: Pendidikan (#f59e0b), Riset (#4f46e5), PkM (#10b981)
+  - Hardcoded monthly data (values ~40-60 range each)
+  - Wrapped in glassmorphic card with title "Tren Tridharma 12 Bulan"
+Right: Antrian Persetujuan
+  - Title "Perlu Persetujuan Anda" with count badge
+  - 5 mock items, each row: jenis (pill), perihal text, pemohon name, StatusBadge "Menunggu", "Tinjau →" link
+  - Items: 2x surat keluar, 1x cuti dosen, 1x booking ruang, 1x pengajuan penelitian
+
+Row 3: 2-col (col-span-5 + col-span-7)
+Left: BAN-PT 9 Kriteria Grid
+  - 9 rows: Visi-Misi (85%), Tata Pamong (78%), Mahasiswa (82%), SDM (71%), Kurikulum (88%), Sarana (65%), Penelitian (74%), PkM (70%), Luaran (69%)
+  - Each row: criteria name, progress bar, percentage badge (green ≥80, amber 60-79, red <60)
+  - Title "Coverage Akreditasi BAN-PT"
+Right: Briefing AI Pagi
+  - Amber glassmorphic card, "✦ Briefing AI Pagi" header with model badge "Sonnet 4.6"
+  - 3 insight bullets:
+    1. "2 RPKPS belum disetujui. Sidang mata kuliah POL3101 dan POL4205 mendekat."
+    2. "Publikasi Q1 dari Dr. Ratih Dewi meningkatkan skor Kriteria 7 sebesar +2 poin."
+    3. "3 mahasiswa S2 belum mengajukan judul tesis 30 hari sebelum batas waktu."
+  - Footer: "Data per 8 Mei 2026 · Mock Phase 1"
+  - // TODO: replace with aiRoute('kadep.daily_briefing') in Phase 2</div>
+  </div>
+
+  <!-- SESSION 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 2</span>
+      <span class="session-title">Akreditasi View + Approval Detail (2 hrs) <span class="wf-pill">Workflow</span></span>
+    </div>
+    <ul class="deliverables">
+      <li><code>/dashboard/kadep/akreditasi</code> — heatmap 9 kriteria × LED sub-komponen dengan color-coded coverage</li>
+      <li>Klik kriteria → drawer dengan evidence list + gap recommendations</li>
+      <li><code>/dashboard/kadep/persetujuan/[id]</code> — detail surat/cuti/request dengan tombol Setujui / Tolak + kolom catatan</li>
+      <li>Workflow timeline component: visual stepper showing current approval stage</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev A. Build akreditasi view and approval detail.
+
+TASK 1: app/(app)/dashboard/kadep/akreditasi/page.tsx
+BAN-PT LED Heatmap:
+- Grid: 9 rows (Kriteria 1–9) × variable columns (LED sub-komponen per kriteria)
+- Each cell: color-coded square (green ≥80%, amber 60-79%, red <60%, gray = no data)
+  Use hardcoded coverage data for all cells.
+- Clicking a cell opens a right drawer (Sheet from shadcn/ui):
+  - Title: kriteria name + sub-komponen name
+  - Evidence list: 3 mock documents (nama file, tanggal upload, confidence score)
+  - Gap analysis: "Diperlukan 2 dokumen lagi untuk memenuhi threshold 80%"
+  - "Upload Bukti" button (UI only, toast: "Fitur upload aktif di Phase 2")
+- Summary bar at top: overall coverage % + trend from last period
+
+TASK 2: components/shared/WorkflowTimeline.tsx
+Props: steps: { label: string; status: 'selesai'|'aktif'|'menunggu'; actor?: string; timestamp?: string }[]
+Vertical stepper:
+- selesai → green circle with checkmark
+- aktif → ugm-blue circle, pulsing ring animation
+- menunggu → gray circle
+- Connecting vertical line between steps
+- Actor name + timestamp shown below each step label
+
+TASK 3: app/(app)/dashboard/kadep/persetujuan/[id]/page.tsx
+Left panel (detail surat/request):
+- Nomor surat, perihal, tanggal pengajuan, nama pemohon
+- Jenis dokumen badge (Surat Keluar / Cuti / Booking)
+- Preview area: "Pratinjau dokumen tersedia setelah sistem PrivyID terintegrasi" (placeholder card)
+Right panel:
+- WorkflowTimeline showing approval stages (Drafter → Sekdep → Kadep)
+- "Catatan untuk pemohon" textarea
+- 2 buttons: "Setujui" (green) + "Tolak" (red)
+- Server action stubs: approveItem(id, notes) and rejectItem(id, notes)
+  Both: update mock state + toast "Keputusan disimpan" + redirect back
+- Tampilkan "Anda tidak dapat menyetujui item milik sendiri." jika actor === approver</div>
+  </div>
+
+  <!-- SESSION 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 3</span>
+      <span class="session-title">Admin Panel — User Management + Audit Log (1.5 hrs) <span class="rls-pill">RLS</span></span>
+    </div>
+    <ul class="deliverables">
+      <li><code>/admin/users</code> — TanStack Table, search/filter, assign role modal</li>
+      <li><code>/admin/audit-log</code> — paginated log viewer (table, action, actor, date range)</li>
+      <li><code>/admin/integrations</code> — status tile per layanan (SIMASTER, Scopus, Resend, dst.)</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev A. Build admin panel accessible only to kadep/sekdep.
+
+TASK 1: app/(app)/admin/layout.tsx
+Server component: check profiles.primary_role ∈ ['kadep','sekdep']. If not → redirect /unauthorized.
+
+TASK 2: app/(app)/admin/users/page.tsx
+TanStack Table columns: Nama, Email, Role (dropdown), Unit, Status, Terakhir Login, Aksi.
+Mock data: 8 dosen dari seed (Prof. Hery, Dr. Ratih, Dr. Ahmad, Dr. Siti, Prof. Bambang, Dr. Maya, Dr. Reza, Dr. Fitri) + 3 tendik.
+"Assign Role" per row → modal: role selector + unit selector + "Berlaku mulai" date.
+Server action stub: updateUserRole(userId, role, unitId) — log audit, show toast.
+Search bar (filter nama/email), filter chips by role (semua / dosen / tendik / kaprodi).
+
+TASK 3: app/(app)/admin/audit-log/page.tsx
+Table: Waktu, Aktor, Aksi (INSERT/UPDATE/DELETE), Tabel, Row ID, Before/After.
+Expandable row: show before/after as styled JSON diff (red lines removed, green lines added).
+Filter bar: date range, aksi type, nama tabel.
+20 mock audit entries covering: lecturers, publications, letters, profiles.
+"Ekspor CSV" button → toast "Fitur ekspor tersedia di Phase 2".
+
+TASK 4: app/(app)/admin/integrations/page.tsx
+Tile grid (3 col): setiap tile = nama layanan, status badge, mode badge, last sync.
+Services:
+  SIMASTER    🟡 Placeholder    Mock
+  Scopus API  🟡 Placeholder    Mock
+  ORCID       🟢 Active         Live
+  OneDrive    🟢 Active         Live
+  PrivyID     🟡 Placeholder    Mock
+  Resend      🟢 Active         Live
+  Fonnte      🟢 Active         Live
+  Mistral OCR 🟢 Active         Live
+"Konfigurasi" button per tile → drawer with required ENV vars (masked with eye toggle).</div>
+  </div>
+</div>
+
+<!-- ===================== DEV B — SEKRETARIAT ===================== -->
+<div id="pane-b" class="pane">
+  <div class="header-row">
+    <span class="dev-badge badge-b">Dev B · Sekretariat (Admin TU)</span>
+    <span class="time-badge">~8 hrs</span>
+  </div>
+  <div class="owns-row">
+    <span class="own-tag">app/(app)/dashboard/sekretariat/*</span>
+    <span class="own-tag">app/(app)/kesekretariatan/*</span>
+    <span class="own-tag">0002_B_*</span>
+  </div>
+
+  <div class="warn-card">
+    Tunggu Dev D merges Session 0 (StatusBadge, StatCard, mockAIStream) ke main sebelum mulai. Import dari <code>@/components/shared</code>.
+  </div>
+
+  <!-- SESSION 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 1</span>
+      <span class="session-title">Sekretariat Dashboard + Inbox Surat (2.5 hrs) <span class="rls-pill">RLS</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>Dashboard sekretariat: 4 KPI cards (surat masuk, surat keluar, booking aktif, dosen hadir)</li>
+      <li>Inbox surat — TanStack Table dengan filter status, jenis, tanggal</li>
+      <li>Setiap baris: nomor surat, perihal, pemohon, tanggal, StatusBadge, tombol Proses</li>
+      <li>Tab Masuk / Keluar / Draft / Arsip</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">You are Dev B on SIAPP. Build Sekretariat dashboard and surat inbox.
+Import shared from @/components/shared: StatCard, StatusBadge.
+Read CLAUDE.md: server actions for mutations, Bahasa Indonesia UI, no direct AI writes.
+
+TASK 1: app/(app)/dashboard/sekretariat/page.tsx
+4 StatCards (grid-cols-4):
+  1. "Surat Masuk Hari Ini"  value:"7"    trend:"up"
+  2. "Surat Keluar Aktif"    value:"4"    hint:"3 menunggu tanda tangan"
+  3. "Booking Ruang Hari Ini" value:"5"
+  4. "Dosen Hadir"           value:"12 / 15"
+
+Below KPIs: 2-col layout
+Left (col-7): Inbox Surat (surat masuk pending action)
+Right (col-5): Aktivitas Terkini (timeline of last 8 actions with timestamps)
+
+TASK 2: app/(app)/kesekretariatan/persuratan/page.tsx
+TanStack Table with:
+Columns: Nomor Surat, Perihal, Pemohon, Jenis, Tanggal, Status, Aksi
+Mock 12 surat from CLAUDE.md seed: mix Draft/Menunggu/Ditandatangani/Diarsip
+Tabs above table: Semua | Masuk | Keluar | Draft | Diarsip (filter table)
+Filter bar: search (nomor/perihal), tanggal range, status chips
+Row actions: "Proses" → link to /kesekretariatan/persuratan/[id]
+Pagination: 10 per page, show total
+
+TASK 3: Nomor Surat auto-generator (displayed, not stored yet)
+Function generateNomorSurat(seq: number, year: number): string
+Returns: B/${seq.toString().padStart(3,'0')}/UN1.SIPSO/HM/${year}
+Display preview in table header: "Format: B/001/UN1.SIPSO/HM/2026"</div>
+  </div>
+
+  <!-- SESSION 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 2</span>
+      <span class="session-title">Buat Surat + AI Draft + Approval Stepper (2.5 hrs) <span class="ai-pill">AI Draft</span> <span class="wf-pill">Workflow</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>Form buat surat baru — jenis, perihal, tujuan, lampiran</li>
+      <li>"Bantu AI Tulis" → mockAIStream menghasilkan draft → AiDraftBanner muncul</li>
+      <li>Auto-generate nomor surat dari sequence terakhir</li>
+      <li>3-step approval stepper: Draft → Sekdep Review → Kadep Sign</li>
+      <li>Detail halaman surat dengan WorkflowTimeline + riwayat komentar</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev B. Build form buat surat + AI draft + approval workflow.
+
+TASK 1: app/(app)/kesekretariatan/persuratan/baru/page.tsx
+Form fields:
+  - Jenis Surat: select (Surat Keluar Biasa / Surat Keputusan / Surat Tugas / Nota Dinas)
+  - Perihal: text input
+  - Kepada / Tujuan: text input
+  - Tanggal Surat: date picker
+  - Lampiran: textarea (list)
+  - Isi Surat: textarea (main body)
+
+"✦ Bantu AI Tulis" button (amber colored):
+  - Loading state: "AI sedang menyusun draft..."
+  - Call: const draft = await mockAIStream(DraftTemplate, 2000)
+    // TODO: replace with aiRoute('surat.draft') in Phase 2
+  - Show AiDraftBanner with draft content in Isi Surat textarea
+  - AiDraftBanner props: confidence=0.82, sources=[{type:'template',excerpt:'Template Surat UGM'}]
+  - onAccept: copy draft to textarea, hide banner
+  - onReject: clear, hide banner
+
+Auto-generate nomor: generateNomorSurat(sequence, currentYear)
+Show in read-only field "Nomor Surat (otomatis)"
+
+"Simpan Draft" button → server action stub saveSuratDraft(formData) → toast + redirect list
+"Kirim untuk Review" button → server action stub submitSurat(formData) → workflow engine entry (stub)
+
+TASK 2: app/(app)/kesekretariatan/persuratan/[id]/page.tsx
+Left panel:
+  - Detail surat: nomor, jenis, perihal, tujuan, tanggal
+  - Isi surat (read-only, monospace-ish block)
+  - "Edit" button (only visible if status === 'Draft')
+
+Right panel:
+  - ApprovalStepper component — 3 steps:
+      Step 1: "Penyusunan" — selesai (green) — nama drafter + tanggal
+      Step 2: "Review Sekretariat" — aktif (blue pulsing) — nama sekdep
+      Step 3: "Tanda Tangan Kadep" — menunggu (gray)
+  - Komentar section: list of review comments + add comment textarea + "Tambah Komentar" button
+  - Action buttons conditional on current step + user role:
+      Sekdep → "Teruskan ke Kadep" / "Kembalikan ke Drafter"
+      Kadep  → "Tanda Tangani" (PrivyID placeholder) / "Tolak"
+
+TASK 3: components/shared/ApprovalStepper.tsx
+Props: steps: {label, actor?, timestamp?, status: 'selesai'|'aktif'|'menunggu'}[]
+Horizontal stepper for desktop, vertical for mobile.
+Use WorkflowTimeline from Dev A's shared output, or build inline if not available.</div>
+  </div>
+
+  <!-- SESSION 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 3</span>
+      <span class="session-title">Booking Ruang + Kalender Mingguan (1.5 hrs) <span class="wf-pill">Workflow</span></span>
+    </div>
+    <ul class="deliverables">
+      <li><code>/kesekretariatan/ruang</code> — daftar ruang dengan status ketersediaan hari ini</li>
+      <li>Weekly calendar view: slot 07:00–21:00 × 5 hari, booking ditampilkan as colored blocks</li>
+      <li>Klik slot kosong → modal booking (ruang, keperluan, peserta, jam)</li>
+      <li>Auto-approve jika tidak ada konflik; konflik → queued untuk Tendik</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev B. Build booking ruang dengan kalender mingguan.
+
+TASK 1: app/(app)/kesekretariatan/ruang/page.tsx
+Top: Row of room status cards (5 ruang):
+  - Ruang Rapat Utama (cap: 20) — color: green "Tersedia" / amber "Dipakai" / red "Penuh"
+  - Ruang Seminar (cap: 50)
+  - Ruang Sidang S2 (cap: 15)
+  - Lab Komputer (cap: 30)
+  - Ruang Dosen (cap: 10)
+  Each card: nama ruang, kapasitas, status badge, "Lihat Jadwal" link
+
+Below: WeeklyCalendar component showing current week
+
+TASK 2: components/booking/WeeklyCalendar.tsx
+Grid: 5 columns (Mon–Fri) × time slots (07:00–21:00, 30-min intervals)
+Rendering:
+  - Empty slot: light gray, hoverable with "+" icon
+  - Booked slot: colored block (per ruang, distinct hue), nama acara + peminjam
+  - Conflict slot: red hatched pattern
+Mock bookings (hardcoded 8 entries across the week):
+  Contoh: "Rapat Prodi S1" Mon 09:00–11:00, "Sidang Proposal" Tue 13:00–15:00, dst.
+
+Klik empty slot → open BookingModal
+Klik existing booking → show booking detail popover (nama, peminjam, peserta, status)
+
+TASK 3: BookingModal component
+Fields: Ruang (select), Keperluan / Nama Acara, Tanggal, Jam Mulai–Selesai, Estimasi Peserta
+Conflict check (client-side against mock data): if overlap found → show warning "Ruang sudah dipakai [nama acara]. Pilih slot lain."
+"Ajukan Booking" button → server action stub createBooking(data)
+Auto-approve logic stub: if no conflict → status 'approved', else status 'pending'
+On success: toast "Booking berhasil diajukan" + close modal + refresh calendar</div>
+  </div>
+
+  <!-- SESSION 4 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 4</span>
+      <span class="session-title">Kepegawaian — Direktori Dosen + Data Kehadiran (1.5 hrs) <span class="rls-pill">RLS</span></span>
+    </div>
+    <ul class="deliverables">
+      <li><code>/kesekretariatan/kepegawaian</code> — card grid semua dosen + search + filter jabatan</li>
+      <li>Klik dosen → modal profil ringkas (foto, jabatan, kontak, link detail)</li>
+      <li>Tab "Rekap Kehadiran" — tabel bulan ini: nama dosen × hadir/ijin/alpha</li>
+      <li>Export tabel kehadiran (UI saja, toast placeholder)</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev B. Build modul kepegawaian untuk sekretariat.
+
+TASK 1: app/(app)/kesekretariatan/kepegawaian/page.tsx
+Two tabs: "Direktori Dosen" and "Rekap Kehadiran"
+
+Tab 1 — Direktori Dosen:
+Card grid (grid-cols-3 md:grid-cols-4):
+  Each card: avatar initials (colored bg), nama, jabatan fungsional badge, bidang keahlian, NIDN.
+  Mock 8 dosen: Prof. Hery Santoso, Dr. Ratih Dewi Kusuma, Dr. Ahmad Fauzi, Dr. Siti Nuraini,
+    Prof. Bambang Wicaksono, Dr. Maya Indira, Dr. Reza Pratama, Dr. Fitri Handayani
+  Jabatan: GB (Guru Besar), LK (Lektor Kepala), L (Lektor), AP (Asisten Profesor)
+
+  Search bar (filter by name/keahlian), filter dropdown jabatan.
+  Klik kartu → modal:
+    Nama lengkap + gelar, foto placeholder, jabatan, NIDN, email @ugm.ac.id
+    Keahlian tags, ORCID/SINTA links (plaintext if no integration yet)
+    "Lihat Profil Lengkap →" link to /kepegawaian/[id]
+
+Tab 2 — Rekap Kehadiran:
+Table: Nama Dosen | H (Hadir) | I (Izin) | A (Alpha) | % Kehadiran | Keterangan
+Mock 1 month data. Color: ≥80% green, 60-79% amber, <60% red.
+"Export Rekap" button → toast "Fitur ekspor tersedia di Phase 2"
+"+ Tambah Catatan" per row → inline note field (editable inline, save on blur)</div>
+  </div>
+</div>
+
+<!-- ===================== DEV C — DOSEN ===================== -->
+<div id="pane-c" class="pane">
+  <div class="header-row">
+    <span class="dev-badge badge-c">Dev C · Dosen</span>
+    <span class="time-badge">~7 hrs</span>
+  </div>
+  <div class="owns-row">
+    <span class="own-tag">app/(app)/dashboard/dosen/*</span>
+    <span class="own-tag">0003_C_*</span>
+  </div>
+
+  <div class="warn-card">
+    Tunggu Dev D merges Session 0 (StatusBadge, StatCard, mockAIStream) ke main sebelum mulai. Import dari <code>@/components/shared</code>.
+  </div>
+
+  <!-- SESSION 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 1</span>
+      <span class="session-title">Dosen Dashboard — Profil + KPI + Publikasi (2.5 hrs) <span class="ai-pill">AI Auto-fill</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>Layout 2-kolom: ProfilSidebar (w-1/3) + area konten (flex-1)</li>
+      <li>ProfilSidebar: avatar initials, nama + gelar, NIDN, jabatan badge, keahlian tags (editable), h-index, ORCID/SINTA/Scopus fields, tombol Edit/Simpan</li>
+      <li>4 KPI cards: Skor Tridharma, SKS Semester Ini, Publikasi Tahun Ini, Hibah Aktif</li>
+      <li>Tabel Publikasi — TanStack Table, modal Tambah dengan AI auto-fill via mockAIStream + AiDraftBanner</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">You are Dev C on SIAPP. Build the Dosen personal dashboard.
+Import shared from @/components/shared: StatCard, StatusBadge, AiDraftBanner.
+Read CLAUDE.md: AI never writes directly to domain tables. All AI results go through AiDraftBanner.
+Stack: Next.js 14 App Router, TypeScript strict, Tailwind CSS 3.4, TanStack Table v8, pnpm.
+
+TASK 1: app/(app)/dashboard/dosen/page.tsx
+2-column layout: ProfilSidebar (w-1/3 flex-shrink-0) + main content (flex-1)
+
+TASK 2: ProfilSidebar (components in same folder)
+Avatar: 80px circle, initials colored background (derive color from name hash)
+Nama lengkap + gelar (Dr./Prof.)
+Jabatan badge: Lektor Kepala (amber), Guru Besar (ugm-blue), Lektor (gray)
+NIDN badge: font-mono
+Bidang Keahlian: tag chips, editable in edit mode (add/remove tags)
+Stats row: H-Index, Scopus ID, SINTA Score (editable)
+Edit/Simpan toggle button: on Edit → inputs become editable; on Simpan → server action stub saveProfile(data) + toast
+
+TASK 3: KPI Cards (4 StatCards, grid-cols-2 in main area)
+  1. "Skor Tridharma Saya"    value:"82 / 100"     hint:"Top 30% departemen"
+  2. "SKS Semester Ini"       value:"9 SKS"         hint:"3 mata kuliah aktif"
+  3. "Publikasi Tahun Ini"    value:"2 Publikasi"   trend:"up"
+  4. "Hibah Aktif"            value:"1 Hibah"       hint:"Rp 150 juta"
+
+TASK 4: PublikasiTable
+TanStack Table columns: Judul (truncate), Jurnal, Quartile (Q1-Q4 badge), Tahun, Sitasi, Status, Aksi
+Mock 8 publikasi: mix Q1-Q4, years 2022-2025, status Published/Under Review/Draft
+
+"+ Tambah Publikasi" button → modal:
+  Fields: Judul, Nama Jurnal, Tahun, DOI, Quartile select, Abstrak textarea
+  "✦ Auto-isi dari DOI" button:
+    - Loading state: "Mencari metadata..."
+    - const result = await mockAIStream('Mock metadata from DOI', 1200)
+      // TODO: replace with aiRoute('publikasi.doi_lookup') in Phase 2
+    - Show AiDraftBanner: confidence=0.91, fills form fields with mock data
+    - onAccept: populate form fields, hide banner
+  "Simpan" → server action stub addPublikasi(data) → toast + close modal + refresh table</div>
+  </div>
+
+  <!-- SESSION 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 2</span>
+      <span class="session-title">Mata Kuliah + RPKPS AI + EDOM (2.5 hrs) <span class="ai-pill">AI RPKPS</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>Tab "Mata Kuliah" — tabel MK aktif: kode, nama, SKS, kelas, StatusBadge RPKPS, rating EDOM bintang</li>
+      <li>"Generate RPKPS" per MK → kanan drawer dengan draft RPKPS (AI mock) + AiDraftBanner</li>
+      <li>EDOM section: bar chart horizontal skor per komponen (pengajaran, materi, interaksi, dll.)</li>
+      <li>Tab "Penelitian & PkM" — tabel hibah aktif + riwayat penelitian selesai</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev C. Build mata kuliah + RPKPS AI + EDOM.
+
+TASK 1: MataKuliahTab component
+Table columns: Kode MK, Nama MK, SKS, Kelas, Peserta, RPKPS Status, Skor EDOM, Aksi
+Mock 5 MK:
+  POL3101 Pengantar Ilmu Politik    3 SKS  A  45 peserta  Disetujui   4.2/5
+  POL3205 Sistem Politik Indonesia  3 SKS  A  38 peserta  Menunggu    3.9/5
+  POL4101 Teori Politik Modern      2 SKS  B  22 peserta  Draft       -
+  POL5201 Metodologi Penelitian     3 SKS  -  15 peserta  Disetujui   4.5/5
+  POL6301 Seminar Tesis             2 SKS  -  8 peserta   Draft       -
+
+"Generate RPKPS" button per row → open right drawer (Sheet):
+  Drawer title: "Draft RPKPS — [nama MK]"
+  Loading: "AI sedang menyusun RPKPS..."
+  const draft = await mockAIStream(rpkpsTemplate, 2500)
+  // TODO: replace with aiRoute('rpkps.generate') in Phase 2
+  Show AiDraftBanner with draft content (long text, scrollable)
+  confidence=0.78, sources=[{type:'kurikulum', excerpt:'CPL Prodi S1'}]
+  Buttons: "Terima & Simpan" (server action stub) | "Edit Lebih Lanjut" (open in textarea) | "Tolak"
+
+TASK 2: EDOM Section (below MK table)
+Title: "Evaluasi Dosen Oleh Mahasiswa (EDOM)"
+Recharts HorizontalBarChart, 6 komponen:
+  Penguasaan Materi: 4.3
+  Metode Pengajaran: 3.8
+  Interaksi Mahasiswa: 4.1
+  Kesesuaian Silabus: 4.5
+  Ketepatan Waktu: 3.9
+  Penilaian yang Adil: 4.2
+Color: ≥4.0 green, 3.5–3.9 amber, <3.5 red
+Small text below: "Sumber: Survei EDOM Semester Ganjil 2025/2026 · 45 responden"
+
+TASK 3: PenelitianTab component
+Section "Hibah & Penelitian Aktif":
+  Cards (2 per row): nama penelitian, sumber dana, nilai (Rp), periode, StatusBadge
+  Mock: 1 hibah aktif (Rp 150 juta, BRIN 2025), 1 hibah selesai (Rp 75 juta, UGM 2024)
+
+Section "Riwayat PkM":
+  Small table: nama kegiatan, lokasi, tanggal, peserta, StatusBadge
+  Mock 3 entries: pelatihan desa, seminar publik, pendampingan UMKM</div>
+  </div>
+
+  <!-- SESSION 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 3</span>
+      <span class="session-title">Surat & Dokumen + Profil Publik (2 hrs)</span>
+    </div>
+    <ul class="deliverables">
+      <li>Tab "Surat & Dokumen" — riwayat surat dosen + dokumen terunggah dengan klasifikasi badge</li>
+      <li>Ajukan surat baru via link ke <code>/kesekretariatan/persuratan/baru</code></li>
+      <li>Tab "Profil Publik" — preview read-only profil yang tampil ke publik (SINTA-like)</li>
+      <li>Tridharma chart mini — personal contribution radar chart (Recharts RadarChart)</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev C. Build surat & dokumen tab + profil publik.
+
+TASK 1: SuratDokumenTab component
+Section "Riwayat Surat" — table:
+  Columns: Nomor Surat, Perihal, Tanggal, Status, Aksi
+  Mock 4 surat: mix Ditandatangani / Menunggu / Draft
+  "Ajukan Surat Baru" button → href="/kesekretariatan/persuratan/baru"
+
+Section "Dokumen Terunggah":
+  List items: icon 📄, nama file, tanggal upload, klasifikasi badge
+  Klasifikasi colors: Publik→green, Internal→amber, Rahasia→red
+  Mock 4 dokumen: SK_Pengangkatan.pdf, Sertifikat_Seminar.pdf, Laporan_Penelitian.pdf, SK_Jabatan.pdf
+
+TASK 2: ProfilPublikTab component
+Read-only preview card (simulate what external visitors see):
+  - Foto avatar + nama lengkap + jabatan
+  - Bidang keahlian tags
+  - Statistik row: total publikasi, h-index, sitasi total
+  - 5 publikasi terbaru (judul + jurnal + tahun)
+  - 2 hibah aktif
+  "Perbarui Profil" → switch to edit mode in ProfilSidebar (emit event or navigate)
+  Small disclaimer: "Profil ini dapat dilihat publik melalui website departemen."
+
+TASK 3: Tridharma RadarChart (inside ProfilPublikTab or as separate widget)
+Recharts RadarChart, 3 axes: Pendidikan, Penelitian, Pengabdian
+Personal score + departemen average (2 overlapping fills)
+Values: Personal (75, 80, 70), Rata-rata Dept (72, 65, 68)
+Legend + title "Kontribusi Tridharma"
+
+TASK 4: Complete tab integration
+Dashboard tabs (in main content area):
+  Tab 1: "Ikhtisar" — KPIs + Tridharma chart + AI suggestions panel
+  Tab 2: "Publikasi" — PublikasiTable
+  Tab 3: "Mata Kuliah" — MataKuliahTab + EDOM
+  Tab 4: "Penelitian & PkM" — PenelitianTab
+  Tab 5: "Surat & Dokumen" — SuratDokumenTab
+  Tab 6: "Profil Publik" — ProfilPublikTab</div>
+  </div>
+</div>
+
+<!-- ===================== DEV D — KAPRODI + SHARED ===================== -->
+<div id="pane-d" class="pane">
+  <div class="header-row">
+    <span class="dev-badge badge-d">Dev D · Kaprodi + Shared Setup</span>
+    <span class="time-badge">~7 hrs</span>
+  </div>
+  <div class="owns-row">
+    <span class="own-tag">app/(app)/dashboard/kaprodi/*</span>
+    <span class="own-tag">components/shared/*</span>
+    <span class="own-tag">lib/mock-ai.ts</span>
+    <span class="own-tag">supabase/seed.sql</span>
+    <span class="own-tag">0000_D_* · 0004_D_*</span>
+  </div>
+
+  <div class="warn-card">
+    <strong>Dev D memulai PERTAMA — Session 0 harus di-push ke main sebelum Dev A, B, C mulai.</strong><br>
+    Session 0 tidak boleh menunggu siapapun. Push langsung ke main branch.
+  </div>
+
+  <!-- SESSION 0 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 0</span>
+      <span class="session-title">Shared Components + Seed Data (1.5 hrs) <span class="shared-pill">PUSH KE MAIN DULU</span></span>
+    </div>
+    <ul class="deliverables">
+      <li><code>components/shared/StatusBadge.tsx</code> — colored pill untuk semua status nilai</li>
+      <li><code>components/shared/StatCard.tsx</code> — metric card dengan trend arrow</li>
+      <li><code>lib/mock-ai.ts</code> — <code>mockAIStream(content, delayMs)</code> helper</li>
+      <li><code>supabase/seed.sql</code> — 8 dosen, 3 prodi, 12 surat, 20 publikasi, 5 hibah, 150 mahasiswa</li>
+      <li>Migration <code>0000_D_init_seed</code> — schema + seed</li>
+    </ul>
+    <div class="prompt-label">Prompt (paste ke Claude Code — JALANKAN SEKARANG, push ke main)</div>
+    <div class="prompt-box">You are Dev D on SIAPP — your Session 0 is a blocker for Dev A, B, C.
+Complete this immediately and push to main before others start.
+
+TASK 1: components/shared/StatusBadge.tsx
+Props: status: string, size?: 'xs' | 'sm' | 'md'
+Color map (case-insensitive match):
+  draft | belum         → bg-gray-100  text-gray-600
+  menunggu | pending    → bg-amber-100 text-amber-700
+  aktif | selesai | ditandatangani | disetujui | published → bg-green-100 text-green-700
+  ditolak               → bg-red-100   text-red-700
+  diarsip               → bg-blue-100  text-blue-700
+  under review          → bg-indigo-100 text-indigo-700
+Size: xs→text-[10px] px-1.5 py-0.5, sm→text-xs px-2 py-0.5, md→text-sm px-2.5 py-1
+All: rounded-full font-medium capitalize
+Export as named export.
+
+TASK 2: components/shared/StatCard.tsx
+Props: label: string, value: string | number, trend?: 'up' | 'down', delta?: string, hint?: string, icon?: React.ReactNode
+Glassmorphic card: rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow p-5
+Value: text-3xl font-bold text-gray-900
+Label: text-xs uppercase tracking-wide text-gray-500 mt-1
+Trend arrow: ↑ text-green-600 / ↓ text-red-500, delta text beside arrow
+Hint: text-xs text-gray-400 mt-2
+Export as named export.
+
+TASK 3: lib/mock-ai.ts
+export async function mockAIStream(content: string, delayMs = 1500): Promise<string> {
+  await new Promise(resolve => setTimeout(resolve, delayMs));
+  return content;
+}
+// Use during Phase 1 MVP. Replace with aiRoute() calls in Phase 2.
+
+TASK 4: supabase/seed.sql
+Write INSERT statements (no CREATE TABLE — those come from migrations):
+
+8 dosen profiles:
+  Prof. Hery Santoso         — Guru Besar,       Pol. Komparatif, NIDN: 0001234501
+  Dr. Ratih Dewi Kusuma      — Lektor Kepala,     Kebijakan Publik, NIDN: 0002345602
+  Dr. Ahmad Fauzi            — Lektor Kepala,     Hubungan Int., NIDN: 0003456703
+  Dr. Siti Nuraini           — Lektor,            Gender & Politik, NIDN: 0004567804
+  Prof. Bambang Wicaksono    — Guru Besar,        Teori Politik, NIDN: 0005678905
+  Dr. Maya Indira            — Lektor,            Pemerintahan Lokal, NIDN: 0006789006
+  Dr. Reza Pratama           — Asisten Profesor,  Tata Kelola Digital, NIDN: 0007890107
+  Dr. Fitri Handayani        — Lektor,            Sosiologi Politik, NIDN: 0008901208
+
+3 prodi:
+  S1 Politik dan Pemerintahan  — kaprodi: Prof. Hery Santoso
+  S2 Politik dan Pemerintahan  — kaprodi: Prof. Bambang Wicaksono
+  S3 Politik dan Pemerintahan  — kaprodi: Prof. Hery Santoso
+
+12 surat: 4 Ditandatangani, 4 Menunggu, 2 Draft, 2 Diarsip
+20 publikasi: 5 Q1, 7 Q2, 5 Q3, 3 Q4, years 2022–2025
+5 hibah: 3 aktif (2025), 2 selesai (2023–2024)
+150 mahasiswa: intake 2020–2024, IPK range 2.5–4.0, varied prodi
+
+TASK 5: Migration 0000_D_init_seed.sql (supabase/migrations/)
+Schema stubs (bare minimum for seed to work):
+  CREATE TABLE IF NOT EXISTS profiles (id uuid primary key, email text, primary_role text, full_name text, created_at timestamptz default now());
+  CREATE TABLE IF NOT EXISTS lecturers (id uuid primary key, profile_id uuid references profiles(id), nidn text, jabatan text, bidang_keahlian text[], h_index int, created_at timestamptz default now());
+  CREATE TABLE IF NOT EXISTS letters (id uuid primary key, nomor text, perihal text, jenis text, status text, created_by uuid references profiles(id), created_at timestamptz default now());
+  CREATE TABLE IF NOT EXISTS publications (id uuid primary key, lecturer_id uuid references lecturers(id), judul text, jurnal text, quartile text, tahun int, doi text, created_at timestamptz default now());
+  Enable RLS: ALTER TABLE profiles ENABLE ROW LEVEL SECURITY; (repeat for all tables)
+  Basic RLS: CREATE POLICY "users see own" ON profiles FOR SELECT USING (auth.uid() = id);
+  Audit trigger: CREATE TRIGGER audit_profiles AFTER INSERT OR UPDATE OR DELETE ON profiles FOR EACH ROW EXECUTE FUNCTION fn_log_audit();</div>
+  </div>
+
+  <!-- SESSION 1 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 1</span>
+      <span class="session-title">Kaprodi Dashboard — KPI + Mahasiswa Analytics (2 hrs)</span>
+    </div>
+    <ul class="deliverables">
+      <li>4 KPI cards: Total Mahasiswa S1/S2/S3, Rata-rata IPK, Mahasiswa At-Risk, Lulusan Tahun Ini</li>
+      <li>Stacked bar chart — kelulusan per prodi per tahun (Recharts)</li>
+      <li>IPK distribution histogram — sebaran IPK mahasiswa aktif</li>
+      <li>Prodi selector di topbar: S1 / S2 / S3 (filter semua data di halaman)</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev D. Shared Session 0 is done and pushed. Now build the Kaprodi dashboard.
+Import StatCard, StatusBadge from @/components/shared.
+Use glassmorphic card style.
+
+TASK 1: app/(app)/dashboard/kaprodi/page.tsx
+Top: ProdiSelector — segmented control S1 / S2 / S3 (client state, filters page)
+
+4 StatCards (grid-cols-4):
+  1. "Mahasiswa Aktif"    value:"892"  hint:"S1: 650 · S2: 182 · S3: 60"
+  2. "Rata-rata IPK"      value:"3.42" trend:"up" delta:"+0.08"
+  3. "Mahasiswa At-Risk"  value:"23"   hint:"IPK < 2.75 atau tidak aktif"  (red tinted card)
+  4. "Lulusan Tahun Ini"  value:"127"  trend:"up"
+
+2-column layout:
+Left (col-7): GraduationChart
+  Recharts BarChart stacked: S1 (indigo), S2 (amber), S3 (green)
+  X-axis: 2020, 2021, 2022, 2023, 2024, 2025
+  Hardcoded data — S1 ~80-100, S2 ~20-30, S3 ~5-10 per year
+  Title: "Tren Kelulusan per Angkatan"
+
+Right (col-5): IPKDistributionChart
+  Recharts BarChart: 6 bins (2.0–2.5, 2.5–3.0, 3.0–3.25, 3.25–3.5, 3.5–3.75, 3.75–4.0)
+  Color: <3.0 amber/red, ≥3.0 indigo
+  Title: "Sebaran IPK Mahasiswa Aktif"
+
+Bottom: AI Insights card (amber glassmorphic)
+  3 hardcoded bullets:
+  1. "23 mahasiswa berisiko tidak lulus tepat waktu — 18 di S1, 5 di S2."
+  2. "IPK rata-rata semester ini naik 0.08 poin — tren positif."
+  3. "Kurikulum 2023 Prodi S1 masih memiliki 3 RPKPS yang belum final."
+  // TODO: replace with aiRoute('kaprodi.dashboard_insights') in Phase 2</div>
+  </div>
+
+  <!-- SESSION 2 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 2</span>
+      <span class="session-title">Kurikulum + Mahasiswa At-Risk + EDOM Program (2 hrs) <span class="rls-pill">RLS</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>Tab "Kurikulum" — tabel MK per prodi dengan StatusBadge RPKPS + silabus, filter semester</li>
+      <li>Tab "Mahasiswa At-Risk" — TanStack Table: nama, NIM, IPK, sks tertunggak, last active, StatusBadge, tombol Beri Peringatan</li>
+      <li>Tab "EDOM Program" — horizontal bar chart skor EDOM per MK + summary card per dosen</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev D. Build kurikulum, at-risk, and EDOM tabs for Kaprodi.
+
+TASK 1: KurikulumTab component
+TanStack Table columns: Kode MK, Nama MK, SKS, Semester, CPL (tags), Status RPKPS, Status Silabus, Dosen Pengampu
+Mock 12 MK untuk S1 (filter by prodi from ProdiSelector):
+  Mix status: Disetujui, Menunggu, Draft, Belum Dibuat
+Filter bar: semester (1–8), status RPKPS, dosen
+Klik row → slide-down detail: CPL mappings, deskripsi singkat, link "Lihat RPKPS"
+"Tambah MK" button (UI only, toast "Fitur ini tersedia setelah schema dikonfirmasi")
+
+TASK 2: MahasiswaAtRiskTab component
+TanStack Table columns: Nama, NIM (font-mono), Prodi, Semester, IPK (colored), SKS Tertunggak, Status, Aksi
+Status: "IPK Rendah" (red), "Tidak Aktif" (amber), "SKS Tertunggak" (orange)
+Mock 15 mahasiswa at-risk with varied risk types
+"Beri Peringatan" per row → modal:
+  Jenis peringatan: select (Akademik / Kehadiran / Administratif)
+  Pesan untuk mahasiswa: textarea
+  Kirim via: checkbox (Email / WhatsApp)
+  "Kirim Peringatan" → server action stub sendWarning(studentId, data) + toast
+
+TASK 3: EdomProgramTab component
+Top: Summary stats — rata-rata EDOM departemen, jumlah MK dievaluasi, jumlah responden total
+Recharts HorizontalBarChart: setiap bar = 1 MK, sorted descending by score
+Color: ≥4.0 green, 3.5–3.9 amber, <3.5 red
+Below chart: "Per Dosen" card grid (2 col):
+  Each card: avatar initials, nama dosen, rata-rata EDOM score, trend badge
+  Mini horizontal bars for 3 sub-komponen: Materi, Metode, Interaksi
+"Unduh Laporan EDOM" → toast "Fitur ekspor tersedia di Phase 2"</div>
+  </div>
+
+  <!-- SESSION 3 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="session-num">Session 3</span>
+      <span class="session-title">AI Assistant Panel + Akreditasi Coverage (1.5 hrs) <span class="ai-pill">AI</span></span>
+    </div>
+    <ul class="deliverables">
+      <li>AI Q&A panel: input pertanyaan → mockAIStream menjawab → riwayat chat disimpan di session state</li>
+      <li>Akreditasi mini-dashboard — progress ring per kriteria BAN-PT dari perspektif Kaprodi</li>
+      <li>LED Evidence quick-upload (UI placeholder: "Unggah bukti untuk Kriteria 5 — Kurikulum")</li>
+    </ul>
+    <div class="prompt-label">Prompt</div>
+    <div class="prompt-box">Continue SIAPP Dev D. Build AI assistant + akreditasi coverage for Kaprodi.
+
+TASK 1: AiAssistantPanel component
+Chat UI (right side of page or floating panel toggle):
+  Message list: user messages (right, blue bg) + AI messages (left, white bg)
+  Input bar: textarea + "Kirim" button
+
+On submit:
+  const response = await mockAIStream(generateMockAnswer(question), 1800)
+  // TODO: replace with aiRoute('kaprodi.qa') in Phase 2
+
+generateMockAnswer(q: string): string — returns different canned answers based on keywords:
+  "ipk" → "Rata-rata IPK mahasiswa S1 semester ini adalah 3.42, naik dari 3.34 semester lalu..."
+  "akreditasi" → "Coverage akreditasi saat ini 71%. Kriteria 6 (Sarana) masih di 65%..."
+  "mahasiswa" → "Terdapat 23 mahasiswa at-risk. 18 di S1 dengan IPK di bawah 2.75..."
+  default → "Saya dapat membantu Anda menganalisis data program studi. Coba tanyakan tentang IPK, akreditasi, atau mahasiswa."
+
+Message history: React useState array of {role, content, timestamp}
+Show timestamp per message, "Hapus Riwayat" button
+
+TASK 2: AkreditasiCoveragePanel component (for Kaprodi — focused on Kriteria 5 Kurikulum)
+6 sub-criteria cards for Kriteria 5 (Kurikulum):
+  5.1 Profil Lulusan         78% → amber progress ring
+  5.2 CPL                    92% → green progress ring
+  5.3 Struktur Kurikulum     85% → green progress ring
+  5.4 RPKPS                  61% → amber progress ring (needs action)
+  5.5 Integrasi Penelitian   55% → red progress ring
+  5.6 Suasana Akademik       72% → amber progress ring
+
+Klik card → "Upload Bukti" section:
+  "Unggah dokumen untuk meningkatkan coverage kriteria ini"
+  File input (UI placeholder) + "Unggah" button → toast "Fitur unggah aktif di Phase 2"
+  Recommended docs list: "RPKPS 3 MK yang belum final", "Laporan evaluasi kurikulum 2025"
+
+Overall bar at top: "Coverage Kriteria 5: 74%" with progress bar</div>
+  </div>
+</div>
+
+<script>
+function show(id, tab) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('pane-' + id).classList.add('active');
+  tab.classList.add('active');
+}
+</script>
+</body>
+</html>
