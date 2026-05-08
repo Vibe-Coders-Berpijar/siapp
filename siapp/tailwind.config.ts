@@ -9,6 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'ugm-gold': '#C8A415',
+        'ugm-gold-light': '#F5D457',
+        'ugm-blue': '#003566',
+        'ugm-blue-dark': '#001F4E',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

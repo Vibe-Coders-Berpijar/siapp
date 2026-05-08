@@ -72,3 +72,21 @@
     @apply rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow;
   }
 }
+
+/* Sekretariat dark-theme utilities */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-hover: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.14);
+}
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass:hover {
+    background: var(--glass-bg-hover);
+  }
+}
