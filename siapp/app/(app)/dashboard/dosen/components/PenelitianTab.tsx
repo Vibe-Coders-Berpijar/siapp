@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 
 interface Hibah {
@@ -73,9 +74,17 @@ export function PenelitianTab() {
       <div className="rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow overflow-hidden">
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
           <h2 className="font-semibold text-gray-900">Hibah & Penelitian</h2>
-          <button className="text-xs font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
-            + Daftarkan Hibah
-          </button>
+          <div className="flex items-center gap-3">
+            <Link href="/riset-pkm" className="text-xs font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
+              Lihat Semua Proposal →
+            </Link>
+            <Link
+              href="/riset-pkm/proposal/baru"
+              className="text-xs font-medium text-white bg-[#231F54] hover:bg-indigo-900 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              + Buat Proposal
+            </Link>
+          </div>
         </div>
         <div className="divide-y divide-gray-50">
           {MOCK_HIBAH.map((h) => (
