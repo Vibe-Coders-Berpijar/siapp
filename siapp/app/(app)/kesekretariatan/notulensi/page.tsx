@@ -17,9 +17,6 @@ const LABEL_COLORS: Record<NotulensiLabel, string> = {
   Lainnya:    "bg-white/10 text-white/50 border-white/20",
 };
 
-// In Phase 2 this comes from auth session — for demo, secretariat can see all
-const CURRENT_USER = "Sekretariat";
-
 export default function NotulensiPage() {
   const [items, setItems] = useState<NotulensiItem[]>(seedNotulensi);
   const [search, setSearch] = useState("");

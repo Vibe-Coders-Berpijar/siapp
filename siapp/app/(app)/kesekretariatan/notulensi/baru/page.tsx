@@ -175,7 +175,7 @@ export default function NotulensiBaruPage() {
   const [pimpinan, setPimpinan]   = useState("");
   const [peserta, setPeserta]     = useState<string[]>([]);
   const [anggota, setAnggota]     = useState<string[]>([]);
-  const [agenda, setAgenda]       = useState<string[]>([]);
+  const [, setAgenda]             = useState<string[]>([]);
   const [keputusan, setKeputusan] = useState<string[]>([]);
   const [tindakLanjut, setTindakLanjut] = useState<{ item: string; penanggungJawab: string; tenggat: string }[]>([]);
 
