@@ -13,6 +13,8 @@ import { Button } from "@/components/sekretariat/Button";
 import { LetterPreview } from "@/components/sekretariat/LetterPreview";
 import { NewLetterForm } from "@/components/sekretariat/NewLetterForm";
 import { formatDateShort } from "@/lib/utils";
+import { createWorkflow } from "@/lib/mock-workflow";
+import { mockSendWhatsApp, mockSendEmail } from "@/lib/mock-notifications";
 
 const CATEGORY_LABELS: Record<LetterCategory, string> = {
   undangan:      "Undangan",
@@ -65,6 +67,14 @@ export default function PersuratanPage() {
     const timeNow = new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
     const nomor = `B/${String(nextSeq).padStart(3, "0")}/UN1.SIPSO/HM/${year}`;
 
+    // Create workflow instance
+    const wfInitialStatus = data.status === "Menunggu" ? "SUBMITTED" : "DRAFT";
+    const wfInstance = createWorkflow("surat.keluar", String(nextId), wfInitialStatus);
+    if (data.status === "Menunggu") {
+      mockSendWhatsApp("Kadep", "Surat baru menunggu persetujuan Anda di SIAPP.");
+      mockSendEmail("kadep@ugm.ac.id", "[SIAPP] Surat Baru Menunggu Persetujuan");
+    }
+
     const newLetter: Letter = {
       id: nextId,
       direction: "keluar",
@@ -77,6 +87,7 @@ export default function PersuratanPage() {
       status: data.status,
       approvalStep: data.status === "Menunggu" ? 1 : 0,
       isi: data.isi,
+      workflowInstanceId: wfInstance.id,
       auditLog: [
         {
           aksi: data.status === "Menunggu" ? "Dibuat & Dikirim ke Sekdep" : "Dibuat (Draft)",
@@ -87,6 +98,11 @@ export default function PersuratanPage() {
     };
     setLetters(prev => [newLetter, ...prev]);
     setShowNewForm(false);
+  };
+
+  const handleUpdateLetter = (updated: Letter) => {
+    setLetters(prev => prev.map(l => l.id === updated.id ? updated : l));
+    setSelectedLetter(updated);
   };
 
   const columns: Column<Letter>[] = [
@@ -269,6 +285,7 @@ export default function PersuratanPage() {
         <LetterPreview
           letter={selectedLetter}
           onClose={() => setSelectedLetter(null)}
+          onUpdate={handleUpdateLetter}
         />
       )}
       {showNewForm && (

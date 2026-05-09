@@ -3,34 +3,9 @@
 import { useState, useRef } from "react";
 import { X, Sparkles, Send, Save, Wand2 } from "lucide-react";
 import { Button } from "@/components/sekretariat/Button";
+import { mockAIStream, mockAIImprove } from "@/lib/mockAIStream";
 import { letterTemplates, LetterCategory } from "@/lib/seed";
 import { cn } from "@/lib/utils";
-
-// mockAIImprove — local shim since lib/mockAIStream only re-exports mockAIStream
-async function* mockAIImprove(original: string): AsyncGenerator<string> {
-  const improved = `Dengan hormat,
-
-${original
-  .replace(/dengan hormat,?\s*/i, "")
-  .replace(/hormat kami,[\s\S]*/i, "")
-  .trim()
-  .split(". ")
-  .map((s: string) => s.trim())
-  .filter(Boolean)
-  .join(".\n\n")}
-
-Demikian surat ini kami sampaikan dengan hormat. Atas perhatian serta kerja sama yang baik dari Bapak/Ibu, kami menyampaikan terima kasih yang sebesar-besarnya.
-
-Hormat kami,
-Sekretariat
-Departemen Pendidikan Profesi
-Universitas Gadjah Mada`;
-
-  for (const char of improved.split("")) {
-    yield char;
-    await new Promise((r) => setTimeout(r, 5 + Math.random() * 15));
-  }
-}
 
 interface NewLetterFormProps {
   onClose: () => void;
@@ -73,27 +48,14 @@ export function NewLetterForm({ onClose, onSave, nextSeq }: NewLetterFormProps) 
     setStreamMode("draft");
     setIsi("");
 
-    void (category === "undangan" ? "undangan" : category === "permohonan" ? "permohonan" : "default");
+    const type = category === "undangan" ? "undangan"
+      : category === "permohonan" ? "permohonan"
+      : "default";
 
     try {
-      // mockAIStream from lib/mock-ai expects (content, delay) signature — use a simple shim
-      const content = `Dengan hormat,
-
-Sehubungan dengan ${perihal || "keperluan yang dimaksud"}, bersama surat ini kami menyampaikan informasi penting yang perlu mendapat perhatian Bapak/Ibu.
-
-Departemen Pendidikan Profesi (DPP) Universitas Gadjah Mada senantiasa berkomitmen untuk menjalin komunikasi yang baik dengan seluruh pemangku kepentingan demi tercapainya visi dan misi institusi.
-
-Kami mohon agar hal yang disampaikan dalam surat ini dapat ditindaklanjuti sebagaimana mestinya.
-
-Demikian surat ini kami sampaikan. Atas perhatian Bapak/Ibu, kami ucapkan terima kasih.
-
-Hormat kami,
-Sekretariat DPP UGM`;
-
-      for (const char of content.split("")) {
+      for await (const chunk of mockAIStream(perihal, type)) {
         if (abortRef.current) break;
-        setIsi(prev => prev + char);
-        await new Promise(r => setTimeout(r, 10 + Math.random() * 20));
+        setIsi(prev => prev + chunk);
       }
     } finally {
       setIsStreaming(false);
@@ -136,7 +98,7 @@ Sekretariat DPP UGM`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-      <div className="glass rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden border border-white/14">
+      <div className="glass rounded-2xl border border-white/14 w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
           <p className="font-semibold text-white">Buat Surat Keluar</p>

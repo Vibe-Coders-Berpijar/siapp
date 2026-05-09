@@ -16,6 +16,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { NotificationLog } from "@/components/sekretariat/NotificationLog";
 
 const BASE = "/kesekretariatan";
 
@@ -116,6 +117,9 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
           </div>
         ))}
       </nav>
+
+      {/* Notification log */}
+      <NotificationLog />
 
       {/* Logout */}
       <div className="p-3 border-t border-white/10">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
+import { Toast } from "@/components/ui/Toast";
 
 export function KesekretariatanShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -38,6 +39,7 @@ export function KesekretariatanShell({ children }: { children: React.ReactNode }
         </div>
         {children}
       </main>
+      <Toast />
     </div>
   );
 }

@@ -1,7 +1,92 @@
-export { mockAIStream } from './mock-ai';
+const draftTemplates: Record<string, string> = {
+  undangan: `Dengan hormat,
 
-// NotulensiExtracted type and mockNotulensiExtract are only used by the notulensi/baru page.
-// They are defined here since lib/mock-ai.ts does not export them.
+Sehubungan dengan {perihal}, kami dengan segala hormat mengundang Bapak/Ibu untuk hadir dalam kegiatan yang diselenggarakan oleh Departemen Pendidikan Profesi (DPP) Universitas Gadjah Mada.
+
+Kegiatan ini diselenggarakan dalam rangka peningkatan kualitas akademik dan pengembangan kerjasama institusional di lingkungan UGM. Kehadiran Bapak/Ibu sangat kami harapkan mengingat peran strategis yang dimiliki dalam bidang ini.
+
+Adapun rincian kegiatan adalah sebagai berikut:
+- Hari/Tanggal : [Menyusul]
+- Waktu         : [Menyusul] WIB
+- Tempat        : Gedung DPP UGM, Yogyakarta
+
+Demikian surat undangan ini kami sampaikan. Atas perhatian dan kehadiran Bapak/Ibu, kami ucapkan terima kasih.
+
+Hormat kami,
+Sekretariat DPP UGM`,
+
+  permohonan: `Dengan hormat,
+
+Sehubungan dengan {perihal}, kami bermaksud mengajukan permohonan kepada Bapak/Ibu terkait hal tersebut di atas.
+
+Sebagai bahan pertimbangan, kami sampaikan bahwa kegiatan ini merupakan bagian dari program kerja DPP UGM tahun akademik 2025/2026 yang telah direncanakan dan mendapat persetujuan dari pimpinan departemen.
+
+Kami berharap permohonan ini dapat ditindaklanjuti dengan sebaik-baiknya. Besar harapan kami agar Bapak/Ibu dapat memberikan respons positif demi kelancaran program yang telah direncanakan.
+
+Atas perhatian dan kebijaksanaan Bapak/Ibu, kami mengucapkan terima kasih.
+
+Hormat kami,
+Sekretariat DPP UGM`,
+
+  default: `Dengan hormat,
+
+Sehubungan dengan {perihal}, bersama surat ini kami menyampaikan informasi penting yang perlu mendapat perhatian Bapak/Ibu.
+
+Departemen Pendidikan Profesi (DPP) Universitas Gadjah Mada senantiasa berkomitmen untuk menjalin komunikasi yang baik dengan seluruh pemangku kepentingan demi tercapainya visi dan misi institusi.
+
+Kami mohon agar hal yang disampaikan dalam surat ini dapat ditindaklanjuti sebagaimana mestinya. Apabila terdapat pertanyaan atau hal yang perlu diklarifikasi, silakan menghubungi sekretariat kami.
+
+Demikian surat ini kami sampaikan. Atas perhatian Bapak/Ibu, kami ucapkan terima kasih.
+
+Hormat kami,
+Sekretariat DPP UGM`,
+};
+
+export async function* mockAIStream(
+  perihal: string,
+  type: "undangan" | "permohonan" | "default" = "default"
+): AsyncGenerator<string> {
+  const template = (draftTemplates[type] ?? draftTemplates.default).replace(
+    /\{perihal\}/g,
+    perihal || "keperluan yang dimaksud"
+  );
+
+  for (const char of template.split("")) {
+    yield char;
+    const delay =
+      char === "." || char === "\n" ? 60 + Math.random() * 80
+      : char === ","                ? 30 + Math.random() * 40
+      :                               8  + Math.random() * 18;
+    await new Promise((resolve) => setTimeout(resolve, delay));
+  }
+}
+
+export async function* mockAIImprove(original: string): AsyncGenerator<string> {
+  const improved = `Dengan hormat,
+
+${original
+  .replace(/dengan hormat,?\s*/i, "")
+  .replace(/hormat kami,[\s\S]*/i, "")
+  .trim()
+  .split(". ")
+  .map((s) => s.trim())
+  .filter(Boolean)
+  .join(".\n\n")}
+
+Demikian surat ini kami sampaikan dengan hormat. Atas perhatian serta kerja sama yang baik dari Bapak/Ibu, kami menyampaikan terima kasih yang sebesar-besarnya.
+
+Hormat kami,
+Sekretariat
+Departemen Pendidikan Profesi
+Universitas Gadjah Mada`;
+
+  for (const char of improved.split("")) {
+    yield char;
+    await new Promise((r) => setTimeout(r, 5 + Math.random() * 15));
+  }
+}
+
+// ── Notulensi AI Extraction ───────────────────────────────────────────────────
 
 export interface NotulensiExtracted {
   judul: string;

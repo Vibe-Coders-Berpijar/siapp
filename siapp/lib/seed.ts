@@ -25,6 +25,7 @@ export interface Letter {
   approvalStep: ApprovalStep;
   isi: string;
   auditLog: AuditEntry[];
+  workflowInstanceId?: string;
 }
 
 export interface LetterTemplate {
