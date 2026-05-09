@@ -9,6 +9,7 @@ import { SuratDokumenTab } from './components/SuratDokumenTab';
 import { ProfilPublikTab } from './components/ProfilPublikTab';
 import { KalenderBookingTab } from './components/KalenderBookingTab';
 import { SopTab } from './components/SopTab';
+import { DokumenSayaTab } from './components/DokumenSayaTab';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function DosenDashboard() {
@@ -32,6 +33,7 @@ export default function DosenDashboard() {
                 <TabsTrigger value="surat">Surat & Dokumen</TabsTrigger>
                 <TabsTrigger value="kalender">Kalender & Booking</TabsTrigger>
                 <TabsTrigger value="profil-publik">Profil Publik</TabsTrigger>
+                <TabsTrigger value="dokumen">Dokumen Saya</TabsTrigger>
                 <TabsTrigger value="sop">SOP</TabsTrigger>
               </TabsList>
 
@@ -55,6 +57,9 @@ export default function DosenDashboard() {
               </TabsContent>
               <TabsContent value="profil-publik">
                 <ProfilPublikTab />
+              </TabsContent>
+              <TabsContent value="dokumen">
+                <DokumenSayaTab />
               </TabsContent>
               <TabsContent value="sop">
                 <SopTab />
