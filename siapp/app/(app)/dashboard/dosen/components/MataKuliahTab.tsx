@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 import { Button } from '@/components/ui/button';
-import { mockAIStream } from '@/lib/mock-ai';
+import { generateRPKPS } from '../actions';
 
 interface MataKuliah {
   kode: string;
@@ -39,14 +39,16 @@ export function MataKuliahTab() {
 
   async function handleGenerateRPKPS(mk: MataKuliah) {
     setLoadingKode(mk.kode);
-    // TODO: aiRoute('pendidikan.rpkps_draft') in Phase 2
-    const draft = await mockAIStream(
-      `RPKPS ${mk.nama} (${mk.kode})\n\nDeskripsi Mata Kuliah:\nMata kuliah ini membahas konsep dan praktik ${mk.nama.toLowerCase()} dalam konteks Indonesia dan global.\n\nCapaian Pembelajaran:\n1. Mahasiswa mampu menganalisis konsep utama dalam ${mk.nama.toLowerCase()}\n2. Mahasiswa mampu mengevaluasi kebijakan terkait\n3. Mahasiswa mampu menyusun argumen kritis berbasis data\n\nMetode Pembelajaran:\n- Ceramah dan diskusi kelas\n- Studi kasus\n- Presentasi kelompok\n- Tugas analisis kebijakan`,
-      1800
-    );
-    setDrawerContent(draft);
-    setDrawerOpen(true);
-    setLoadingKode(null);
+    try {
+      const draft = await generateRPKPS(mk.kode, mk.nama, mk.sks, mk.semester);
+      setDrawerContent(draft);
+      setDrawerOpen(true);
+    } catch {
+      setDrawerContent('Gagal membuat draft RPKPS. Coba lagi dalam beberapa saat.');
+      setDrawerOpen(true);
+    } finally {
+      setLoadingKode(null);
+    }
   }
 
   return (

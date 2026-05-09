@@ -12,7 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { StatusBadge } from '@/components/shared/StatusBadge';
-import { mockAIStream } from '@/lib/mock-ai';
+import { lookupPublikasiByTitle } from '../actions';
 
 type Quartile = 'Q1' | 'Q2' | 'Q3' | 'Q4';
 
@@ -65,15 +65,20 @@ export function PublikasiTable() {
   async function handleAIFill() {
     if (!form.judul) return;
     setAiLoading(true);
-    // TODO: replace with aiRoute('kepegawaian.duplicate_detection') in Phase 2
-    await mockAIStream('', 1500);
-    setForm((f) => ({
-      ...f,
-      jurnal: 'Jurnal Ilmu Pemerintahan Indonesia',
-      quartile: 'Q2',
-      doi: `10.9999/jipi.${f.tahun}.auto`,
-    }));
-    setAiLoading(false);
+    try {
+      const result = await lookupPublikasiByTitle(form.judul);
+      setForm((f) => ({
+        ...f,
+        jurnal: result.jurnal || f.jurnal,
+        quartile: result.quartile,
+        doi: result.doi ?? f.doi,
+        tahun: result.tahun ?? f.tahun,
+      }));
+    } catch {
+      // AI lookup failed — leave form fields as-is
+    } finally {
+      setAiLoading(false);
+    }
   }
 
   function handleSubmit() {

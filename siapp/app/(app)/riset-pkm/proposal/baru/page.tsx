@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { mockAIStream } from '@/lib/mock-ai';
+import { generateRisetOutline } from '../../actions';
 
 // TODO: replace with import from @/components/shared once Dev D merges
 interface AiDraftBannerProps {
@@ -55,73 +55,6 @@ function AiDraftBanner({ content, onAccept, onReject }: AiDraftBannerProps) {
 
 type Jenis = 'Penelitian' | 'PkM';
 
-const AI_OUTLINE: Record<Jenis, (judul: string) => string> = {
-  Penelitian: (judul) => `OUTLINE PROPOSAL PENELITIAN
-Judul: ${judul}
-
-I. LATAR BELAKANG
-   Uraikan konteks dan urgensi penelitian, termasuk kesenjangan
-   pengetahuan yang ada dan relevansi bagi kebijakan publik.
-
-II. RUMUSAN MASALAH
-   1. Bagaimana [aspek utama] mempengaruhi [variabel yang diteliti]?
-   2. Apa faktor-faktor yang menentukan [fenomena yang dikaji]?
-
-III. TUJUAN PENELITIAN
-   • Menganalisis [aspek utama] dalam konteks [lokasi/waktu]
-   • Mengidentifikasi determinan [variabel utama]
-   • Merumuskan rekomendasi kebijakan berbasis bukti
-
-IV. METODE PENELITIAN
-   Pendekatan : Kualitatif / Kuantitatif / Mixed Methods
-   Populasi & Sampel : [uraikan teknik sampling]
-   Pengumpulan Data : wawancara mendalam, survei, analisis dokumen
-   Analisis Data : [sesuaikan dengan pendekatan]
-
-V. LUARAN YANG DIHARAPKAN
-   • Artikel jurnal terindeks Scopus / SINTA 2
-   • Policy brief untuk pemangku kepentingan terkait
-   • Laporan penelitian final
-
-VI. RENCANA ANGGARAN (gambaran)
-   • Pengumpulan data lapangan : 40%
-   • Pengolahan & analisis data : 20%
-   • Diseminasi & publikasi     : 25%
-   • Overhead & administrasi   : 15%`,
-
-  PkM: (judul) => `OUTLINE PROPOSAL PENGABDIAN KEPADA MASYARAKAT
-Judul: ${judul}
-
-I. ANALISIS SITUASI
-   Gambarkan kondisi masyarakat sasaran, potensi, dan permasalahan
-   yang dihadapi secara konkret dan berbasis data.
-
-II. PERMASALAHAN MITRA
-   1. [Masalah prioritas 1 — kapasitas / pengetahuan / infrastruktur]
-   2. [Masalah prioritas 2 — proses / kebijakan / sumber daya]
-
-III. SOLUSI YANG DITAWARKAN
-   • [Kegiatan 1] : pelatihan / pendampingan / penyuluhan
-   • [Kegiatan 2] : transfer teknologi / pengembangan model
-   • [Kegiatan 3] : produk nyata / modul / panduan
-
-IV. TARGET LUARAN TERUKUR
-   • Peningkatan kapasitas [aspek] sebesar [%] pasca-kegiatan
-   • Modul pelatihan terstandarisasi (ber-ISBN bila relevan)
-   • Laporan pengabdian dipublikasikan di jurnal pengabdian
-
-V. JADWAL PELAKSANAAN
-   Bulan 1–2 : Persiapan, koordinasi mitra, penyusunan materi
-   Bulan 3–4 : Pelaksanaan kegiatan inti
-   Bulan 5–6 : Evaluasi dampak, pelaporan, diseminasi hasil
-
-VI. RENCANA ANGGARAN (gambaran)
-   • Honorarium tim pelaksana  : 30%
-   • Bahan & peralatan kegiatan: 35%
-   • Transportasi & akomodasi  : 20%
-   • Laporan & publikasi        : 15%`,
-};
-
 type Submitted = 'draft' | 'review';
 
 export default function ProposalBaruPage() {
@@ -141,10 +74,14 @@ export default function ProposalBaruPage() {
   async function handleAIOutline() {
     if (!judul.trim()) return;
     setAiLoading(true);
-    // TODO: replace with aiRoute('riset.outline_generator') in Phase 2
-    const outline = await mockAIStream(AI_OUTLINE[jenis](judul), 2000);
-    setAiDraft(outline);
-    setAiLoading(false);
+    try {
+      const outline = await generateRisetOutline(judul, jenis, new Date().getFullYear());
+      setAiDraft(outline);
+    } catch {
+      setAiDraft('Gagal membuat outline. Coba lagi dalam beberapa saat.');
+    } finally {
+      setAiLoading(false);
+    }
   }
 
   function handleAcceptDraft(content: string) {
