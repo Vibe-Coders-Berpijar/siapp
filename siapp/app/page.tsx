@@ -59,12 +59,18 @@ export default function HomePage() {
         </form>
       </div>
 
-      {/* Main content: role cards + calendar */}
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6">
-        {/* Left — role cards */}
+      {/* Main content: calendar on top, role cards below */}
+      <div className="max-w-6xl mx-auto flex flex-col gap-6">
+        {/* Top — shared calendar */}
+        <div>
+          <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Kalender Departemen</p>
+          <HomeCalendar />
+        </div>
+
+        {/* Bottom — role cards */}
         <div className="flex-1 min-w-0">
           <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Pilih Peran</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {ROLES.map((r) =>
               r.ready ? (
                 <Link
@@ -115,12 +121,6 @@ export default function HomePage() {
               )
             )}
           </div>
-        </div>
-
-        {/* Right — shared calendar */}
-        <div className="w-full lg:w-72 xl:w-80 shrink-0">
-          <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Kalender Departemen</p>
-          <HomeCalendar />
         </div>
       </div>
 

@@ -64,9 +64,9 @@ export function HomeCalendar() {
     .slice(0, 8);
 
   return (
-    <div className="flex flex-col gap-4 w-full">
-      {/* Mini month grid */}
-      <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4">
+    <div className="flex flex-col md:flex-row gap-4 w-full">
+      {/* Left — month grid */}
+      <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4 md:w-72 shrink-0">
         {/* Month nav */}
         <div className="flex items-center justify-between mb-3">
           <button
@@ -126,44 +126,46 @@ export function HomeCalendar() {
         </div>
       </div>
 
-      {/* Selected day events */}
-      {selected && (
-        <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4">
-          <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">
-            {selected.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long' })}
-          </p>
-          {selectedEvents.length === 0 ? (
-            <p className="text-sm text-white/25 text-center py-3">Tidak ada acara</p>
-          ) : (
-            <div className="space-y-2">
-              {selectedEvents.map(ev => (
-                <div key={ev.id} className="flex gap-3 items-start">
-                  <div className={`w-1.5 rounded-full mt-1.5 self-stretch ${TIPE_STYLE[ev.tipe].dot}`} style={{ minHeight: 12 }} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-white/85 font-medium leading-snug">{ev.judul}</p>
-                    <div className="flex flex-wrap gap-2 mt-1 text-xs text-white/40">
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />{ev.waktuMulai}–{ev.waktuSelesai}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />{ev.lokasi}
-                      </span>
+      {/* Right — selected day + upcoming */}
+      <div className="flex-1 min-w-0 flex flex-col gap-3">
+        {/* Selected day events */}
+        {selected && (
+          <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4">
+            <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">
+              {selected.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long' })}
+            </p>
+            {selectedEvents.length === 0 ? (
+              <p className="text-sm text-white/25 text-center py-3">Tidak ada acara</p>
+            ) : (
+              <div className="space-y-2">
+                {selectedEvents.map(ev => (
+                  <div key={ev.id} className="flex gap-3 items-start">
+                    <div className={`w-1.5 rounded-full mt-1.5 self-stretch ${TIPE_STYLE[ev.tipe].dot}`} style={{ minHeight: 12 }} />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-white/85 font-medium leading-snug">{ev.judul}</p>
+                      <div className="flex flex-wrap gap-2 mt-1 text-xs text-white/40">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />{ev.waktuMulai}–{ev.waktuSelesai}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-3 h-3" />{ev.lokasi}
+                        </span>
+                      </div>
                     </div>
+                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${TIPE_STYLE[ev.tipe].badge}`}>
+                      {TIPE_STYLE[ev.tipe].label}
+                    </span>
                   </div>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${TIPE_STYLE[ev.tipe].badge}`}>
-                    {TIPE_STYLE[ev.tipe].label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
-      {/* Upcoming events */}
-      <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4">
-        <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Agenda Mendatang</p>
-        <div className="space-y-2">
+        {/* Upcoming events */}
+        <div className="rounded-2xl border border-white/15 bg-white/8 backdrop-blur-xl p-4 flex-1">
+          <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Agenda Mendatang</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
           {upcoming.map(ev => {
             const d = parseLocalDate(ev.tanggal);
             const isEvToday = isSameDay(d, today);
@@ -192,6 +194,7 @@ export function HomeCalendar() {
               </button>
             );
           })}
+          </div>
         </div>
       </div>
     </div>
