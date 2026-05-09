@@ -19,9 +19,15 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
+// Parse "YYYY-MM-DD" as local midnight (avoids UTC-offset shift)
+function parseLocalDate(s: string): Date {
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
 function eventSpansDay(ev: CalendarEvent, d: Date): boolean {
-  const start = new Date(ev.tanggal);
-  const end = ev.tanggalAkhir ? new Date(ev.tanggalAkhir) : start;
+  const start = parseLocalDate(ev.tanggal);
+  const end = ev.tanggalAkhir ? parseLocalDate(ev.tanggalAkhir) : start;
   return d >= start && d <= end;
 }
 
@@ -47,14 +53,14 @@ export function HomeCalendar() {
 
   const selectedEvents = selected ? eventsOnDay(selected) : [];
 
-  // Upcoming: next 30 days from today, sorted ascending
+  // Upcoming: events whose end date >= today (include ongoing multi-day events)
+  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const upcoming = calendarEvents
     .filter(ev => {
-      const end = ev.tanggalAkhir ? new Date(ev.tanggalAkhir) : new Date(ev.tanggal);
-      const diff = end.getTime() - today.getTime();
-      return diff >= -86400000; // include today
+      const end = ev.tanggalAkhir ? parseLocalDate(ev.tanggalAkhir) : parseLocalDate(ev.tanggal);
+      return end >= todayMidnight;
     })
-    .sort((a, b) => new Date(a.tanggal).getTime() - new Date(b.tanggal).getTime())
+    .sort((a, b) => parseLocalDate(a.tanggal).getTime() - parseLocalDate(b.tanggal).getTime())
     .slice(0, 8);
 
   return (
@@ -159,7 +165,7 @@ export function HomeCalendar() {
         <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Agenda Mendatang</p>
         <div className="space-y-2">
           {upcoming.map(ev => {
-            const d = new Date(ev.tanggal);
+            const d = parseLocalDate(ev.tanggal);
             const isEvToday = isSameDay(d, today);
             return (
               <button
