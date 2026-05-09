@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { logout } from '@/app/login/actions';
 
 const MOCK_DOSEN = {
   nama: 'Dr. Ahmad Fauzi',
@@ -144,6 +145,14 @@ export function ProfilSidebar() {
       >
         {editMode ? 'Simpan Profil' : 'Edit Profil'}
       </Button>
+
+      <Separator />
+
+      <form action={logout}>
+        <Button type="submit" variant="ghost" className="w-full text-gray-400 hover:text-red-600 hover:bg-red-50">
+          Keluar
+        </Button>
+      </form>
     </div>
   );
 }
