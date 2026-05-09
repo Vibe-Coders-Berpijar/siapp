@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { mockAIStream } from '@/lib/mock-ai';
+import { askKaprodiAI } from '../actions';
+import type { ChatMessage } from '@/lib/ai/route';
 
 interface Message {
   role: 'user' | 'ai';
@@ -11,32 +12,6 @@ interface Message {
 
 function getTimestamp() {
   return new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-}
-
-function generateAnswer(q: string): string {
-  const lower = q.toLowerCase();
-  if (lower.includes('ipk') || lower.includes('indeks prestasi')) {
-    return 'Rata-rata IPK mahasiswa S1 semester ini adalah 3.38, naik dari 3.32 semester lalu. Untuk S2 mencapai 3.68 — tertinggi dalam 3 tahun terakhir. Terdapat 23 mahasiswa dengan IPK di bawah 2.75 yang perlu perhatian khusus.';
-  }
-  if (lower.includes('akreditasi') || lower.includes('ban-pt') || lower.includes('led')) {
-    return 'Coverage akreditasi keseluruhan saat ini 74% untuk Kriteria 5 (Kurikulum). Sub-kriteria yang paling perlu perhatian adalah Integrasi Penelitian (55%) dan RPKPS (61%). Disarankan menyelesaikan 3 RPKPS yang masih Draft sebelum visitasi.';
-  }
-  if (lower.includes('mahasiswa') || lower.includes('at-risk') || lower.includes('risiko')) {
-    return 'Terdapat 23 mahasiswa at-risk: 18 di S1 dengan IPK < 2.75, 5 di S2 yang melampaui batas semester normal. 1 mahasiswa S3 sudah memasuki tahun ke-6. Disarankan segera mengirim peringatan akademik ke mahasiswa angkatan 2020 yang belum menyelesaikan skripsi.';
-  }
-  if (lower.includes('edom') || lower.includes('evaluasi dosen')) {
-    return 'Rata-rata skor EDOM program adalah 4.0 dari 5.0. Prof. Bambang Wicaksono memperoleh skor tertinggi (4.6). Mata kuliah Kebijakan Publik mendapat skor terendah (3.5) — perlu evaluasi metode pengajaran untuk semester berikutnya.';
-  }
-  if (lower.includes('kurikulum') || lower.includes('rpkps') || lower.includes('silabus')) {
-    return 'Dari 12 mata kuliah aktif, 5 sudah memiliki RPKPS berstatus Disetujui, 2 masih Menunggu, 3 berstatus Draft, dan 2 belum ada RPKPS sama sekali. POL4101 dan POL3201 perlu segera difinalkan sebelum semester baru dimulai.';
-  }
-  if (lower.includes('lulusan') || lower.includes('kelulusan') || lower.includes('wisuda')) {
-    return 'Tahun 2025 tercatat 151 lulusan: 110 dari S1, 30 dari S2, dan 11 dari S3. Tingkat kelulusan tepat waktu S1 mencapai 78% — meningkat 5% dibanding tahun lalu. Rata-rata masa studi S1 adalah 4.2 tahun.';
-  }
-  if (lower.includes('hibah') || lower.includes('penelitian') || lower.includes('riset')) {
-    return 'Departemen memiliki 3 hibah aktif senilai total Rp 780 juta (BRIN, Kemendagri, LPDP). Prof. Hery Santoso dan Prof. Bambang Wicaksono masing-masing mengelola hibah dengan nilai terbesar. 5 publikasi Q1 berhasil dihasilkan dari hibah yang berjalan.';
-  }
-  return 'Saya dapat membantu Anda menganalisis data program studi. Coba tanyakan tentang IPK mahasiswa, status akreditasi, mahasiswa at-risk, skor EDOM, kurikulum dan RPKPS, atau data kelulusan.';
 }
 
 const SUGGESTED = [
@@ -70,11 +45,17 @@ export function AiAssistantTab() {
     setMessages((prev) => [...prev, { role: 'user', content: q, timestamp: getTimestamp() }]);
     setLoading(true);
 
-    // TODO: replace with aiRoute('kaprodi.qa') in Phase 2
-    const answer = await mockAIStream(generateAnswer(q), 1400);
-
-    setMessages((prev) => [...prev, { role: 'ai', content: answer, timestamp: getTimestamp() }]);
-    setLoading(false);
+    try {
+      const history: ChatMessage[] = messages
+        .filter((m) => m.role !== 'ai' || messages.indexOf(m) > 0)
+        .map((m) => ({ role: m.role === 'ai' ? 'assistant' : 'user', content: m.content }));
+      const answer = await askKaprodiAI(q, history);
+      setMessages((prev) => [...prev, { role: 'ai', content: answer, timestamp: getTimestamp() }]);
+    } catch {
+      setMessages((prev) => [...prev, { role: 'ai', content: 'Maaf, terjadi kesalahan. Coba lagi dalam beberapa saat.', timestamp: getTimestamp() }]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -86,8 +67,8 @@ export function AiAssistantTab() {
           <div className="flex items-center gap-2">
             <span className="text-base">✦</span>
             <span className="text-sm font-semibold text-gray-800">AI Asisten Kaprodi</span>
-            <span className="text-[10px] font-semibold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">
-              Mock Phase 1
+            <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full border border-green-200">
+              Phase 2 · AI Aktif
             </span>
           </div>
           <button
@@ -171,11 +152,10 @@ export function AiAssistantTab() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-amber-200/60 bg-amber-50/60 backdrop-blur-xl shadow p-4">
-          <p className="text-xs text-amber-700 leading-relaxed">
-            <strong>Catatan Phase 1:</strong> Jawaban dihasilkan dari data mock. Di Phase 2, AI akan menjawab berdasarkan data real-time dari database.
+        <div className="rounded-2xl border border-blue-200/60 bg-blue-50/60 backdrop-blur-xl shadow p-4">
+          <p className="text-xs text-blue-700 leading-relaxed">
+            <strong>AI Aktif:</strong> Dijawab oleh Claude Sonnet. Saat data real-time terhubung, jawaban akan semakin akurat dan spesifik.
           </p>
-          {/* TODO: replace with aiRoute('kaprodi.qa') in Phase 2 */}
         </div>
       </div>
     </div>
