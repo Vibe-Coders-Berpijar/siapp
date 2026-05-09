@@ -9,6 +9,7 @@ const navItems = [
   { href: '/dashboard/kadep/kepegawaian', label: 'Kepegawaian', icon: '👥', exact: false },
   { href: '/dashboard/kadep/akreditasi', label: 'Akreditasi', icon: '🏅', exact: false },
   { href: '/dashboard/kadep/persuratan', label: 'Persuratan', icon: '📄', exact: false },
+  { href: '/dashboard/kadep/keuangan', label: 'Keuangan', icon: '💰', exact: false },
 ]
 
 interface SidebarProps {
