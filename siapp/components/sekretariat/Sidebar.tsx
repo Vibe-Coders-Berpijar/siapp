@@ -45,7 +45,7 @@ const NAV_SECTIONS = [
   },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname();
 
   const isActive = (href: string, exact: boolean) =>
@@ -54,14 +54,23 @@ export function Sidebar() {
   return (
     <aside className="w-64 flex-shrink-0 h-full flex flex-col glass border-r border-white/10">
       {/* Brand */}
-      <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
-        <div className="w-9 h-9 rounded-xl bg-ugm-gold/20 border border-ugm-gold/40 flex items-center justify-center">
-          <GraduationCap className="w-5 h-5 text-ugm-gold" />
+      <div className="flex items-center justify-between px-5 py-5 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-ugm-gold/20 border border-ugm-gold/40 flex items-center justify-center">
+            <GraduationCap className="w-5 h-5 text-ugm-gold" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-white leading-tight">SIAPP</p>
+            <p className="text-xs text-white/40 leading-tight">Sekretariat DPP UGM</p>
+          </div>
         </div>
-        <div>
-          <p className="text-sm font-bold text-white leading-tight">SIAPP</p>
-          <p className="text-xs text-white/40 leading-tight">Sekretariat DPP UGM</p>
-        </div>
+        {onClose && (
+          <button onClick={onClose} className="md:hidden p-1 text-white/40 hover:text-white" aria-label="Tutup menu">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* User badge */}
@@ -84,6 +93,7 @@ export function Sidebar() {
                   <Link
                     key={href}
                     href={href}
+                    onClick={onClose}
                     className={cn(
                       "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all group",
                       active

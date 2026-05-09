@@ -14,9 +14,10 @@ const navItems = [
 interface SidebarProps {
   userName: string
   jabatan: string
+  onClose?: () => void
 }
 
-export function Sidebar({ userName, jabatan }: SidebarProps) {
+export function Sidebar({ userName, jabatan, onClose }: SidebarProps) {
   const pathname = usePathname()
 
   function isActive(href: string, exact: boolean) {
@@ -25,15 +26,24 @@ export function Sidebar({ userName, jabatan }: SidebarProps) {
   }
 
   return (
-    <aside className="w-60 shrink-0 sticky top-0 h-screen flex flex-col bg-white border-r border-slate-100">
+    <aside className="w-60 shrink-0 h-screen flex flex-col bg-white border-r border-slate-100">
       {/* Logo */}
       <div className="px-6 py-5 border-b border-slate-100">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">S</div>
-          <div>
-            <p className="text-sm font-semibold text-slate-800">SIAPP</p>
-            <p className="text-[10px] text-slate-400">DPP UGM</p>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">S</div>
+            <div>
+              <p className="text-sm font-semibold text-slate-800">SIAPP</p>
+              <p className="text-[10px] text-slate-400">DPP UGM</p>
+            </div>
           </div>
+          {onClose && (
+            <button onClick={onClose} className="md:hidden p-1 text-slate-400 hover:text-slate-600" aria-label="Tutup menu">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
 
@@ -52,6 +62,7 @@ export function Sidebar({ userName, jabatan }: SidebarProps) {
           <Link
             key={item.href}
             href={item.href}
+            onClick={onClose}
             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
               isActive(item.href, item.exact) ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-50'
             }`}

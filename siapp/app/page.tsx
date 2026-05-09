@@ -63,7 +63,7 @@ export default function HomePage() {
       </div>
 
       {/* Role cards */}
-      <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
         {ROLES.map((r) =>
           r.ready ? (
             <Link

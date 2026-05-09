@@ -13,9 +13,9 @@ export default function DosenDashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* LEFT: Profil sidebar */}
-          <div className="w-1/3 shrink-0">
+          <div className="w-full md:w-1/3 md:shrink-0">
             <ProfilSidebar />
           </div>
 
