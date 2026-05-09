@@ -1,0 +1,20 @@
+services:
+  unified:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: siapp-unified
+    container_name: siapp-unified
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Quick start:
+#   cd siapp/
+#   docker compose up -d --build
+#   open http://localhost:3000
+#
+# Behind a reverse proxy (e.g. nginx on the same host), use a loopback bind
+# instead: change "3000:3000" to "127.0.0.1:3003:3000".
+# ─────────────────────────────────────────────────────────────────────────────
