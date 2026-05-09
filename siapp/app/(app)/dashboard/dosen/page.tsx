@@ -7,6 +7,7 @@ import { MataKuliahTab } from './components/MataKuliahTab';
 import { PenelitianTab } from './components/PenelitianTab';
 import { SuratDokumenTab } from './components/SuratDokumenTab';
 import { ProfilPublikTab } from './components/ProfilPublikTab';
+import { KalenderBookingTab } from './components/KalenderBookingTab';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function DosenDashboard() {
@@ -28,6 +29,7 @@ export default function DosenDashboard() {
                 <TabsTrigger value="matakuliah">Mata Kuliah</TabsTrigger>
                 <TabsTrigger value="penelitian">Penelitian & PkM</TabsTrigger>
                 <TabsTrigger value="surat">Surat & Dokumen</TabsTrigger>
+                <TabsTrigger value="kalender">Kalender & Booking</TabsTrigger>
                 <TabsTrigger value="profil-publik">Profil Publik</TabsTrigger>
               </TabsList>
 
@@ -45,6 +47,9 @@ export default function DosenDashboard() {
               </TabsContent>
               <TabsContent value="surat">
                 <SuratDokumenTab />
+              </TabsContent>
+              <TabsContent value="kalender">
+                <KalenderBookingTab />
               </TabsContent>
               <TabsContent value="profil-publik">
                 <ProfilPublikTab />
