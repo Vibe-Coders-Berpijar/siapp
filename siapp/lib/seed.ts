@@ -67,6 +67,9 @@ export interface Booking {
   status: BookingStatus;
 }
 
+export type NotulensiLabel = "Departemen" | "Prodi" | "General" | "Lainnya";
+export type NotulensiAkses = "anggota" | "publik";
+
 export interface NotulensiItem {
   id: number;
   judul: string;
@@ -74,6 +77,9 @@ export interface NotulensiItem {
   tempat: string;
   pimpinanRapat: string;
   peserta: string[];
+  anggota: string[];          // who can access this document
+  akses: NotulensiAkses;      // "anggota" = members only, "publik" = visible to all
+  label: NotulensiLabel;
   agenda: string[];
   keputusan: string[];
   tindakLanjut: { item: string; penanggungJawab: string; tenggat: string }[];
@@ -515,6 +521,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-04-15", tempat: "Ruang Rapat Utama DPP UGM",
     pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
     peserta: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Budi Santoso, M.Sc."],
+    anggota: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Budi Santoso, M.Sc."],
+    akses: "anggota", label: "Departemen",
     agenda: ["Evaluasi progres penelitian semester ganjil","Pembagian tugas penelitian semester genap","Rencana publikasi 2026"],
     keputusan: [
       "Tim penelitian wajib menyerahkan laporan kemajuan paling lambat 30 April 2026.",
@@ -533,6 +541,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-04-22", tempat: "Ruang Rapat Kecil DPP UGM",
     pimpinanRapat: "Dr. Hendra Wijaya",
     peserta: ["Prof. Dr. Sari Indah","Dr. Herlan Kusuma","Dewi Lestari","Rina Kusuma","Budi Santoso"],
+    anggota: ["Prof. Dr. Sari Indah","Dr. Herlan Kusuma","Dewi Lestari","Rina Kusuma","Budi Santoso"],
+    akses: "anggota", label: "Prodi",
     agenda: ["Review borang akreditasi","Pembagian tugas pengisian borang","Jadwal visitasi"],
     keputusan: [
       "Pengisian borang akreditasi harus selesai pada 15 Mei 2026.",
@@ -551,6 +561,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-04-28", tempat: "Ruang Kelas 201 DPP UGM",
     pimpinanRapat: "Prof. Dr. Bambang Sutrisno",
     peserta: ["Dr. Dewi Rahayu","Dr. Agus Hartono","Andi Prasetyo","Budi Santoso"],
+    anggota: ["Dr. Dewi Rahayu","Dr. Agus Hartono","Andi Prasetyo","Budi Santoso"],
+    akses: "publik", label: "Prodi",
     agenda: ["Evaluasi kurikulum 2022","Usulan mata kuliah baru","Sinkronisasi dengan KKNI"],
     keputusan: [
       "Mata kuliah Precision Agriculture dimasukkan sebagai mata kuliah wajib mulai 2026.",
@@ -568,6 +580,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-05-02", tempat: "Aula Gedung A DPP UGM",
     pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
     peserta: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Dr. Herlan Kusuma","Prof. Dr. Bambang Sutrisno"],
+    anggota: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Dr. Herlan Kusuma","Prof. Dr. Bambang Sutrisno"],
+    akses: "anggota", label: "Departemen",
     agenda: ["Evaluasi nilai EDOM","Tindak lanjut keluhan mahasiswa","Rencana pengembangan kompetensi dosen"],
     keputusan: [
       "Rata-rata skor EDOM DPP: 4.2/5.0 (meningkat 0.1 dari semester sebelumnya).",
@@ -585,6 +599,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-05-06", tempat: "Ruang Rapat Kecil DPP UGM",
     pimpinanRapat: "Dr. Hendra Wijaya",
     peserta: ["Rina Kusuma","Dewi Lestari","Ketua BEM DPP","Ketua HIMA Agronomi","Ketua HIMA Ilmu Tanah"],
+    anggota: ["Rina Kusuma","Dewi Lestari","Ketua BEM DPP","Ketua HIMA Agronomi","Ketua HIMA Ilmu Tanah"],
+    akses: "publik", label: "General",
     agenda: ["Rencana kegiatan dies natalis departemen","Koordinasi PKM mahasiswa","Program KKN 2026"],
     keputusan: [
       "Dies natalis departemen ditetapkan tanggal 15 Juni 2026.",
@@ -602,6 +618,8 @@ export const notulensiList: NotulensiItem[] = [
     tanggal: "2026-05-07", tempat: "Ruang Rapat Utama DPP UGM",
     pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
     peserta: ["Dr. Hendra Wijaya","Budi Santoso","Rina Kusuma","Dewi Lestari"],
+    anggota: ["Dr. Hendra Wijaya","Budi Santoso","Rina Kusuma","Dewi Lestari"],
+    akses: "anggota", label: "Departemen",
     agenda: ["Realisasi anggaran Januari–Maret 2026","Proyeksi kebutuhan April–Juni","Efisiensi anggaran"],
     keputusan: [
       "Realisasi anggaran Triwulan I: 68% dari target 75% — ada deviasi 7%.",

@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, Save, ArrowLeft, Plus, Trash2 } from "lucide-react";
+import { Sparkles, Save, ArrowLeft, Plus, Trash2, Lock, Globe, Users } from "lucide-react";
 import { Button } from "@/components/sekretariat/Button";
 import { mockNotulensiExtract, NotulensiExtracted } from "@/lib/mockAIStream";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import type { NotulensiLabel, NotulensiAkses } from "@/lib/seed";
+
+const LABELS: NotulensiLabel[] = ["Departemen", "Prodi", "General", "Lainnya"];
 
 export default function NotulensiBaruPage() {
   const [transcript, setTranscript] = useState("");
@@ -17,6 +20,10 @@ export default function NotulensiBaruPage() {
   const [judul, setJudul]             = useState("");
   const [pimpinan, setPimpinan]       = useState("");
   const [peserta, setPeserta]         = useState<string[]>([]);
+  const [anggota, setAnggota]         = useState<string[]>([]);
+  const [anggotaInput, setAnggotaInput] = useState("");
+  const [label, setLabel]             = useState<NotulensiLabel>("General");
+  const [akses, setAkses]             = useState<NotulensiAkses>("anggota");
   const [agenda, setAgenda]           = useState<string[]>([]); // eslint-disable-line @typescript-eslint/no-unused-vars
   const [keputusan, setKeputusan]     = useState<string[]>([]);
   const [tindakLanjut, setTindakLanjut] = useState<{ item: string; penanggungJawab: string; tenggat: string }[]>([]);
@@ -30,6 +37,7 @@ export default function NotulensiBaruPage() {
       setJudul(result.judul);
       setPimpinan(result.pimpinanRapat);
       setPeserta(result.peserta);
+      setAnggota(result.peserta); // default: peserta = anggota
       setAgenda(result.agenda);
       setKeputusan(result.keputusan);
       setTindakLanjut(result.tindakLanjut);
@@ -137,6 +145,37 @@ export default function NotulensiBaruPage() {
                 />
               </div>
 
+              {/* Label + Akses */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-white/50 mb-1.5 uppercase tracking-wide">Label</label>
+                  <select value={label} onChange={e => setLabel(e.target.value as NotulensiLabel)}
+                    className="w-full bg-white/5 border border-white/15 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-ugm-gold/50 transition-colors">
+                    {LABELS.map(l => <option key={l} value={l} className="bg-gray-900">{l}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-white/50 mb-1.5 uppercase tracking-wide">Akses Dokumen</label>
+                  <div className="flex gap-2 h-[38px]">
+                    {([
+                      { val: "anggota", icon: Lock,  label: "Anggota" },
+                      { val: "publik",  icon: Globe, label: "Publik" },
+                    ] as const).map(({ val, icon: Icon, label: lbl }) => (
+                      <button key={val} type="button" onClick={() => setAkses(val)}
+                        className={`flex-1 flex items-center justify-center gap-1.5 rounded-xl text-xs font-medium border transition-colors ${
+                          akses === val
+                            ? val === "publik"
+                              ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/40"
+                              : "bg-white/15 text-white border-white/30"
+                            : "bg-white/5 text-white/40 border-white/10 hover:bg-white/10"
+                        }`}>
+                        <Icon className="w-3 h-3" />{lbl}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Peserta */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
@@ -162,6 +201,42 @@ export default function NotulensiBaruPage() {
                   ))}
                 </div>
               </div>
+
+              {/* Anggota (access control) */}
+              {akses === "anggota" && (
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-medium text-white/50 uppercase tracking-wide flex items-center gap-1.5">
+                      <Users className="w-3 h-3" />Anggota (hak akses)
+                    </label>
+                  </div>
+                  <p className="text-[10px] text-white/30 mb-2">Hanya nama-nama ini yang dapat melihat notulensi ini. Secara default diisi dari peserta.</p>
+                  <div className="space-y-1.5 mb-2">
+                    {anggota.map((a, i) => (
+                      <div key={i} className="flex gap-2">
+                        <input value={a}
+                          onChange={e => setAnggota(prev => prev.map((x, j) => j === i ? e.target.value : x))}
+                          className="flex-1 bg-white/5 border border-white/15 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-ugm-gold/50 transition-colors" />
+                        <button onClick={() => setAnggota(prev => prev.filter((_, j) => j !== i))}
+                          className="text-white/30 hover:text-red-400 transition-colors">
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <input value={anggotaInput} onChange={e => setAnggotaInput(e.target.value)}
+                      onKeyDown={e => { if (e.key === 'Enter' && anggotaInput.trim()) { setAnggota(p => [...p, anggotaInput.trim()]); setAnggotaInput(''); e.preventDefault(); }}}
+                      placeholder="Tambah nama anggota..."
+                      className="flex-1 bg-white/5 border border-white/15 rounded-lg px-3 py-1.5 text-xs text-white placeholder:text-white/25 focus:outline-none focus:border-ugm-gold/50 transition-colors" />
+                    <button type="button"
+                      onClick={() => { if (anggotaInput.trim()) { setAnggota(p => [...p, anggotaInput.trim()]); setAnggotaInput(''); }}}
+                      className="text-xs text-ugm-gold/70 hover:text-ugm-gold px-2 flex items-center gap-1">
+                      <Plus className="w-3 h-3" />Tambah
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Keputusan */}
               <div>
