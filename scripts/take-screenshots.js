@@ -60,6 +60,15 @@ async function tryClick(page, pattern, timeout = 2000) {
   } catch { return false; }
 }
 
+async function closeModal(page) {
+  await page.keyboard.press('Escape');
+  // wait for any full-screen overlay to disappear
+  try {
+    await page.locator('.fixed.inset-0').waitFor({ state: 'hidden', timeout: 3000 });
+  } catch {}
+  await page.waitForTimeout(400);
+}
+
 // ─── main ────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -100,7 +109,7 @@ async function main() {
   await ss(page, 'kepegawaian-tabel-dosen');
   if (await tryClick(page, /tambah dosen/i)) {
     await ss(page, 'kepegawaian-form-tambah');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
 
   await go(page, '/dashboard/kadep/keuangan');
@@ -110,7 +119,7 @@ async function main() {
   await ss(page, 'persuratan-tabel-kadep');
   if (await tryClick(page, /buat surat/i)) {
     await ss(page, 'persuratan-form-buat-surat');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
   // Dialog tanda tangan — coba klik tombol aksi di baris pertama
   try {
@@ -119,7 +128,7 @@ async function main() {
       await signBtn.click();
       await page.waitForTimeout(700);
       await ss(page, 'persuratan-dialog-tandatangan');
-      await page.keyboard.press('Escape');
+      await closeModal(page);
     }
   } catch {}
 
@@ -134,18 +143,18 @@ async function main() {
   await ss(page, 'persuratan-tabel-surat');
   if (await tryClick(page, /buat surat baru/i)) {
     await ss(page, 'persuratan-form-buat-surat');              // overwrite jika sudah ada — sama kontennya
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
   if (await tryClick(page, /lihat detail/i)) {
     await ss(page, 'persuratan-detail-alur');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
 
   await go(page, '/kesekretariatan/booking-ruang');
   await ss(page, 'booking-ruang-denah');
   if (await tryClick(page, /buat booking/i)) {
     await ss(page, 'booking-ruang-form');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
   await scrollTo(page, 600);
   await ss(page, 'booking-ruang-tabel-konfirmasi');
@@ -157,7 +166,7 @@ async function main() {
   await ss(page, 'notulensi-daftar-kartu');
   if (await tryClick(page, /lihat detail/i)) {
     await ss(page, 'notulensi-detail-modal');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
 
   await go(page, '/kesekretariatan/notulensi/baru');
@@ -210,7 +219,7 @@ async function main() {
       await page.waitForTimeout(2500);               // tunggu AI response
       await ss(page, 'publikasi-ai-autofill');
     } catch {}
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
 
   // Tab Mata Kuliah
@@ -237,7 +246,7 @@ async function main() {
   await clickTab(page, /kalender/i);
   if (await tryClick(page, /booking ruang/i)) {
     await ss(page, 'booking-form-dosen');
-    await page.keyboard.press('Escape');
+    await closeModal(page);
   }
 
   // ── 5. KAPRODI ────────────────────────────────────────────────────────────
@@ -269,8 +278,15 @@ async function main() {
   await ss(page, 'at-risk-tabel');
   if (await tryClick(page, /beri peringatan/i)) {
     await ss(page, 'at-risk-modal-peringatan');
-    await page.keyboard.press('Escape');
+    // klik "Batal" untuk tutup modal (Escape tidak bekerja di modal ini)
+    await tryClick(page, /^batal$/i, 2000);
+    await page.waitForTimeout(600);
   }
+
+  // Reload halaman agar tidak ada modal yang tersisa sebelum pindah tab
+  await go(page, '/dashboard/kaprodi');
+  await clickTab(page, /at.risk/i);
+  await page.waitForTimeout(500);
 
   // Tab EDOM
   await clickTab(page, /edom/i);
