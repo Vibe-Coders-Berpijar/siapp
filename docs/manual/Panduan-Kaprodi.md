@@ -27,15 +27,13 @@
 1. Buka browser (Chrome atau Firefox dianjurkan) dan masuk ke alamat SIAPP yang diberikan.
 2. Pada halaman login, masukkan **alamat email UGM** Anda (contoh: `namakaprodi@ugm.ac.id`).
 
-<!-- screenshot: login-halaman -->
-> 📸 *[Gambar: Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"]*
+![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](../assets/login-halaman.png)
 
 3. Klik tombol **Kirim Kode OTP**.
 4. Buka email Anda — Anda akan menerima kode 6 angka dalam beberapa detik.
 5. Masukkan kode tersebut pada halaman verifikasi, lalu klik **Verifikasi**.
 
-<!-- screenshot: login-otp-verifikasi -->
-> 📸 *[Gambar: Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"]*
+![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](../assets/login-otp-verifikasi.png)
 
 6. Sistem akan otomatis membawa Anda ke **Dashboard Kaprodi**.
 
@@ -56,8 +54,7 @@ Di bagian atas halaman terdapat tombol pemilih program:
 
 Klik program yang ingin Anda pantau. Seluruh data di bawahnya akan berubah mengikuti pilihan ini.
 
-<!-- screenshot: dashboard-kaprodi-prodi-selector -->
-> 📸 *[Gambar: Tampilan Dashboard Kaprodi — tombol pemilih Semua/S1/S2/S3 di bagian atas, dengan S1 sedang aktif/terpilih]*
+![Tampilan Dashboard Kaprodi — tombol pemilih Semua/S1/S2/S3 di bagian atas, dengan S1 sedang aktif/terpilih](../assets/dashboard-kaprodi-prodi-selector.png)
 
 ### 2.2 Kartu KPI (Indikator Kunci)
 
@@ -72,8 +69,7 @@ Empat kartu menampilkan kondisi program studi saat ini:
 
 Panah naik (↑) berarti kondisi membaik; panah turun (↓) berarti perlu perhatian.
 
-<!-- screenshot: dashboard-kaprodi-kpi-cards -->
-> 📸 *[Gambar: Empat KPI cards Kaprodi — mahasiswa aktif, rata-rata IPK dengan panah tren, mahasiswa at-risk, dan lulusan tahun ini]*
+![Empat KPI cards Kaprodi — mahasiswa aktif, rata-rata IPK dengan panah tren, mahasiswa at-risk, dan lulusan tahun ini](../assets/dashboard-kaprodi-kpi-cards.png)
 
 ### 2.3 Tab Navigasi
 
@@ -90,8 +86,7 @@ Klik tab **Ikhtisar** untuk melihat grafik dan analisis program studi.
 
 Grafik garis atau batang yang menunjukkan jumlah lulusan per tahun. Gunakan grafik ini untuk melihat apakah jumlah lulusan cenderung naik, stabil, atau turun.
 
-<!-- screenshot: ikhtisar-grafik-kelulusan -->
-> 📸 *[Gambar: Grafik tren kelulusan — sumbu X tahun, sumbu Y jumlah lulusan, garis naik/turun per tahun]*
+![Grafik tren kelulusan — sumbu X tahun, sumbu Y jumlah lulusan, garis naik/turun per tahun](../assets/ikhtisar-grafik-kelulusan.png)
 
 ### 3.2 Grafik Distribusi IPK
 
@@ -101,8 +96,7 @@ Grafik batang yang mengelompokkan mahasiswa berdasarkan rentang IPK:
 - 3,0 – 3,5
 - Di atas 3,5 (biru — berprestasi)
 
-<!-- screenshot: ikhtisar-grafik-distribusi-ipk -->
-> 📸 *[Gambar: Grafik distribusi IPK — batang per rentang nilai dengan warna berbeda, batang merah untuk IPK < 2,75]*
+![Grafik distribusi IPK — batang per rentang nilai dengan warna berbeda, batang merah untuk IPK < 2,75](../assets/ikhtisar-grafik-distribusi-ipk.png)
 
 ### 3.3 Wawasan AI
 
@@ -111,8 +105,7 @@ Panel yang menampilkan analisis otomatis dari sistem tentang kondisi program stu
 - **Sedang** (kuning) — perlu dipantau
 - **Info** (biru) — informasi umum
 
-<!-- screenshot: ikhtisar-wawasan-ai -->
-> 📸 *[Gambar: Panel Wawasan AI di tab Ikhtisar — item berwarna merah/kuning/biru dengan teks analisis program studi]*
+![Panel Wawasan AI di tab Ikhtisar — item berwarna merah/kuning/biru dengan teks analisis program studi](../assets/ikhtisar-wawasan-ai.png)
 
 ---
 
@@ -139,8 +132,7 @@ Tabel menampilkan setiap mata kuliah dengan informasi:
   - **Belum Ada** — belum ada dokumen sama sekali
 - Status **Silabus** (dengan warna yang sama)
 
-<!-- screenshot: kurikulum-tabel -->
-> 📸 *[Gambar: Tabel kurikulum — filter semester di atas, kolom kode, nama MK, SKS, dosen pengampu, badge status RPKPS dan Silabus berwarna-warni]*
+![Tabel kurikulum — filter semester di atas, kolom kode, nama MK, SKS, dosen pengampu, badge status RPKPS dan Silabus berwarna-warni](../assets/kurikulum-tabel.png)
 
 ### 4.3 Melihat Detail Mata Kuliah
 
@@ -149,8 +141,7 @@ Klik baris mata kuliah untuk memperluas detailnya, yang menampilkan:
 - Program studi yang menjalankan mata kuliah ini
 - Tautan **Lihat RPKPS →** untuk membuka dokumen rencana pembelajaran
 
-<!-- screenshot: kurikulum-baris-diperluas -->
-> 📸 *[Gambar: Baris mata kuliah dalam kondisi diperluas — chip CPL, info prodi, dan tautan "Lihat RPKPS →"]*
+![Baris mata kuliah dalam kondisi diperluas — chip CPL, info prodi, dan tautan "Lihat RPKPS →"](../assets/kurikulum-baris-diperluas.png)
 
 ---
 
@@ -173,8 +164,7 @@ Tabel menampilkan mahasiswa yang teridentifikasi berisiko, dengan informasi:
   - **Tidak Aktif** (kuning)
   - **Melewati Batas Studi** (ungu)
 
-<!-- screenshot: at-risk-tabel -->
-> 📸 *[Gambar: Tabel Mahasiswa At-Risk — kolom nama, NIM, prodi, semester, IPK berwarna merah/kuning, SKS tertunggak, badge tipe risiko, dan tombol "Beri Peringatan"]*
+![Tabel Mahasiswa At-Risk — kolom nama, NIM, prodi, semester, IPK berwarna merah/kuning, SKS tertunggak, badge tipe risiko, dan tombol "Beri Peringatan"](../assets/at-risk-tabel.png)
 
 ### 5.2 Mengirim Peringatan kepada Mahasiswa
 
@@ -188,8 +178,7 @@ Tabel menampilkan mahasiswa yang teridentifikasi berisiko, dengan informasi:
 3. Klik **Kirim Peringatan**.
 4. Tombol akan berubah menjadi **✓ Terkirim** sebagai konfirmasi.
 
-<!-- screenshot: at-risk-modal-peringatan -->
-> 📸 *[Gambar: Modal "Beri Peringatan" — nama mahasiswa di header, dropdown jenis peringatan, text area pesan template, checkbox Email dan WhatsApp, tombol "Kirim Peringatan"]*
+![Modal "Beri Peringatan" — nama mahasiswa di header, dropdown jenis peringatan, text area pesan template, checkbox Email dan WhatsApp, tombol "Kirim Peringatan"](../assets/at-risk-modal-peringatan.png)
 
 > **Catatan:** Peringatan yang sudah terkirim tidak dapat dibatalkan. Pastikan pesan sudah tepat sebelum mengirim.
 
@@ -203,8 +192,7 @@ Halaman ini menampilkan skor evaluasi per mata kuliah dan per dosen, membantu An
 
 Skor yang rendah (ditandai dengan warna merah atau kuning) menunjukkan mata kuliah atau dosen yang mungkin perlu mendapat pendampingan atau evaluasi lebih lanjut.
 
-<!-- screenshot: edom-program -->
-> 📸 *[Gambar: Tab EDOM Program — tabel atau grafik batang horizontal dengan skor per dosen/mata kuliah, warna merah/kuning untuk skor rendah]*
+![Tab EDOM Program — tabel atau grafik batang horizontal dengan skor per dosen/mata kuliah, warna merah/kuning untuk skor rendah](../assets/edom-program.png)
 
 ---
 
@@ -217,8 +205,7 @@ Klik tab **AI Asisten** untuk berdiskusi langsung dengan asisten kecerdasan buat
 - **Kolom kiri (2/3 layar):** jendela percakapan
 - **Kolom kanan (1/3 layar):** pertanyaan umum siap pakai
 
-<!-- screenshot: ai-asisten-tampilan -->
-> 📸 *[Gambar: Tampilan penuh tab AI Asisten — jendela chat di kiri dengan gelembung percakapan, panel "Pertanyaan Umum" di kanan dengan chip pertanyaan siap klik]*
+![Tampilan penuh tab AI Asisten — jendela chat di kiri dengan gelembung percakapan, panel "Pertanyaan Umum" di kanan dengan chip pertanyaan siap klik](../assets/ai-asisten-tampilan.png)
 
 ### 7.2 Cara Menggunakan AI Asisten
 
@@ -234,8 +221,7 @@ Klik tab **AI Asisten** untuk berdiskusi langsung dengan asisten kecerdasan buat
 
 Atau klik salah satu **Pertanyaan Umum** di kolom kanan untuk langsung mengirim pertanyaan tersebut.
 
-<!-- screenshot: ai-asisten-percakapan -->
-> 📸 *[Gambar: Jendela chat AI Asisten saat aktif — gelembung pertanyaan pengguna (kanan, gelap) dan jawaban AI (kiri, putih) dengan timestamp, kotak input di bawah]*
+![Jendela chat AI Asisten saat aktif — gelembung pertanyaan pengguna (kanan, gelap) dan jawaban AI (kiri, putih) dengan timestamp, kotak input di bawah](../assets/ai-asisten-percakapan.png)
 
 ### 7.3 Menghapus Riwayat Percakapan
 
@@ -257,8 +243,7 @@ Kartu-kartu di bagian atas menampilkan:
 - Jumlah kriteria yang perlu perhatian
 - Jumlah kriteria yang masih kritis
 
-<!-- screenshot: akreditasi-kaprodi-ringkasan -->
-> 📸 *[Gambar: Kartu ringkasan akreditasi di tab Kaprodi — skor rata-rata, jumlah kriteria baik/perlu perhatian/kritis dengan warna indikator]*
+![Kartu ringkasan akreditasi di tab Kaprodi — skor rata-rata, jumlah kriteria baik/perlu perhatian/kritis dengan warna indikator](../assets/akreditasi-kaprodi-ringkasan.png)
 
 ### 8.2 Detail per Kriteria
 
