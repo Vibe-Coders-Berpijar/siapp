@@ -28,13 +28,13 @@
 1. Buka browser (Chrome atau Firefox dianjurkan) dan masuk ke alamat SIAPP yang diberikan.
 2. Pada halaman login, masukkan **alamat email UGM** Anda (contoh: `namastaff@ugm.ac.id`).
 
-![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](../assets/login-halaman.png)
+![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](assets/login-halaman.png)
 
 3. Klik tombol **Kirim Kode OTP**.
 4. Buka email Anda — Anda akan menerima kode 6 angka dalam beberapa detik.
 5. Masukkan kode tersebut pada halaman verifikasi, lalu klik **Verifikasi**.
 
-![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](../assets/login-otp-verifikasi.png)
+![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](assets/login-otp-verifikasi.png)
 
 6. Sistem akan otomatis membawa Anda ke **Dashboard Sekretariat**.
 
@@ -46,7 +46,7 @@
 
 Setelah masuk, Anda akan melihat halaman utama yang merangkum seluruh aktivitas operasional sekretariat.
 
-![Tampilan penuh Dashboard Sekretariat — 6 KPI cards di atas, panel surat terbaru, kegiatan mendatang, dan ringkasan booking](../assets/dashboard-sekretariat-overview.png)
+![Tampilan penuh Dashboard Sekretariat — 6 KPI cards di atas, panel surat terbaru, kegiatan mendatang, dan ringkasan booking](assets/dashboard-sekretariat-overview.png)
 
 ### 2.1 Kartu Ringkasan Harian
 
@@ -65,7 +65,7 @@ Enam kartu di bagian atas menampilkan informasi penting hari ini:
 
 Jika ada masalah yang perlu segera ditangani (misalnya surat yang tertahan terlalu lama atau anggaran kurang terserap), sistem akan menampilkan notifikasi berwarna merah di bagian atas. Klik notifikasi untuk langsung menuju data terkait.
 
-![Banner notifikasi merah di bagian atas dashboard — contoh peringatan workflow tertahan](../assets/dashboard-banner-notifikasi.png)
+![Banner notifikasi merah di bagian atas dashboard — contoh peringatan workflow tertahan](assets/dashboard-banner-notifikasi.png)
 
 ### 2.3 Panel Surat Terbaru
 
@@ -110,7 +110,7 @@ Tabel menampilkan seluruh surat dengan kolom berikut:
 - **Hijau** — Ditandatangani / selesai
 - **Biru** — Diarsipkan
 
-![Tabel daftar surat — tab Semua/Keluar/Masuk, filter kategori, dan badge status berwarna di setiap baris](../assets/persuratan-tabel-surat.png)
+![Tabel daftar surat — tab Semua/Keluar/Masuk, filter kategori, dan badge status berwarna di setiap baris](assets/persuratan-tabel-surat.png)
 
 ### 3.2 Menyaring dan Mencari Surat
 
@@ -138,7 +138,7 @@ Ketik kata kunci di kotak pencarian (bisa berupa perihal, nomor surat, nama tuju
    - **Status Awal** — pilih Draft (belum siap dikirim) atau Menunggu (siap untuk disetujui)
 3. Klik **Simpan**.
 
-![Modal formulir "Buat Surat Baru" — semua kolom terisi: nomor, perihal, tujuan, isi, kategori, status, dan tombol Simpan](../assets/persuratan-form-buat-surat.png)
+![Modal formulir "Buat Surat Baru" — semua kolom terisi: nomor, perihal, tujuan, isi, kategori, status, dan tombol Simpan](assets/persuratan-form-buat-surat.png)
 
 Surat yang berstatus **Menunggu** akan masuk ke antrean persetujuan Kadep secara otomatis.
 
@@ -170,7 +170,7 @@ Halaman booking ruang terdiri dari dua bagian utama:
 - **Merah** — ruangan sudah dibooking
 - **Abu-abu** — ruangan tidak tersedia (sedang dalam perbaikan, dll.)
 
-![Tampilan halaman Booking Ruang — kalender mini di kiri, denah lantai interaktif di kanan dengan ruangan berwarna hijau/merah/abu-abu](../assets/booking-ruang-denah.png)
+![Tampilan halaman Booking Ruang — kalender mini di kiri, denah lantai interaktif di kanan dengan ruangan berwarna hijau/merah/abu-abu](assets/booking-ruang-denah.png)
 
 ### 4.2 Membuat Booking Ruangan
 
@@ -197,7 +197,7 @@ Pada tabel di bagian bawah, Anda dapat melihat seluruh permohonan booking. Untuk
 - Klik tombol **Konfirmasi** untuk menyetujui booking.
 - Klik tombol **Tolak** untuk menolak booking.
 
-![Tabel daftar booking — baris dengan status "Menunggu" dan tombol Konfirmasi (hijau) serta Tolak (merah)](../assets/booking-ruang-tabel-konfirmasi.png)
+![Tabel daftar booking — baris dengan status "Menunggu" dan tombol Konfirmasi (hijau) serta Tolak (merah)](assets/booking-ruang-tabel-konfirmasi.png)
 
 ### 4.4 Ruangan yang Tersedia
 
@@ -225,7 +225,7 @@ Kalender menampilkan satu bulan penuh dengan semua kegiatan yang terjadwal. Seti
 
 **Berpindah bulan:** Klik tombol **‹** (bulan sebelumnya) atau **›** (bulan berikutnya).
 
-![Tampilan kalender satu bulan penuh — tanggal hari ini berwarna emas, event berwarna-warni di beberapa tanggal, dan legenda jenis kegiatan di atas](../assets/kalender-tampilan-bulan.png)
+![Tampilan kalender satu bulan penuh — tanggal hari ini berwarna emas, event berwarna-warni di beberapa tanggal, dan legenda jenis kegiatan di atas](assets/kalender-tampilan-bulan.png)
 
 ### 5.2 Melihat Detail Kegiatan
 
@@ -262,7 +262,7 @@ Setiap kartu notulensi menampilkan:
 - Jumlah peserta
 - Poin agenda
 
-![Daftar kartu notulensi — judul, badge status, tanggal, peserta, dan chip agenda di setiap kartu](../assets/notulensi-daftar-kartu.png)
+![Daftar kartu notulensi — judul, badge status, tanggal, peserta, dan chip agenda di setiap kartu](assets/notulensi-daftar-kartu.png)
 
 Klik tombol **Lihat Detail** untuk membuka isi lengkap notulensi, yang mencakup:
 - Daftar peserta rapat
@@ -281,7 +281,7 @@ Klik tombol **Lihat Detail** untuk membuka isi lengkap notulensi, yang mencakup:
 4. Pilih **label** dan **tingkat akses** (Anggota atau Publik).
 5. Klik **Simpan sebagai Draft** atau **Ajukan untuk Disetujui**.
 
-![Halaman formulir notulensi baru — kolom judul, tanggal, peserta, agenda, keputusan, tindak lanjut, dan pilihan label/akses](../assets/notulensi-form-baru.png)
+![Halaman formulir notulensi baru — kolom judul, tanggal, peserta, agenda, keputusan, tindak lanjut, dan pilihan label/akses](assets/notulensi-form-baru.png)
 
 ---
 
@@ -300,7 +300,7 @@ Halaman ini menampilkan **Rencana Kegiatan dan Anggaran Tahunan (RKAT)** departe
   - Kuning (40–69%) — perlu perhatian
   - Oranye (< 40%) — kritis
 
-![Panel ringkasan RKAT — total anggaran, realisasi, persentase serapan dengan warna indikator, dan bilah kemajuan keseluruhan](../assets/renja-ringkasan-anggaran.png)
+![Panel ringkasan RKAT — total anggaran, realisasi, persentase serapan dengan warna indikator, dan bilah kemajuan keseluruhan](assets/renja-ringkasan-anggaran.png)
 
 ### 7.2 Kartu Program
 
@@ -354,7 +354,7 @@ Setiap SOP ditampilkan dalam kartu yang dapat diperluas. Klik kartu untuk meliha
 - Ringkasan prosedur
 - Langkah-langkah pelaksanaan (bernomor)
 
-![Kartu SOP dalam kondisi diperluas — nomor, versi, ringkasan, dan langkah-langkah bernomor](../assets/sop-kartu-diperluas.png)
+![Kartu SOP dalam kondisi diperluas — nomor, versi, ringkasan, dan langkah-langkah bernomor](assets/sop-kartu-diperluas.png)
 
 ---
 

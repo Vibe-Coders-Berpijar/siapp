@@ -30,13 +30,13 @@
 1. Buka browser (Chrome atau Firefox dianjurkan) dan masuk ke alamat SIAPP yang diberikan.
 2. Pada halaman login, masukkan **alamat email UGM** Anda (contoh: `namadosen@ugm.ac.id`).
 
-![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](../assets/login-halaman.png)
+![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](assets/login-halaman.png)
 
 3. Klik tombol **Kirim Kode OTP**.
 4. Buka email Anda — Anda akan menerima kode 6 angka dalam beberapa detik.
 5. Masukkan kode tersebut pada halaman verifikasi, lalu klik **Verifikasi**.
 
-![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](../assets/login-otp-verifikasi.png)
+![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](assets/login-otp-verifikasi.png)
 
 6. Sistem akan otomatis membawa Anda ke **Dashboard Dosen**.
 
@@ -50,7 +50,7 @@ Halaman utama Dosen terbagi menjadi dua bagian:
 - **Kiri:** Panel profil Anda
 - **Kanan:** Sembilan tab fitur (Ikhtisar, Publikasi, Mata Kuliah, dst.)
 
-![Tampilan penuh Dashboard Dosen — panel profil di kiri dengan foto, nama, dan keahlian; sembilan tab navigasi di kanan](../assets/dashboard-dosen-overview.png)
+![Tampilan penuh Dashboard Dosen — panel profil di kiri dengan foto, nama, dan keahlian; sembilan tab navigasi di kanan](assets/dashboard-dosen-overview.png)
 
 ### 2.1 Panel Profil (Kolom Kiri)
 
@@ -66,7 +66,7 @@ Panel ini menampilkan:
 1. Klik tombol **Edit Profil** di panel kiri.
 2. Kolom-kolom profil akan berubah menjadi dapat diedit.
 
-![Panel profil dalam mode edit — kolom keahlian dengan tombol tambah, kolom H-Index, ORCID, SINTA, Scopus yang bisa diketik, dan tombol "Simpan Profil"](../assets/profil-mode-edit.png)
+![Panel profil dalam mode edit — kolom keahlian dengan tombol tambah, kolom H-Index, ORCID, SINTA, Scopus yang bisa diketik, dan tombol "Simpan Profil"](assets/profil-mode-edit.png)
 
 3. Ubah data yang ingin diperbarui:
    - **Bidang keahlian:** klik tanda **+** untuk menambah, atau **×** pada chip untuk menghapus.
@@ -91,7 +91,7 @@ Empat kartu menampilkan:
 | **Publikasi Tahun Ini** | Jumlah publikasi yang tercatat tahun ini |
 | **Hibah Aktif** | Jumlah hibah penelitian yang sedang berjalan |
 
-![Empat KPI cards di tab Ikhtisar — skor, SKS, publikasi, dan hibah aktif dengan angka dan hint perbandingan](../assets/ikhtisar-kpi-cards.png)
+![Empat KPI cards di tab Ikhtisar — skor, SKS, publikasi, dan hibah aktif dengan angka dan hint perbandingan](assets/ikhtisar-kpi-cards.png)
 
 ### 3.2 Grafik Radar Tridharma
 
@@ -100,7 +100,7 @@ Grafik berbentuk segitiga/jaring laba-laba yang membandingkan kinerja **pribadi 
 - Penelitian
 - Pengabdian
 
-![Grafik radar Tridharma — dua garis (biru = saya, abu-abu = rata-rata departemen) dengan tiga sumbu Pendidikan, Penelitian, Pengabdian](../assets/ikhtisar-radar-tridharma.png)
+![Grafik radar Tridharma — dua garis (biru = saya, abu-abu = rata-rata departemen) dengan tiga sumbu Pendidikan, Penelitian, Pengabdian](assets/ikhtisar-radar-tridharma.png)
 
 ### 3.3 Saran dari SIAPP
 
@@ -111,7 +111,7 @@ Panel ini menampilkan saran otomatis dari sistem berdasarkan data Anda:
 
 Saran ini bersifat informatif dan tidak mengubah data apapun.
 
-![Panel "Saran dari SIAPP" — daftar item dengan ikon warna merah/kuning/biru sesuai tingkat urgensi](../assets/ikhtisar-saran-ai.png)
+![Panel "Saran dari SIAPP" — daftar item dengan ikon warna merah/kuning/biru sesuai tingkat urgensi](assets/ikhtisar-saran-ai.png)
 
 ---
 
@@ -128,7 +128,7 @@ Tabel menampilkan seluruh publikasi Anda dengan kolom:
 - Kuartil (Q1/Q2/Q3/Q4) — warna menunjukkan peringkat
 - Status (Terverifikasi atau Menunggu)
 
-![Tabel publikasi — baris judul, jurnal, tahun, badge kuartil berwarna (Q1 biru tua, Q2 biru, Q3 kuning, Q4 abu), dan badge status](../assets/publikasi-tabel.png)
+![Tabel publikasi — baris judul, jurnal, tahun, badge kuartil berwarna (Q1 biru tua, Q2 biru, Q3 kuning, Q4 abu), dan badge status](assets/publikasi-tabel.png)
 
 ### 4.2 Menambahkan Publikasi Baru
 
@@ -136,7 +136,7 @@ Tabel menampilkan seluruh publikasi Anda dengan kolom:
 2. Pada formulir yang muncul, ketik **Judul** artikel.
 3. Klik tombol **✨ Isi Otomatis dengan AI** — sistem akan mencoba mengisi nama jurnal, kuartil, DOI, dan tahun secara otomatis berdasarkan judul yang Anda ketik. Tunggu beberapa detik.
 
-![Modal tambah publikasi — judul sudah diketik, tombol "✨ Isi Otomatis dengan AI" dalam kondisi loading, kolom jurnal/kuartil/DOI/tahun terisi otomatis](../assets/publikasi-ai-autofill.png)
+![Modal tambah publikasi — judul sudah diketik, tombol "✨ Isi Otomatis dengan AI" dalam kondisi loading, kolom jurnal/kuartil/DOI/tahun terisi otomatis](assets/publikasi-ai-autofill.png)
 
 4. Periksa dan koreksi data yang diisi AI jika perlu.
 5. Jika tidak menggunakan fitur AI, isi kolom berikut secara manual:
@@ -170,7 +170,7 @@ Tabel menampilkan seluruh mata kuliah yang Anda ampu dengan informasi:
 - **Draft** (abu-abu) — dokumen masih dalam penyusunan
 - **Belum Ada** — dokumen belum dibuat
 
-![Tabel mata kuliah — kolom kode, nama, SKS, semester, kelas, badge status RPKPS berwarna, skor EDOM bintang, dan tombol "✨ Generate RPKPS" di setiap baris](../assets/matakuliah-tabel.png)
+![Tabel mata kuliah — kolom kode, nama, SKS, semester, kelas, badge status RPKPS berwarna, skor EDOM bintang, dan tombol "✨ Generate RPKPS" di setiap baris](assets/matakuliah-tabel.png)
 
 ### 5.2 Membuat RPKPS dengan Bantuan AI
 
@@ -178,7 +178,7 @@ Tabel menampilkan seluruh mata kuliah yang Anda ampu dengan informasi:
 2. Sistem akan membuat draft RPKPS secara otomatis — proses ini memerlukan beberapa detik.
 3. Draft akan muncul di panel sebelah kanan layar.
 
-![Panel drawer RPKPS di sisi kanan — konten draft teks RPKPS yang baru digenerate AI, tombol "Simpan Draft" dan "Tutup" di bagian bawah](../assets/matakuliah-rpkps-drawer.png)
+![Panel drawer RPKPS di sisi kanan — konten draft teks RPKPS yang baru digenerate AI, tombol "Simpan Draft" dan "Tutup" di bagian bawah](assets/matakuliah-rpkps-drawer.png)
 
 4. Baca dan tinjau isi draft.
 5. Klik **Simpan Draft** untuk menyimpan, atau **Tutup** jika ingin membatalkan.
@@ -200,7 +200,7 @@ Menampilkan daftar hibah yang Anda ikuti, dengan informasi:
 - Periode (tahun mulai – selesai)
 - Status (Aktif atau Selesai)
 
-![Bagian Hibah & Penelitian — kartu/baris hibah dengan judul, sumber dana, nilai Rp, periode, dan badge status Aktif/Selesai](../assets/penelitian-daftar-hibah.png)
+![Bagian Hibah & Penelitian — kartu/baris hibah dengan judul, sumber dana, nilai Rp, periode, dan badge status Aktif/Selesai](assets/penelitian-daftar-hibah.png)
 
 **Membuat Proposal Baru:**
 1. Klik tombol **+ Buat Proposal** di bagian kanan atas bagian ini.
@@ -208,7 +208,7 @@ Menampilkan daftar hibah yang Anda ikuti, dengan informasi:
 3. Isi seluruh kolom yang diperlukan.
 4. Klik **Simpan** — proposal akan masuk ke alur persetujuan (Dosen → Koordinator Riset → Kaprodi → Kadep).
 
-![Halaman formulir proposal baru — kolom judul, jenis (Penelitian/PkM), anggaran, durasi, dan indikator 4-tahap alur persetujuan](../assets/penelitian-form-proposal.png)
+![Halaman formulir proposal baru — kolom judul, jenis (Penelitian/PkM), anggaran, durasi, dan indikator 4-tahap alur persetujuan](assets/penelitian-form-proposal.png)
 
 **Melihat Semua Proposal:**
 Klik tombol **Lihat Semua Proposal →** untuk membuka halaman daftar proposal lengkap.
@@ -247,7 +247,7 @@ Kalender menampilkan kegiatan departemen. Klik kegiatan untuk melihat detail: wa
 3. Isi formulir: nama Anda, jam mulai, jam selesai, dan keperluan.
 4. Klik **Kirim Permohonan**.
 
-![Formulir booking ruang dari tab dosen — dropdown ruangan, nama, tanggal, jam, keperluan, dan tombol "Kirim Permohonan"](../assets/booking-form-dosen.png)
+![Formulir booking ruang dari tab dosen — dropdown ruangan, nama, tanggal, jam, keperluan, dan tombol "Kirim Permohonan"](assets/booking-form-dosen.png)
 
 Jika tidak ada jadwal yang bertabrakan, booking langsung dikonfirmasi. Jika ada konflik, permohonan akan diteruskan ke Sekretariat untuk dikonfirmasi.
 

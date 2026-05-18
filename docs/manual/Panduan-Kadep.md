@@ -25,13 +25,13 @@
 1. Buka browser (Chrome atau Firefox dianjurkan) dan masuk ke alamat SIAPP yang diberikan.
 2. Pada halaman login, masukkan **alamat email UGM** Anda (contoh: `namadosen@ugm.ac.id`).
 
-![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](../assets/login-halaman.png)
+![Tampilan halaman login — kolom email UGM dan tombol "Kirim Kode OTP"](assets/login-halaman.png)
 
 3. Klik tombol **Kirim Kode OTP**.
 4. Buka email Anda — Anda akan menerima kode 6 angka dalam beberapa detik.
 5. Masukkan kode tersebut pada halaman verifikasi, lalu klik **Verifikasi**.
 
-![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](../assets/login-otp-verifikasi.png)
+![Tampilan halaman verifikasi OTP — kotak isian 6 digit dan tombol "Verifikasi"](assets/login-otp-verifikasi.png)
 
 6. Sistem akan otomatis membawa Anda ke **Dashboard Kepala Departemen**.
 
@@ -43,7 +43,7 @@
 
 Setelah masuk, Anda akan melihat halaman utama yang berisi ringkasan kondisi departemen secara keseluruhan.
 
-![Tampilan penuh Dashboard Kadep — KPI cards, grafik Tridharma, grid BAN-PT, dan panel persetujuan menunggu](../assets/dashboard-kadep-overview.png)
+![Tampilan penuh Dashboard Kadep — KPI cards, grafik Tridharma, grid BAN-PT, dan panel persetujuan menunggu](assets/dashboard-kadep-overview.png)
 
 ### 2.1 Kartu Ringkasan (KPI)
 
@@ -70,7 +70,7 @@ Grid 9 kotak menampilkan skor per kriteria akreditasi (K1–K9). Warna kotak men
 - **Kuning** — perlu perhatian (50–79%)
 - **Merah** — kritis (di bawah 50%)
 
-![Grid 9 kriteria BAN-PT dengan warna hijau/kuning/merah sesuai skor masing-masing](../assets/dashboard-banpt-grid.png)
+![Grid 9 kriteria BAN-PT dengan warna hijau/kuning/merah sesuai skor masing-masing](assets/dashboard-banpt-grid.png)
 
 ### 2.4 Widget Persetujuan Menunggu
 
@@ -86,7 +86,7 @@ Tiga rekomendasi otomatis dari sistem berdasarkan data departemen terkini. Gunak
 
 Untuk membuka modul ini, klik **Akreditasi** pada menu samping kiri.
 
-![Tampilan penuh halaman Akreditasi — kartu ringkasan skor, panel 9 kriteria, dan panel rekomendasi AI di sisi kanan](../assets/akreditasi-halaman.png)
+![Tampilan penuh halaman Akreditasi — kartu ringkasan skor, panel 9 kriteria, dan panel rekomendasi AI di sisi kanan](assets/akreditasi-halaman.png)
 
 ### 3.1 Kartu Ringkasan Akreditasi
 
@@ -110,7 +110,7 @@ Klik pada salah satu kriteria untuk melihat rincian indikator dan bukti yang sud
 
 Panel di sisi kanan memberikan saran berbasis data untuk meningkatkan skor kriteria yang masih rendah. Saran ini bersifat informatif dan tidak mengubah data apapun secara otomatis.
 
-![Panel rekomendasi AI — daftar saran dengan ikon warna sesuai tingkat urgensi](../assets/akreditasi-ai-rekomendasi.png)
+![Panel rekomendasi AI — daftar saran dengan ikon warna sesuai tingkat urgensi](assets/akreditasi-ai-rekomendasi.png)
 
 ### 3.4 Bukti Hibah
 
@@ -139,14 +139,14 @@ Tabel ini menampilkan seluruh dosen aktif dengan informasi:
 - Jabatan fungsional
 - Kinerja
 
-![Tabel data dosen — kolom nama, NIDN, jabatan, dan tombol aksi edit/hapus di setiap baris](../assets/kepegawaian-tabel-dosen.png)
+![Tabel data dosen — kolom nama, NIDN, jabatan, dan tombol aksi edit/hapus di setiap baris](assets/kepegawaian-tabel-dosen.png)
 
 **Cara menambah dosen baru:**
 1. Klik tombol **+ Tambah Dosen** di pojok kanan atas tabel.
 2. Isi formulir yang muncul: nama, NIDN, jabatan, dan data lainnya.
 3. Klik **Simpan**.
 
-![Modal formulir tambah dosen — kolom nama, NIDN, jabatan, dan tombol Simpan](../assets/kepegawaian-form-tambah.png)
+![Modal formulir tambah dosen — kolom nama, NIDN, jabatan, dan tombol Simpan](assets/kepegawaian-form-tambah.png)
 
 **Cara mengubah data dosen:**
 1. Pada baris dosen yang ingin diubah, klik ikon pensil (edit).
@@ -184,7 +184,7 @@ Empat kartu menampilkan kondisi anggaran departemen:
 
 Grafik batang yang membandingkan **anggaran yang direncanakan** (warna biru) vs. **yang sudah terealisasi** (warna hijau) per bulan (Januari–Desember). Gunakan grafik ini untuk memantau apakah penyerapan anggaran berjalan sesuai rencana.
 
-![Grafik batang realisasi anggaran bulanan — batang biru (rencana) vs. hijau (realisasi) per bulan](../assets/keuangan-grafik-realisasi.png)
+![Grafik batang realisasi anggaran bulanan — batang biru (rencana) vs. hijau (realisasi) per bulan](assets/keuangan-grafik-realisasi.png)
 
 ### 5.3 Tabel Rincian per Jenis Belanja
 
@@ -220,7 +220,7 @@ Tabel menampilkan daftar surat dengan kolom:
 - Tanggal
 - Status (dengan warna sesuai kondisi)
 
-![Tabel daftar surat — tab filter di atas, baris surat dengan badge status berwarna](../assets/persuratan-tabel-kadep.png)
+![Tabel daftar surat — tab filter di atas, baris surat dengan badge status berwarna](assets/persuratan-tabel-kadep.png)
 
 **Cara menyaring surat:**
 Gunakan tab di atas tabel untuk menyaring tampilan:
@@ -249,7 +249,7 @@ Gunakan tab di atas tabel untuk menyaring tampilan:
    - **Status** — pilih status awal (Draft atau Menunggu)
 3. Klik **Simpan**.
 
-![Modal formulir buat surat baru — kolom nomor, perihal, pengaju, tanggal, dropdown status, dan tombol Simpan](../assets/persuratan-form-buat-surat.png)
+![Modal formulir buat surat baru — kolom nomor, perihal, pengaju, tanggal, dropdown status, dan tombol Simpan](assets/persuratan-form-buat-surat.png)
 
 ---
 
