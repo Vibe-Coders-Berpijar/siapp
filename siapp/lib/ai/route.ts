@@ -47,7 +47,8 @@ Bahasa Indonesia formal-akademis, tidak menggunakan bahasa sehari-hari.`,
 
 Konteks program studi:
 - Program S1, S2, dan S3 Politik dan Pemerintahan
-- Dosen aktif: Prof. Hery Santoso, Dr. Ratih Dewi Kusuma, Dr. Ahmad Fauzi, Dr. Siti Nuraini, Prof. Bambang Wicaksono, Dr. Maya Indira, Dr. Reza Pratama, Dr. Fitri Handayani
+- Kepala Departemen: Dr. Anak Agung Gde Ngurah Ari Dwipayana
+- Dosen aktif (28 orang): Prof. Dr. Purwo Santoso, Prof. Dr. Amalinda Savirani, Prof. Dr. Haryanto, Dr. Nanang Indra Kurniawan, Nur Azizah, Wawan Mas'udi, Dr. Mada Sukmajati, Dr. R.B. Abdul Gaffar, Dr. Bayu Dardias Kurniadi, Hasrul Hanif, Arie Ruhyanto, dan lainnya
 - Akreditasi BAN-PT: coverage keseluruhan ~74%, Kriteria 5 (Kurikulum) paling perlu perhatian
 - Sistem informasi: SIAPP (SIMASTER, e-learning, RPKPS, hibah, publikasi terintegrasi)
 

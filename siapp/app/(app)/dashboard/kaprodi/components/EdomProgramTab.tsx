@@ -19,22 +19,22 @@ interface EdomMK {
 }
 
 const MOCK_EDOM: EdomMK[] = [
-  { mk: 'Teori Politik Kontemporer',     dosen: 'Prof. Bambang Wicaksono', skor: 4.6, prodi: 'S1' },
-  { mk: 'Metode Penelitian Kualitatif',  dosen: 'Dr. Fitri Handayani',     skor: 4.5, prodi: 'S2' },
-  { mk: 'Tata Kelola Digital',           dosen: 'Dr. Reza Pratama',        skor: 4.4, prodi: 'S1' },
-  { mk: 'Sistem Politik Indonesia',      dosen: 'Dr. Siti Nuraini',        skor: 4.2, prodi: 'S1' },
-  { mk: 'Pengantar Ilmu Politik',        dosen: 'Dr. Ahmad Fauzi',         skor: 4.1, prodi: 'S1' },
-  { mk: 'Politik Komparatif',            dosen: 'Prof. Hery Santoso',      skor: 3.9, prodi: 'S1' },
-  { mk: 'Seminar Disertasi',             dosen: 'Prof. Bambang Wicaksono', skor: 3.8, prodi: 'S3' },
-  { mk: 'Metodologi Penelitian Politik', dosen: 'Dr. Maya Indira',         skor: 3.7, prodi: 'S1' },
-  { mk: 'Kebijakan Publik',              dosen: 'Dr. Ratih Dewi Kusuma',   skor: 3.5, prodi: 'S1' },
+  { mk: 'Teori Politik Kontemporer',     dosen: 'Prof. Dr. Purwo Santoso',         skor: 4.6, prodi: 'S1' },
+  { mk: 'Metode Penelitian Kualitatif',  dosen: 'Dr. Bayu Dardias Kurniadi',       skor: 4.5, prodi: 'S2' },
+  { mk: 'Tata Kelola Digital',           dosen: 'Dr. Mada Sukmajati',              skor: 4.4, prodi: 'S1' },
+  { mk: 'Sistem Politik Indonesia',      dosen: 'Nur Azizah',                      skor: 4.2, prodi: 'S1' },
+  { mk: 'Pengantar Ilmu Politik',        dosen: 'Dr. Nanang Indra Kurniawan',      skor: 4.1, prodi: 'S1' },
+  { mk: 'Politik Komparatif',            dosen: 'Prof. Dr. Amalinda Savirani',     skor: 3.9, prodi: 'S1' },
+  { mk: 'Seminar Disertasi',             dosen: 'Prof. Dr. Purwo Santoso',         skor: 3.8, prodi: 'S3' },
+  { mk: 'Metodologi Penelitian Politik', dosen: 'Dr. Anak Agung Ari Dwipayana',   skor: 3.7, prodi: 'S1' },
+  { mk: 'Kebijakan Publik',              dosen: 'Dr. R.B. Abdul Gaffar',           skor: 3.5, prodi: 'S1' },
 ];
 
 const DOSEN_SUMMARY = [
-  { nama: 'Prof. Bambang Wicaksono', inisial: 'BW', skor: 4.2, materi: 4.5, metode: 4.0, interaksi: 4.1, trend: 'up' as const },
-  { nama: 'Dr. Ahmad Fauzi',         inisial: 'AF', skor: 4.1, materi: 4.2, metode: 3.9, interaksi: 4.2, trend: 'up' as const },
-  { nama: 'Dr. Ratih Dewi Kusuma',   inisial: 'RD', skor: 3.7, materi: 3.8, metode: 3.6, interaksi: 3.7, trend: 'down' as const },
-  { nama: 'Prof. Hery Santoso',      inisial: 'HS', skor: 4.0, materi: 4.1, metode: 4.0, interaksi: 3.9, trend: 'up' as const },
+  { nama: 'Prof. Dr. Purwo Santoso',       inisial: 'PS', skor: 4.2, materi: 4.5, metode: 4.0, interaksi: 4.1, trend: 'up' as const },
+  { nama: 'Dr. Nanang Indra Kurniawan',    inisial: 'NK', skor: 4.1, materi: 4.2, metode: 3.9, interaksi: 4.2, trend: 'up' as const },
+  { nama: 'Dr. R.B. Abdul Gaffar',         inisial: 'AG', skor: 3.7, materi: 3.8, metode: 3.6, interaksi: 3.7, trend: 'down' as const },
+  { nama: 'Prof. Dr. Amalinda Savirani',   inisial: 'AS', skor: 4.0, materi: 4.1, metode: 4.0, interaksi: 3.9, trend: 'up' as const },
 ];
 
 function scoreColor(s: number) {

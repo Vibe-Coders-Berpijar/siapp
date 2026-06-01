@@ -1,7 +1,5 @@
-"use client";
-
 import { DashboardLayout } from '@/components/kadep/DashboardLayout'
-import { currentUser } from '@/lib/mock-data-kadep'
+import { createServiceClient } from '@/lib/supabase/service'
 
 const ANGGARAN = [
   { label: 'Pagu Anggaran', nilai: 2_850_000_000, warna: 'bg-blue-50 border-blue-200 text-blue-700' },
@@ -51,13 +49,18 @@ function persen(val: number) {
 
 const MAX_BAR = Math.max(...REALISASI.map(r => r.rencana))
 
-export default function KeuanganPage() {
+export default async function KeuanganPage() {
+  const supabase = createServiceClient()
+  const { data: kadepRow } = await supabase
+    .from('lecturers').select('profiles!inner(full_name)').eq('nidn', '0024027203').single()
+  const kadepName = kadepRow ? (kadepRow.profiles as { full_name: string }).full_name : 'Kepala Departemen'
+
   return (
     <DashboardLayout
       title="Keuangan"
       subtitle="Realisasi anggaran departemen tahun berjalan"
-      userName={currentUser.nama}
-      jabatan={currentUser.jabatan}
+      userName={kadepName}
+      jabatan="Kepala Departemen"
     >
       {/* KPI cards */}
       <div className="flex gap-4 flex-wrap">

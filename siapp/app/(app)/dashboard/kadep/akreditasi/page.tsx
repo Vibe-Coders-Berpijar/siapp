@@ -1,15 +1,17 @@
-"use client";
-
-import { useState } from 'react'
 import { DashboardLayout } from '@/components/kadep/DashboardLayout'
 import { AccreditationPanel } from '@/components/kadep/AccreditationPanel'
 import { AiInsightPanel } from '@/components/kadep/AiInsightPanel'
 import { CriteriaPanel } from '@/components/kadep/CriteriaPanel'
-import { criteriaDetails, computeCriterionScore, hibahData, currentUser } from '@/lib/mock-data-kadep'
-import type { CriterionDetail } from '@/lib/mock-data-kadep'
+import { criteriaDetails, computeCriterionScore, hibahData } from '@/lib/mock-data-kadep'
+import { createServiceClient } from '@/lib/supabase/service'
 
-export default function AkreditasiPage() {
-  const [details, setDetails] = useState<CriterionDetail[]>(criteriaDetails)
+export default async function AkreditasiPage() {
+  const supabase = createServiceClient()
+  const { data: kadepRow } = await supabase
+    .from('lecturers').select('profiles!inner(full_name)').eq('nidn', '0024027203').single()
+  const kadepName = kadepRow ? (kadepRow.profiles as { full_name: string }).full_name : 'Kepala Departemen'
+
+  const details = criteriaDetails
 
   const criteria = details.map(d => ({
     kode: d.kode,
@@ -30,8 +32,8 @@ export default function AkreditasiPage() {
     <DashboardLayout
       title="Akreditasi BAN-PT"
       subtitle="Pemantauan kesiapan akreditasi 9 kriteria LAMSPAK · skor dihitung dari indikator nyata"
-      userName={currentUser.nama}
-      jabatan={currentUser.jabatan}
+      userName={kadepName}
+      jabatan="Kepala Departemen"
     >
       {/* Summary cards */}
       <div className="flex gap-4 flex-wrap">
