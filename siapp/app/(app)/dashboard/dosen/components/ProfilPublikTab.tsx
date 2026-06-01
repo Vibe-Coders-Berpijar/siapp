@@ -3,7 +3,17 @@
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 
-const MOCK_DOSEN = {
+export interface PublikasiItem { judul: string; jurnal: string; tahun: number; quartile: string }
+export interface DosenPublik {
+  nama: string;
+  jabatan: string;
+  nidn: string;
+  bio: string;
+  bidangKeahlian: string[];
+  publikasiTerverifikasi: PublikasiItem[];
+}
+
+const MOCK_DOSEN: DosenPublik = {
   nama: 'Dr. Ahmad Fauzi',
   jabatan: 'Lektor Kepala',
   nidn: '0012345678',
@@ -13,15 +23,11 @@ const MOCK_DOSEN = {
     { judul: 'Desentralisasi dan Tata Kelola Daerah di Era Reformasi', jurnal: 'Jurnal Ilmu Politik', tahun: 2024, quartile: 'Q2' },
     { judul: 'Local Government Capacity in Indonesia', jurnal: 'Asian Journal of Political Science', tahun: 2023, quartile: 'Q1' },
   ],
-  mataKuliahAktif: [
-    { kode: 'POL3101', nama: 'Politik Komparatif', sks: 3 },
-    { kode: 'POL4201', nama: 'Tata Kelola Lokal', sks: 3 },
-    { kode: 'POL2105', nama: 'Pengantar Ilmu Politik', sks: 2 },
-  ],
 };
 
-export function ProfilPublikTab() {
-  const initials = MOCK_DOSEN.nama.split(' ').filter((w) => w.length > 1).slice(0, 2).map((w) => w[0]).join('');
+export function ProfilPublikTab({ initialDosen }: { initialDosen?: DosenPublik }) {
+  const dosen = initialDosen ?? MOCK_DOSEN;
+  const initials = dosen.nama.split(' ').filter((w) => w.length > 1).slice(0, 2).map((w) => w[0]).join('');
 
   return (
     <div className="rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow p-6 space-y-6">
@@ -35,10 +41,10 @@ export function ProfilPublikTab() {
           <AvatarFallback className="bg-indigo-600 text-white text-lg font-semibold">{initials}</AvatarFallback>
         </Avatar>
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">{MOCK_DOSEN.nama}</h2>
-          <p className="text-sm text-gray-500">{MOCK_DOSEN.jabatan} · NIDN {MOCK_DOSEN.nidn}</p>
+          <h2 className="text-xl font-semibold text-gray-900">{dosen.nama}</h2>
+          <p className="text-sm text-gray-500">{dosen.jabatan} · NIDN {dosen.nidn}</p>
           <div className="flex flex-wrap gap-1.5 mt-2">
-            {MOCK_DOSEN.bidangKeahlian.map((k) => (
+            {dosen.bidangKeahlian.map((k) => (
               <span key={k} className="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">{k}</span>
             ))}
           </div>
@@ -50,7 +56,7 @@ export function ProfilPublikTab() {
       {/* Bio */}
       <div>
         <h3 className="text-sm font-semibold text-gray-700 mb-1">Tentang</h3>
-        <p className="text-sm text-gray-600 leading-relaxed">{MOCK_DOSEN.bio}</p>
+        <p className="text-sm text-gray-600 leading-relaxed">{dosen.bio}</p>
       </div>
 
       <Separator />
@@ -59,7 +65,7 @@ export function ProfilPublikTab() {
       <div>
         <h3 className="text-sm font-semibold text-gray-700 mb-3">Publikasi Terverifikasi</h3>
         <div className="space-y-2">
-          {MOCK_DOSEN.publikasiTerverifikasi.map((p) => (
+          {dosen.publikasiTerverifikasi.map((p) => (
             <div key={p.judul} className="bg-white/70 rounded-xl border border-gray-100 p-3">
               <p className="text-sm font-medium text-gray-900">{p.judul}</p>
               <p className="text-xs text-gray-500 mt-0.5">{p.jurnal} · {p.tahun} · <span className="font-semibold text-indigo-600">{p.quartile}</span></p>

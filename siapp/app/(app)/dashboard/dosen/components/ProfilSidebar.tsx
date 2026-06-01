@@ -9,7 +9,18 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { logout } from '@/app/login/actions';
 
-const MOCK_DOSEN = {
+export interface DosenProfil {
+  nama: string;
+  jabatan: string;
+  nidn: string;
+  bidangKeahlian: string[];
+  hIndex: number;
+  orcid: string;
+  sinta: string;
+  scopus: string;
+}
+
+const MOCK_DOSEN: DosenProfil = {
   nama: 'Dr. Ahmad Fauzi',
   jabatan: 'Lektor Kepala',
   nidn: '0012345678',
@@ -26,9 +37,9 @@ const jabatanColor: Record<string, string> = {
   'Guru Besar': 'bg-purple-100 text-purple-800',
 };
 
-export function ProfilSidebar() {
+export function ProfilSidebar({ initialDosen }: { initialDosen?: DosenProfil }) {
   const [editMode, setEditMode] = useState(false);
-  const [dosen, setDosen] = useState(MOCK_DOSEN);
+  const [dosen, setDosen] = useState<DosenProfil>(initialDosen ?? MOCK_DOSEN);
   const [newKeahlian, setNewKeahlian] = useState('');
 
   const initials = dosen.nama

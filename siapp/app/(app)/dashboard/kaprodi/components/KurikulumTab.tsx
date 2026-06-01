@@ -16,18 +16,18 @@ interface MataKuliah {
 }
 
 const MOCK_MK: MataKuliah[] = [
-  { kode: 'POL1101', nama: 'Pengantar Ilmu Politik',          sks: 3, semester: 1, cpl: ['CPL-1','CPL-2'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Dr. Ahmad Fauzi',         prodi: 'S1' },
-  { kode: 'POL1201', nama: 'Sistem Politik Indonesia',        sks: 3, semester: 2, cpl: ['CPL-1','CPL-3'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Dr. Siti Nuraini',        prodi: 'S1' },
-  { kode: 'POL2101', nama: 'Teori Politik Kontemporer',       sks: 3, semester: 3, cpl: ['CPL-2','CPL-4'], statusRpkps: 'Menunggu',   statusSilabus: 'Disetujui',  dosen: 'Prof. Bambang Wicaksono', prodi: 'S1' },
-  { kode: 'POL2201', nama: 'Politik Komparatif',              sks: 3, semester: 4, cpl: ['CPL-3','CPL-5'], statusRpkps: 'Disetujui',  statusSilabus: 'Menunggu',   dosen: 'Prof. Hery Santoso',      prodi: 'S1' },
-  { kode: 'POL3101', nama: 'Kebijakan Publik',                sks: 3, semester: 5, cpl: ['CPL-4','CPL-6'], statusRpkps: 'Draft',      statusSilabus: 'Draft',      dosen: 'Dr. Ratih Dewi Kusuma',   prodi: 'S1' },
-  { kode: 'POL3201', nama: 'Tata Kelola Digital',             sks: 2, semester: 6, cpl: ['CPL-5'],         statusRpkps: 'Draft',      statusSilabus: 'Belum Ada',  dosen: 'Dr. Reza Pratama',        prodi: 'S1' },
-  { kode: 'POL4101', nama: 'Metodologi Penelitian Politik',   sks: 3, semester: 7, cpl: ['CPL-6','CPL-7'], statusRpkps: 'Belum Ada',  statusSilabus: 'Belum Ada',  dosen: 'Dr. Maya Indira',         prodi: 'S1' },
-  { kode: 'POL4201', nama: 'Skripsi',                         sks: 6, semester: 8, cpl: ['CPL-7'],         statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Hery Santoso',      prodi: 'S1' },
-  { kode: 'POL5101', nama: 'Teori Politik Lanjutan',          sks: 3, semester: 1, cpl: ['CPL-1','CPL-2'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Bambang Wicaksono', prodi: 'S2' },
-  { kode: 'POL5201', nama: 'Metode Penelitian Kualitatif',    sks: 3, semester: 2, cpl: ['CPL-3'],         statusRpkps: 'Menunggu',   statusSilabus: 'Disetujui',  dosen: 'Dr. Fitri Handayani',     prodi: 'S2' },
-  { kode: 'POL5301', nama: 'Tesis',                           sks: 6, semester: 3, cpl: ['CPL-4','CPL-5'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Hery Santoso',      prodi: 'S2' },
-  { kode: 'POL6101', nama: 'Seminar Disertasi',               sks: 3, semester: 2, cpl: ['CPL-1'],         statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Bambang Wicaksono', prodi: 'S3' },
+  { kode: 'POL1101', nama: 'Pengantar Ilmu Politik',          sks: 3, semester: 1, cpl: ['CPL-1','CPL-2'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Dr. Nanang Indra Kurniawan',         prodi: 'S1' },
+  { kode: 'POL1201', nama: 'Sistem Politik Indonesia',        sks: 3, semester: 2, cpl: ['CPL-1','CPL-3'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Nur Azizah',                         prodi: 'S1' },
+  { kode: 'POL2101', nama: 'Teori Politik Kontemporer',       sks: 3, semester: 3, cpl: ['CPL-2','CPL-4'], statusRpkps: 'Menunggu',   statusSilabus: 'Disetujui',  dosen: 'Prof. Dr. Purwo Santoso',            prodi: 'S1' },
+  { kode: 'POL2201', nama: 'Politik Komparatif',              sks: 3, semester: 4, cpl: ['CPL-3','CPL-5'], statusRpkps: 'Disetujui',  statusSilabus: 'Menunggu',   dosen: 'Prof. Dr. Amalinda Savirani',        prodi: 'S1' },
+  { kode: 'POL3101', nama: 'Kebijakan Publik',                sks: 3, semester: 5, cpl: ['CPL-4','CPL-6'], statusRpkps: 'Draft',      statusSilabus: 'Draft',      dosen: 'Dr. R.B. Abdul Gaffar',              prodi: 'S1' },
+  { kode: 'POL3201', nama: 'Tata Kelola Digital',             sks: 2, semester: 6, cpl: ['CPL-5'],         statusRpkps: 'Draft',      statusSilabus: 'Belum Ada',  dosen: 'Dr. Mada Sukmajati',                 prodi: 'S1' },
+  { kode: 'POL4101', nama: 'Metodologi Penelitian Politik',   sks: 3, semester: 7, cpl: ['CPL-6','CPL-7'], statusRpkps: 'Belum Ada',  statusSilabus: 'Belum Ada',  dosen: 'Dr. Anak Agung Ari Dwipayana',       prodi: 'S1' },
+  { kode: 'POL4201', nama: 'Skripsi',                         sks: 6, semester: 8, cpl: ['CPL-7'],         statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: "Wawan Mas'udi",                      prodi: 'S1' },
+  { kode: 'POL5101', nama: 'Teori Politik Lanjutan',          sks: 3, semester: 1, cpl: ['CPL-1','CPL-2'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Dr. Haryanto',                 prodi: 'S2' },
+  { kode: 'POL5201', nama: 'Metode Penelitian Kualitatif',    sks: 3, semester: 2, cpl: ['CPL-3'],         statusRpkps: 'Menunggu',   statusSilabus: 'Disetujui',  dosen: 'Dr. Bayu Dardias Kurniadi',          prodi: 'S2' },
+  { kode: 'POL5301', nama: 'Tesis',                           sks: 6, semester: 3, cpl: ['CPL-4','CPL-5'], statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Dr. Amalinda Savirani',        prodi: 'S2' },
+  { kode: 'POL6101', nama: 'Seminar Disertasi',               sks: 3, semester: 2, cpl: ['CPL-1'],         statusRpkps: 'Disetujui',  statusSilabus: 'Disetujui',  dosen: 'Prof. Dr. Purwo Santoso',            prodi: 'S3' },
 ];
 
 const SEMESTER_OPTIONS = ['Semua', '1', '2', '3', '4', '5', '6', '7', '8'];

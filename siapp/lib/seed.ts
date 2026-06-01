@@ -502,16 +502,16 @@ Sekretariat DPP UGM`,
 // ── Room Bookings ─────────────────────────────────────────────────────────────
 
 export const bookings: Booking[] = [
-  { id: 1, ruangan: "Ruang Rapat Utama",  pemohon: "Dr. Hendra Wijaya",      tanggal: "2026-05-10", waktuMulai: "09:00", waktuSelesai: "11:00", keperluan: "Rapat Koordinasi Tim Penelitian",    status: "Dikonfirmasi" },
-  { id: 2, ruangan: "Aula Gedung A",       pemohon: "Prof. Dr. Sari Indah",   tanggal: "2026-05-12", waktuMulai: "13:00", waktuSelesai: "16:00", keperluan: "Seminar Departemen",                 status: "Dikonfirmasi" },
-  { id: 3, ruangan: "Lab Komputer",        pemohon: "Dr. Ahmad Rizky",        tanggal: "2026-05-14", waktuMulai: "08:00", waktuSelesai: "10:00", keperluan: "Praktikum Analisis Data",            status: "Menunggu"     },
-  { id: 4, ruangan: "Ruang Rapat Kecil",   pemohon: "Dewi Lestari",           tanggal: "2026-05-15", waktuMulai: "10:00", waktuSelesai: "12:00", keperluan: "Bimbingan Skripsi Kelompok",         status: "Dikonfirmasi" },
-  { id: 5, ruangan: "Aula Gedung A",       pemohon: "Dr. Rini Setiawati",     tanggal: "2026-05-17", waktuMulai: "09:00", waktuSelesai: "15:00", keperluan: "Workshop Penulisan Ilmiah",          status: "Dikonfirmasi" },
-  { id: 6, ruangan: "Lab Tanah",           pemohon: "Andi Prasetyo",          tanggal: "2026-05-19", waktuMulai: "07:30", waktuSelesai: "11:30", keperluan: "Praktikum Kesuburan Tanah",          status: "Menunggu"     },
-  { id: 7, ruangan: "Ruang Rapat Utama",  pemohon: "Prof. Dr. Bambang",      tanggal: "2026-05-21", waktuMulai: "14:00", waktuSelesai: "16:00", keperluan: "Rapat Penyusunan Kurikulum",         status: "Dikonfirmasi" },
-  { id: 8, ruangan: "Ruang Kelas 201",     pemohon: "Dr. Agus Hartono",       tanggal: "2026-05-22", waktuMulai: "08:00", waktuSelesai: "10:00", keperluan: "Kuliah Tamu Asing",                  status: "Menunggu"     },
-  { id: 9, ruangan: "Lab Komputer",        pemohon: "Budi Santoso",           tanggal: "2026-05-24", waktuMulai: "13:00", waktuSelesai: "16:00", keperluan: "Pelatihan Statistika Pertanian",     status: "Ditolak"      },
-  { id: 10, ruangan: "Ruang Rapat Kecil",  pemohon: "Dr. Dewi Rahayu",       tanggal: "2026-05-26", waktuMulai: "10:00", waktuSelesai: "11:30", keperluan: "Diskusi Proposal Penelitian",        status: "Menunggu"     },
+  { id: 1,  ruangan: "Ruang Rapat Utama",  pemohon: "Dr. Nanang Indra Kurniawan",       tanggal: "2026-05-10", waktuMulai: "09:00", waktuSelesai: "11:00", keperluan: "Rapat Koordinasi Tim Penelitian",    status: "Dikonfirmasi" },
+  { id: 2,  ruangan: "Aula Gedung A",       pemohon: "Prof. Dr. Amalinda Savirani",      tanggal: "2026-05-12", waktuMulai: "13:00", waktuSelesai: "16:00", keperluan: "Seminar Departemen",                 status: "Dikonfirmasi" },
+  { id: 3,  ruangan: "Lab Komputer",        pemohon: "Dr. Mada Sukmajati",               tanggal: "2026-05-14", waktuMulai: "08:00", waktuSelesai: "10:00", keperluan: "Praktikum Analisis Data Politik",    status: "Menunggu"     },
+  { id: 4,  ruangan: "Ruang Rapat Kecil",  pemohon: "Nur Azizah",                       tanggal: "2026-05-15", waktuMulai: "10:00", waktuSelesai: "12:00", keperluan: "Bimbingan Skripsi Kelompok",         status: "Dikonfirmasi" },
+  { id: 5,  ruangan: "Aula Gedung A",       pemohon: "Dr. Anak Agung Ari Dwipayana",     tanggal: "2026-05-17", waktuMulai: "09:00", waktuSelesai: "15:00", keperluan: "Workshop Penulisan Ilmiah",          status: "Dikonfirmasi" },
+  { id: 6,  ruangan: "Ruang Seminar",       pemohon: "Arie Ruhyanto",                    tanggal: "2026-05-19", waktuMulai: "07:30", waktuSelesai: "11:30", keperluan: "Diskusi Hasil Penelitian Lapangan",  status: "Menunggu"     },
+  { id: 7,  ruangan: "Ruang Rapat Utama",  pemohon: "Prof. Dr. Purwo Santoso",           tanggal: "2026-05-21", waktuMulai: "14:00", waktuSelesai: "16:00", keperluan: "Rapat Penyusunan Kurikulum",         status: "Dikonfirmasi" },
+  { id: 8,  ruangan: "Ruang Kelas 201",    pemohon: "Hasrul Hanif",                      tanggal: "2026-05-22", waktuMulai: "08:00", waktuSelesai: "10:00", keperluan: "Kuliah Tamu Asing",                  status: "Menunggu"     },
+  { id: 9,  ruangan: "Lab Komputer",        pemohon: "Arya Budi",                        tanggal: "2026-05-24", waktuMulai: "13:00", waktuSelesai: "16:00", keperluan: "Pelatihan Analisis Statistika",      status: "Ditolak"      },
+  { id: 10, ruangan: "Ruang Rapat Kecil",  pemohon: "Dr. Indah Surya Wardhani",          tanggal: "2026-05-26", waktuMulai: "10:00", waktuSelesai: "11:30", keperluan: "Diskusi Proposal Penelitian",        status: "Menunggu"     },
 ];
 
 // ── Notulensi (6) ─────────────────────────────────────────────────────────────

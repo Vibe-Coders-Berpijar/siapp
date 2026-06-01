@@ -1,26 +1,49 @@
 import { createServiceClient } from '@/lib/supabase/service'
-import { ProfilSidebar } from './components/ProfilSidebar'
+import { ProfilSidebar, type DosenProfil } from './components/ProfilSidebar'
 import { IkhtisarTab } from './components/IkhtisarTab'
 import { PublikasiTable } from './components/PublikasiTable'
 import { MataKuliahTab } from './components/MataKuliahTab'
 import { PenelitianTab } from './components/PenelitianTab'
 import { SuratDokumenTab } from './components/SuratDokumenTab'
-import { ProfilPublikTab } from './components/ProfilPublikTab'
+import { ProfilPublikTab, type DosenPublik } from './components/ProfilPublikTab'
 import { KalenderBookingTab } from './components/KalenderBookingTab'
 import { SopTab } from './components/SopTab'
 import { DokumenSayaTab } from './components/DokumenSayaTab'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
+// Demo: use Prof. Dr. Purwo Santoso as the representative dosen profile
+const DEMO_NIDN = '0004026309'
+
 export default async function DosenDashboard() {
   const supabase = createServiceClient()
 
-  const { data: rows } = await supabase
-    .from('publications')
-    .select('id, judul, jurnal, quartile, tahun, doi, status')
-    .order('tahun', { ascending: false })
-    .limit(100)
+  const [{ data: lecturerRow }, { data: pubRows }] = await Promise.all([
+    supabase
+      .from('lecturers')
+      .select('id, nidn, jabatan, bidang_keahlian, h_index, orcid_id, sinta_id, scopus_id, profiles!inner(full_name)')
+      .eq('nidn', DEMO_NIDN)
+      .single(),
+    supabase
+      .from('publications')
+      .select('id, judul, jurnal, quartile, tahun, doi, status')
+      .order('tahun', { ascending: false })
+      .limit(100),
+  ])
 
-  const publikasiData = (rows ?? []).map((r) => ({
+  const profil = lecturerRow as typeof lecturerRow & { profiles: { full_name: string } }
+
+  const dosenProfil: DosenProfil | undefined = profil ? {
+    nama: profil.profiles.full_name ?? '—',
+    jabatan: profil.jabatan ?? '—',
+    nidn: profil.nidn ?? '—',
+    bidangKeahlian: (profil.bidang_keahlian as string[] | null) ?? [],
+    hIndex: profil.h_index ?? 0,
+    orcid: profil.orcid_id ?? '—',
+    sinta: profil.sinta_id ?? '—',
+    scopus: profil.scopus_id ?? '—',
+  } : undefined
+
+  const publikasiData = (pubRows ?? []).map((r) => ({
     id: String(r.id),
     judul: r.judul ?? '',
     jurnal: r.jurnal ?? '',
@@ -30,12 +53,26 @@ export default async function DosenDashboard() {
     doi: r.doi ?? '',
   }))
 
+  const dosenPublik: DosenPublik | undefined = dosenProfil ? {
+    nama: dosenProfil.nama,
+    jabatan: dosenProfil.jabatan,
+    nidn: dosenProfil.nidn,
+    bio: `Pengajar dan peneliti di Departemen Politik dan Pemerintahan UGM dengan jabatan ${dosenProfil.jabatan}. Berkontribusi pada penelitian politik, tata kelola, dan pengabdian masyarakat.`,
+    bidangKeahlian: dosenProfil.bidangKeahlian,
+    publikasiTerverifikasi: publikasiData.slice(0, 5).map((p) => ({
+      judul: p.judul,
+      jurnal: p.jurnal,
+      tahun: p.tahun,
+      quartile: p.quartile,
+    })),
+  } : undefined
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 p-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/3 md:shrink-0">
-            <ProfilSidebar />
+            <ProfilSidebar initialDosen={dosenProfil} />
           </div>
 
           <div className="flex-1 min-w-0">
@@ -60,7 +97,9 @@ export default async function DosenDashboard() {
               <TabsContent value="penelitian"><PenelitianTab /></TabsContent>
               <TabsContent value="surat"><SuratDokumenTab /></TabsContent>
               <TabsContent value="kalender"><KalenderBookingTab /></TabsContent>
-              <TabsContent value="profil-publik"><ProfilPublikTab /></TabsContent>
+              <TabsContent value="profil-publik">
+                <ProfilPublikTab initialDosen={dosenPublik} />
+              </TabsContent>
               <TabsContent value="dokumen"><DokumenSayaTab /></TabsContent>
               <TabsContent value="sop"><SopTab /></TabsContent>
             </Tabs>
