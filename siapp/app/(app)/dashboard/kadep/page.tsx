@@ -7,6 +7,8 @@ import { DecisionAsks } from '@/components/kadep/DecisionAsks'
 import { IkuPanel } from '@/components/kadep/IkuPanel'
 
 const CURRENT_YEAR = new Date().getFullYear()
+// Kepala Departemen: Dr. Anak Agung Gde Ngurah Ari Dwipayana (confirmed from dpp.fisipol.ugm.ac.id)
+const KADEP_NIDN = '0024027203'
 
 export default async function KadepPage() {
   const supabase = createServiceClient()
@@ -17,13 +19,17 @@ export default async function KadepPage() {
     { count: hibahAktif },
     { count: mahasiswaAktif },
     { data: pendingLetters },
+    { data: kadepRow },
   ] = await Promise.all([
     supabase.from('lecturers').select('*', { count: 'exact', head: true }),
     supabase.from('publications').select('*', { count: 'exact', head: true }).gte('tahun', CURRENT_YEAR - 1),
     supabase.from('grants').select('*', { count: 'exact', head: true }).eq('status', 'Aktif'),
     supabase.from('students').select('*', { count: 'exact', head: true }).eq('status', 'aktif'),
     supabase.from('letters').select('id, nomor, perihal, jenis, status, created_at, profiles!inner(full_name)').eq('status', 'Menunggu').order('created_at', { ascending: false }).limit(5),
+    supabase.from('lecturers').select('jabatan, profiles!inner(full_name)').eq('nidn', KADEP_NIDN).single(),
   ])
+
+  const kadepName = kadepRow ? (kadepRow.profiles as { full_name: string }).full_name : 'Kepala Departemen'
 
   const approvals: ApprovalItem[] = (pendingLetters ?? []).map((l, i) => ({
     id: i + 1,
@@ -38,7 +44,7 @@ export default async function KadepPage() {
     <DashboardLayout
       title="Dashboard Kepala Departemen"
       subtitle={`Selamat datang · ${new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}`}
-      userName="Kepala Departemen"
+      userName={kadepName}
       jabatan="Kepala Departemen"
     >
       <div className="flex items-end justify-end -mt-4 mb-2">

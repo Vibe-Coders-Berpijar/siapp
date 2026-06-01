@@ -13,6 +13,7 @@ function mapStatus(s: string): Surat['status'] {
 export default async function PersuratanPage() {
   const supabase = createServiceClient()
 
+  // Kepala Departemen: Dr. Anak Agung Gde Ngurah Ari Dwipayana (confirmed from dpp.fisipol.ugm.ac.id)
   const [{ data: letterRows }, { data: kadepRow }] = await Promise.all([
     supabase
       .from('letters')
@@ -22,8 +23,7 @@ export default async function PersuratanPage() {
     supabase
       .from('lecturers')
       .select('jabatan, profiles!inner(full_name)')
-      .eq('jabatan', 'Guru Besar')
-      .limit(1)
+      .eq('nidn', '0024027203')
       .single(),
   ])
 

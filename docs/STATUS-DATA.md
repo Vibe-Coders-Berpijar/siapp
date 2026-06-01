@@ -6,11 +6,28 @@ Terakhir diperbarui: 1 Juni 2026
 
 ---
 
+## Pimpinan Departemen (Terverifikasi dari dpp.fisipol.ugm.ac.id)
+
+| Jabatan | Nama | Sumber | Status |
+|---|---|---|---|
+| **Kepala Departemen** | Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si. | Sambutan Pengelola di dpp.fisipol.ugm.ac.id | **TERKONFIRMASI** |
+| **Sekretaris Departemen** | Belum ditemukan | Website tidak mencantumkan | Perlu konfirmasi |
+| **Kaprodi S1** | Belum ditemukan | Website tidak mencantumkan nama | Perlu konfirmasi |
+| **Kaprodi S2** | Belum ditemukan | Website tidak mencantumkan nama | Perlu konfirmasi |
+| **Kaprodi S3** | Belum ditemukan | Website tidak mencantumkan nama | Perlu konfirmasi |
+
+> Struktur organisasi tersedia di `/struktur/` namun hanya berupa gambar diagram tanpa nama. Kaprodi perlu dikonfirmasi langsung ke departemen.
+
+---
+
 ## Ringkasan Cepat
 
 | Kategori | Status |
 |---|---|
 | Data Dosen (nama, jabatan, NIDN) | REAL |
+| Data Dosen — Bidang Keahlian | REAL (diperbarui dari dpp.fisipol.ugm.ac.id) |
+| Identitas Kepala Departemen | REAL (Dr. Anak Agung Gde Ngurah Ari Dwipayana) |
+| Identitas Kaprodi S1/S2/S3 | Belum ditemukan — perlu konfirmasi |
 | Data Mahasiswa (nama, NIM, IPK, status) | REAL |
 | Data Publikasi (judul, jurnal, tahun) | REAL |
 | Data Surat Keluar | REAL |
@@ -38,13 +55,14 @@ Terakhir diperbarui: 1 Juni 2026
 | Menunggu Tanda Tangan | Surat dari DB | **REAL** | Supabase `letters` WHERE status='Menunggu' |
 | Tridharma Chart | Data grafik | **DUMMY** | `lib/mock-data-kadep.ts` |
 | IKU Panel | Target & capaian | **DUMMY** | `lib/mock-data-kadep.ts` |
-| Nama Kadep di sidebar | Prof. Dr. Purwo Santoso | **REAL** | Supabase `lecturers` (Guru Besar pertama) |
+| Nama Kadep di sidebar | Dr. Anak Agung Gde Ngurah Ari Dwipayana | **REAL** | Supabase `lecturers` WHERE nidn='0024027203' (terkonfirmasi dari website DPP) |
 
 ### Dashboard Kadep — Kepegawaian
 
 | Komponen | Data | Status | Sumber |
 |---|---|---|---|
 | Daftar dosen (nama, jabatan, NIDN) | 28 dosen | **REAL** | Supabase `lecturers` JOIN `profiles` |
+| Bidang keahlian per dosen | Semua 28 dosen terisi | **REAL** | Diambil dari dpp.fisipol.ugm.ac.id/dosen/ |
 | Jumlah publikasi per dosen | Dihitung dari DB | **REAL** | COUNT dari `publications` |
 | Hibah aktif per dosen | Dihitung dari DB | **REAL** | COUNT dari `grants` WHERE status='Aktif' |
 | SKS per dosen | 0 (tidak tersedia) | **DUMMY** | Belum ada data BKD |
@@ -98,8 +116,9 @@ Terakhir diperbarui: 1 Juni 2026
 
 | Komponen | Data | Status | Sumber |
 |---|---|---|---|
-| Profil sidebar (nama, jabatan, NIDN) | Prof. Dr. Purwo Santoso | **REAL** | Supabase `lecturers` + `profiles` |
-| Bidang keahlian, H-Index | Kosong / 0 | **BELUM TERISI** | Field ada di DB tapi belum diisi dari API |
+| Profil sidebar (nama, jabatan, NIDN) | Prof. Dr. Purwo Santoso | **REAL** | Supabase `lecturers` + `profiles` (demo dosen) |
+| Bidang keahlian | Terisi untuk semua dosen | **REAL** | Diambil dari dpp.fisipol.ugm.ac.id/dosen/ |
+| H-Index | 0 | **BELUM TERISI** | Perlu integrasi SINTA atau input manual |
 | ORCID, SINTA, Scopus | "—" | **BELUM TERISI** | Field ada di DB tapi belum diisi dari API |
 | Ikhtisar — KPI Cards (SKS, tridharma) | Hardcoded | **DUMMY** | Hardcoded di `IkhtisarTab.tsx` |
 | Publikasi (judul, jurnal, tahun) | 100 publikasi nyata | **REAL** | Supabase `publications` |
