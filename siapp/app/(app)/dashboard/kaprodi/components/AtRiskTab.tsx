@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 
-interface AtRiskStudent {
+export interface AtRiskStudent {
   id: string;
   nama: string;
   nim: string;
@@ -38,7 +38,7 @@ interface WarningModal {
   student: AtRiskStudent;
 }
 
-export function AtRiskTab({ prodi }: { prodi: string }) {
+export function AtRiskTab({ prodi, initialStudents }: { prodi: string; initialStudents?: AtRiskStudent[] }) {
   const [modal, setModal] = useState<WarningModal | null>(null);
   const [jenis, setJenis] = useState('Akademik');
   const [pesan, setPesan] = useState('');
@@ -46,7 +46,8 @@ export function AtRiskTab({ prodi }: { prodi: string }) {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState<Set<string>>(new Set());
 
-  const filtered = MOCK_AT_RISK.filter(
+  const source = initialStudents ?? MOCK_AT_RISK;
+  const filtered = source.filter(
     (s) => prodi === 'semua' || s.prodi === prodi
   );
 

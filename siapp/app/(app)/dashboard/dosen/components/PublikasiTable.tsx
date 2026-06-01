@@ -54,8 +54,8 @@ const columns: ColumnDef<Publikasi>[] = [
   )},
 ];
 
-export function PublikasiTable() {
-  const [data, setData] = useState<Publikasi[]>(MOCK_DATA);
+export function PublikasiTable({ initialData }: { initialData?: Publikasi[] }) {
+  const [data, setData] = useState<Publikasi[]>(initialData ?? MOCK_DATA);
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ judul: '', jurnal: '', tahun: new Date().getFullYear(), doi: '', quartile: 'Q2' as Quartile });
   const [aiLoading, setAiLoading] = useState(false);
