@@ -21,9 +21,9 @@ export interface DosenProfil {
 }
 
 const MOCK_DOSEN: DosenProfil = {
-  nama: 'Dr. Ahmad Fauzi',
-  jabatan: 'Lektor Kepala',
-  nidn: '0012345678',
+  nama: 'Prof. Dr. Purwo Santoso, M.A.',
+  jabatan: 'Guru Besar',
+  nidn: '0004026309',
   bidangKeahlian: ['Politik Komparatif', 'Tata Kelola Lokal', 'Otonomi Daerah'],
   hIndex: 7,
   orcid: '0000-0002-1234-5678',

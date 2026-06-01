@@ -110,8 +110,8 @@ export async function mockNotulensiExtract(
   if (isAkreditasi) {
     return {
       judul: "Rapat Persiapan Akreditasi Program Studi",
-      pimpinanRapat: "Dr. Hendra Wijaya",
-      peserta: ["Prof. Dr. Sari Indah","Dr. Herlan Kusuma","Rina Kusuma","Dewi Lestari"],
+      pimpinanRapat: "Sekretaris Departemen",
+      peserta: ["Dr. Anak Agung Gde Ngurah Ari Dwipayana","Dr. Mada Sukmajati","Dr. Nanang Indra Kurniawan","Nur Azizah"],
       agenda: ["Review dokumen akreditasi","Pembagian tugas pengisian borang","Jadwal simulasi visitasi"],
       keputusan: [
         "Borang akreditasi harus selesai pada 15 Mei 2026.",
@@ -119,9 +119,9 @@ export async function mockNotulensiExtract(
         "Simulasi visitasi dijadwalkan 20 Mei 2026.",
       ],
       tindakLanjut: [
-        { item: "Isi borang Standar 1–4", penanggungJawab: "Dr. Herlan Kusuma", tenggat: "2026-05-10" },
-        { item: "Update data alumni", penanggungJawab: "Rina Kusuma", tenggat: "2026-05-08" },
-        { item: "Koordinasi jadwal simulasi", penanggungJawab: "Dewi Lestari", tenggat: "2026-05-15" },
+        { item: "Isi borang Standar 1–4", penanggungJawab: "Dr. Mada Sukmajati", tenggat: "2026-05-10" },
+        { item: "Update data alumni", penanggungJawab: "Dr. Nanang Indra Kurniawan", tenggat: "2026-05-08" },
+        { item: "Koordinasi jadwal simulasi", penanggungJawab: "Nur Azizah", tenggat: "2026-05-15" },
       ],
     };
   }
@@ -129,8 +129,8 @@ export async function mockNotulensiExtract(
   if (isAnggaran) {
     return {
       judul: "Rapat Tinjauan Anggaran RKAT",
-      pimpinanRapat: "Prof. Dr. Sari Indah",
-      peserta: ["Dr. Hendra Wijaya","Budi Santoso","Rina Kusuma"],
+      pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana",
+      peserta: ["Sekretaris Departemen","Arya Budi","Dr. Nanang Indra Kurniawan"],
       agenda: ["Realisasi anggaran berjalan","Proyeksi kebutuhan","Efisiensi belanja"],
       keputusan: [
         "Realisasi anggaran masih di bawah target — perlu akselerasi.",
@@ -138,8 +138,8 @@ export async function mockNotulensiExtract(
         "Pengajuan revisi RKAT paling lambat akhir bulan.",
       ],
       tindakLanjut: [
-        { item: "Laporan realisasi anggaran detail", penanggungJawab: "Budi Santoso", tenggat: "2026-05-15" },
-        { item: "Dokumen revisi RKAT", penanggungJawab: "Rina Kusuma", tenggat: "2026-05-31" },
+        { item: "Laporan realisasi anggaran detail", penanggungJawab: "Arya Budi", tenggat: "2026-05-15" },
+        { item: "Dokumen revisi RKAT", penanggungJawab: "Dr. Nanang Indra Kurniawan", tenggat: "2026-05-31" },
       ],
     };
   }
@@ -147,8 +147,8 @@ export async function mockNotulensiExtract(
   if (isPenelitian) {
     return {
       judul: "Rapat Koordinasi Tim Penelitian",
-      pimpinanRapat: "Prof. Dr. Sari Indah",
-      peserta: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu"],
+      pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana",
+      peserta: ["Sekretaris Departemen","Dr. Bayu Dardias Kurniadi","Hasrul Hanif","Dr. Indah Surya Wardhani"],
       agenda: ["Evaluasi progres penelitian","Rencana publikasi","Kendala di lapangan"],
       keputusan: [
         "Laporan kemajuan wajib diserahkan akhir bulan ini.",
@@ -157,15 +157,15 @@ export async function mockNotulensiExtract(
       ],
       tindakLanjut: [
         { item: "Kumpulkan laporan kemajuan", penanggungJawab: "Semua PI", tenggat: "2026-05-31" },
-        { item: "Submit draft ke jurnal", penanggungJawab: "Dr. Ahmad Rizky", tenggat: "2026-06-15" },
+        { item: "Submit draft ke jurnal", penanggungJawab: "Dr. Bayu Dardias Kurniadi", tenggat: "2026-06-15" },
       ],
     };
   }
 
   return {
     judul: "Rapat Koordinasi Departemen",
-    pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
-    peserta: ["Dr. Hendra Wijaya","Rina Kusuma","Dewi Lestari","Budi Santoso"],
+    pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana",
+    peserta: ["Sekretaris Departemen","Dr. Nanang Indra Kurniawan","Nur Azizah","Arya Budi"],
     agenda: ["Evaluasi kegiatan berjalan","Rencana tindak lanjut","Informasi dan lain-lain"],
     keputusan: [
       "Seluruh kegiatan yang telah direncanakan agar dilaksanakan sesuai jadwal.",
@@ -173,8 +173,8 @@ export async function mockNotulensiExtract(
       "Koordinasi antar unit perlu ditingkatkan untuk efektivitas kerja.",
     ],
     tindakLanjut: [
-      { item: "Penyusunan laporan kegiatan", penanggungJawab: "Rina Kusuma", tenggat: "2026-05-20" },
-      { item: "Koordinasi jadwal unit", penanggungJawab: "Dewi Lestari", tenggat: "2026-05-15" },
+      { item: "Penyusunan laporan kegiatan", penanggungJawab: "Dr. Nanang Indra Kurniawan", tenggat: "2026-05-20" },
+      { item: "Koordinasi jadwal unit", penanggungJawab: "Nur Azizah", tenggat: "2026-05-15" },
     ],
   };
 }

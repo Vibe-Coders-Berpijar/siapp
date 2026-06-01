@@ -14,9 +14,9 @@ export interface DosenPublik {
 }
 
 const MOCK_DOSEN: DosenPublik = {
-  nama: 'Dr. Ahmad Fauzi',
-  jabatan: 'Lektor Kepala',
-  nidn: '0012345678',
+  nama: 'Prof. Dr. Purwo Santoso, M.A.',
+  jabatan: 'Guru Besar',
+  nidn: '0004026309',
   bio: 'Peneliti dan pengajar di bidang Politik Komparatif dan Tata Kelola Lokal. Fokus riset pada desentralisasi, otonomi daerah, dan partisipasi masyarakat di Indonesia.',
   bidangKeahlian: ['Politik Komparatif', 'Tata Kelola Lokal', 'Otonomi Daerah'],
   publikasiTerverifikasi: [

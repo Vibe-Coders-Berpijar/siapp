@@ -159,15 +159,15 @@ export const letters: Letter[] = [
   {
     id: 1, direction: "keluar", category: "undangan",
     nomor: "B/001/UN1.SIPSO/HM/2026",
-    perihal: "Undangan Seminar Internasional Agronomi",
-    tujuan: "Prof. Dr. Ahmad Fauzi, M.Si.", pengirim: "Ketua DPP UGM",
+    perihal: "Undangan Seminar Internasional Tata Kelola Pemerintahan",
+    tujuan: "Prof. Dr. Purwo Santoso, M.A.", pengirim: "Ketua DPP UGM",
     tanggal: "2026-01-15", status: "Diarsipkan", approvalStep: 4,
     isi: "Dengan hormat, kami mengundang Bapak untuk hadir dalam seminar internasional agronomi yang diselenggarakan pada 20 Februari 2026 di Gedung PAU UGM.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Rina Kusuma", waktu: "2026-01-15 08:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-01-15 08:05" },
-      { aksi: "Direview Sekdep", oleh: "Dr. Hendra Wijaya", waktu: "2026-01-15 10:30" },
-      { aksi: "Ditandatangani Kadep", oleh: "Prof. Dr. Sari Indah", waktu: "2026-01-15 14:15" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-01-15 08:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-01-15 08:05" },
+      { aksi: "Direview Sekdep", oleh: "Sekretaris Departemen", waktu: "2026-01-15 10:30" },
+      { aksi: "Ditandatangani Kadep", oleh: "Dr. Anak Agung Gde Ngurah Ari Dwipayana", waktu: "2026-01-15 14:15" },
       { aksi: "Diarsipkan", oleh: "Sistem", waktu: "2026-01-15 14:20" },
     ],
   },
@@ -179,10 +179,10 @@ export const letters: Letter[] = [
     tanggal: "2026-01-22", status: "Diarsipkan", approvalStep: 4,
     isi: "Dengan hormat, bersama ini kami mengajukan permohonan pencairan dana penelitian tahap II sesuai kontrak nomor 010/DRPM/2025.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Budi Santoso", waktu: "2026-01-22 09:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Budi Santoso", waktu: "2026-01-22 09:05" },
-      { aksi: "Direview Sekdep", oleh: "Dr. Hendra Wijaya", waktu: "2026-01-23 08:45" },
-      { aksi: "Ditandatangani Kadep", oleh: "Prof. Dr. Sari Indah", waktu: "2026-01-23 13:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-01-22 09:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-01-22 09:05" },
+      { aksi: "Direview Sekdep", oleh: "Sekretaris Departemen", waktu: "2026-01-23 08:45" },
+      { aksi: "Ditandatangani Kadep", oleh: "Dr. Anak Agung Gde Ngurah Ari Dwipayana", waktu: "2026-01-23 13:00" },
       { aksi: "Diarsipkan", oleh: "Sistem", waktu: "2026-01-23 13:05" },
     ],
   },
@@ -194,10 +194,10 @@ export const letters: Letter[] = [
     tanggal: "2026-02-01", status: "Ditandatangani", approvalStep: 3,
     isi: "Dengan hormat, diberitahukan bahwa ujian komprehensif untuk mahasiswa semester akhir akan dilaksanakan mulai 15–28 Februari 2026.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Rina Kusuma", waktu: "2026-02-01 08:30" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-02-01 08:35" },
-      { aksi: "Direview Sekdep", oleh: "Dr. Hendra Wijaya", waktu: "2026-02-01 11:00" },
-      { aksi: "Ditandatangani Kadep", oleh: "Prof. Dr. Sari Indah", waktu: "2026-02-02 09:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-02-01 08:30" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-02-01 08:35" },
+      { aksi: "Direview Sekdep", oleh: "Sekretaris Departemen", waktu: "2026-02-01 11:00" },
+      { aksi: "Ditandatangani Kadep", oleh: "Dr. Anak Agung Gde Ngurah Ari Dwipayana", waktu: "2026-02-02 09:00" },
     ],
   },
   {
@@ -208,9 +208,9 @@ export const letters: Letter[] = [
     tanggal: "2026-02-10", status: "Menunggu", approvalStep: 2,
     isi: "Dengan hormat, mengundang Bapak/Ibu untuk hadir dalam rapat koordinasi penyusunan kurikulum tahun 2026.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Dewi Lestari", waktu: "2026-02-10 14:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Dewi Lestari", waktu: "2026-02-10 14:05" },
-      { aksi: "Direview Sekdep — menunggu Kadep", oleh: "Dr. Hendra Wijaya", waktu: "2026-02-11 09:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-02-10 14:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-02-10 14:05" },
+      { aksi: "Direview Sekdep — menunggu Kadep", oleh: "Sekretaris Departemen", waktu: "2026-02-11 09:00" },
     ],
   },
   {
@@ -221,8 +221,8 @@ export const letters: Letter[] = [
     tanggal: "2026-02-14", status: "Menunggu", approvalStep: 1,
     isi: "Dengan hormat, meneruskan permohonan cuti akademik mahasiswa atas nama Raditya Pratama (NIM: 22/DPP/00045).",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Rina Kusuma", waktu: "2026-02-14 09:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-02-14 09:05" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-02-14 09:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-02-14 09:05" },
     ],
   },
   {
@@ -233,8 +233,8 @@ export const letters: Letter[] = [
     tanggal: "2026-02-20", status: "Menunggu", approvalStep: 1,
     isi: "Dengan hormat, dalam rangka penguatan ekosistem penelitian nasional, kami mengusulkan perjanjian kerjasama penelitian.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Dr. Hendra Wijaya", waktu: "2026-02-20 10:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-02-20 10:30" },
+      { aksi: "Dibuat", oleh: "Sekretaris Departemen", waktu: "2026-02-20 10:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-02-20 10:30" },
     ],
   },
   {
@@ -244,7 +244,7 @@ export const letters: Letter[] = [
     tujuan: "Rektor Universitas Gadjah Mada", pengirim: "Ketua DPP UGM",
     tanggal: "2026-03-01", status: "Draft", approvalStep: 0,
     isi: "",
-    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Budi Santoso", waktu: "2026-03-01 08:00" }],
+    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Staf Sekretariat", waktu: "2026-03-01 08:00" }],
   },
   {
     id: 8, direction: "keluar", category: "pemberitahuan",
@@ -253,7 +253,7 @@ export const letters: Letter[] = [
     tujuan: "Calon Mahasiswa DPP UGM", pengirim: "Sekretariat DPP UGM",
     tanggal: "2026-03-05", status: "Draft", approvalStep: 0,
     isi: "",
-    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Dewi Lestari", waktu: "2026-03-05 13:00" }],
+    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Staf Sekretariat", waktu: "2026-03-05 13:00" }],
   },
   {
     id: 9, direction: "keluar", category: "undangan",
@@ -263,10 +263,10 @@ export const letters: Letter[] = [
     tanggal: "2026-03-10", status: "Ditandatangani", approvalStep: 3,
     isi: "Dengan hormat, memberitahukan akan diadakannya kuliah tamu oleh Prof. John Smith (Cornell University) pada Kamis, 20 Maret 2026.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Rina Kusuma", waktu: "2026-03-10 09:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-03-10 09:05" },
-      { aksi: "Direview Sekdep", oleh: "Dr. Hendra Wijaya", waktu: "2026-03-10 11:00" },
-      { aksi: "Ditandatangani Kadep", oleh: "Prof. Dr. Sari Indah", waktu: "2026-03-10 14:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-03-10 09:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-03-10 09:05" },
+      { aksi: "Direview Sekdep", oleh: "Sekretaris Departemen", waktu: "2026-03-10 11:00" },
+      { aksi: "Ditandatangani Kadep", oleh: "Dr. Anak Agung Gde Ngurah Ari Dwipayana", waktu: "2026-03-10 14:00" },
     ],
   },
   {
@@ -277,9 +277,9 @@ export const letters: Letter[] = [
     tanggal: "2026-03-15", status: "Menunggu", approvalStep: 2,
     isi: "Dengan hormat, mengajukan permohonan peminjaman Laboratorium Terpadu lt. 3 untuk keperluan praktikum mahasiswa semester genap 2025/2026.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Budi Santoso", waktu: "2026-03-15 10:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Budi Santoso", waktu: "2026-03-15 10:05" },
-      { aksi: "Direview Sekdep — menunggu Kadep", oleh: "Dr. Hendra Wijaya", waktu: "2026-03-16 09:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-03-15 10:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-03-15 10:05" },
+      { aksi: "Direview Sekdep — menunggu Kadep", oleh: "Sekretaris Departemen", waktu: "2026-03-16 09:00" },
     ],
   },
   {
@@ -289,7 +289,7 @@ export const letters: Letter[] = [
     tujuan: "LPDP Kementerian Keuangan RI", pengirim: "Ketua DPP UGM",
     tanggal: "2026-04-01", status: "Draft", approvalStep: 0,
     isi: "",
-    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Dewi Lestari", waktu: "2026-04-01 14:30" }],
+    auditLog: [{ aksi: "Dibuat (Draft)", oleh: "Staf Sekretariat", waktu: "2026-04-01 14:30" }],
   },
   {
     id: 12, direction: "keluar", category: "undangan",
@@ -299,10 +299,10 @@ export const letters: Letter[] = [
     tanggal: "2026-04-10", status: "Ditandatangani", approvalStep: 3,
     isi: "Dengan hormat, mengundang seluruh civitas akademika untuk hadir dalam rangkaian acara Dies Natalis UGM ke-77 yang akan diselenggarakan pada 19 Desember 2026.",
     auditLog: [
-      { aksi: "Dibuat", oleh: "Rina Kusuma", waktu: "2026-04-10 08:00" },
-      { aksi: "Dikirim ke Sekdep", oleh: "Rina Kusuma", waktu: "2026-04-10 08:05" },
-      { aksi: "Direview Sekdep", oleh: "Dr. Hendra Wijaya", waktu: "2026-04-10 09:30" },
-      { aksi: "Ditandatangani Kadep", oleh: "Prof. Dr. Sari Indah", waktu: "2026-04-10 11:00" },
+      { aksi: "Dibuat", oleh: "Staf Sekretariat", waktu: "2026-04-10 08:00" },
+      { aksi: "Dikirim ke Sekdep", oleh: "Staf Sekretariat", waktu: "2026-04-10 08:05" },
+      { aksi: "Direview Sekdep", oleh: "Sekretaris Departemen", waktu: "2026-04-10 09:30" },
+      { aksi: "Ditandatangani Kadep", oleh: "Dr. Anak Agung Gde Ngurah Ari Dwipayana", waktu: "2026-04-10 11:00" },
     ],
   },
   // Surat masuk
@@ -314,21 +314,21 @@ export const letters: Letter[] = [
     tanggal: "2026-03-20", status: "Diarsipkan", approvalStep: 4,
     isi: "Dengan hormat, mengundang Bapak/Ibu untuk menghadiri sosialisasi program penelitian kolaboratif antar-departemen tahun 2026.",
     auditLog: [
-      { aksi: "Diterima", oleh: "Rina Kusuma", waktu: "2026-03-20 10:00" },
-      { aksi: "Didisposisikan ke Kadep", oleh: "Dr. Hendra Wijaya", waktu: "2026-03-20 11:00" },
-      { aksi: "Diarsipkan", oleh: "Rina Kusuma", waktu: "2026-03-21 08:00" },
+      { aksi: "Diterima", oleh: "Staf Sekretariat", waktu: "2026-03-20 10:00" },
+      { aksi: "Didisposisikan ke Kadep", oleh: "Sekretaris Departemen", waktu: "2026-03-20 11:00" },
+      { aksi: "Diarsipkan", oleh: "Staf Sekretariat", waktu: "2026-03-21 08:00" },
     ],
   },
   {
     id: 14, direction: "masuk", category: "permohonan",
     nomor: "445/DIKTI/2026",
     perihal: "Permohonan Data Akreditasi Program Studi",
-    tujuan: "Ketua Program Studi Agronomi DPP UGM", pengirim: "BAN-PT",
+    tujuan: "Ketua Program Studi S1 Politik dan Pemerintahan DPP UGM", pengirim: "BAN-PT",
     tanggal: "2026-04-05", status: "Menunggu", approvalStep: 1,
     isi: "Dengan hormat, dalam rangka proses akreditasi program studi, kami memohon kesediaan untuk mengisi borang akreditasi.",
     auditLog: [
-      { aksi: "Diterima", oleh: "Rina Kusuma", waktu: "2026-04-05 09:00" },
-      { aksi: "Didisposisikan ke Kaprodi", oleh: "Dr. Hendra Wijaya", waktu: "2026-04-05 10:30" },
+      { aksi: "Diterima", oleh: "Staf Sekretariat", waktu: "2026-04-05 09:00" },
+      { aksi: "Didisposisikan ke Kaprodi", oleh: "Sekretaris Departemen", waktu: "2026-04-05 10:30" },
     ],
   },
   {
@@ -339,7 +339,7 @@ export const letters: Letter[] = [
     tanggal: "2026-04-18", status: "Menunggu", approvalStep: 1,
     isi: "Dengan hormat, menyampaikan konfirmasi persetujuan atas usulan kerjasama penelitian yang telah disampaikan sebelumnya.",
     auditLog: [
-      { aksi: "Diterima", oleh: "Rina Kusuma", waktu: "2026-04-18 14:00" },
+      { aksi: "Diterima", oleh: "Staf Sekretariat", waktu: "2026-04-18 14:00" },
     ],
   },
   {
@@ -350,7 +350,7 @@ export const letters: Letter[] = [
     tanggal: "2026-05-01", status: "Menunggu", approvalStep: 1,
     isi: "Dengan hormat, diberitahukan bahwa batas akhir pengumpulan laporan akhir penelitian tahun 2025 adalah 31 Mei 2026.",
     auditLog: [
-      { aksi: "Diterima", oleh: "Rina Kusuma", waktu: "2026-05-01 08:00" },
+      { aksi: "Diterima", oleh: "Staf Sekretariat", waktu: "2026-05-01 08:00" },
     ],
   },
 ];
@@ -407,7 +407,7 @@ Ditetapkan di Yogyakarta
 Pada tanggal [Tanggal]
 
 Kepala Departemen,
-Prof. Dr. Sari Indah, M.P.`,
+Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.`,
   },
   {
     id: 3, category: "tugas", name: "Surat Tugas",
@@ -415,7 +415,7 @@ Prof. Dr. Sari Indah, M.P.`,
     body: `SURAT TUGAS
 Nomor: [NOMOR]
 
-Yang bertanda tangan di bawah ini, Kepala Departemen Pendidikan Profesi Universitas Gadjah Mada, menugaskan kepada:
+Yang bertanda tangan di bawah ini, Kepala Departemen Politik dan Pemerintahan Universitas Gadjah Mada, menugaskan kepada:
 
 Nama     : [Nama Lengkap]
 NIP      : [NIP]
@@ -432,7 +432,7 @@ Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
 Yogyakarta, [Tanggal]
 Kepala Departemen,
 
-Prof. Dr. Sari Indah, M.P.`,
+Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.`,
   },
   {
     id: 4, category: "keterangan", name: "Surat Keterangan Aktif Kuliah",
@@ -454,14 +454,14 @@ Surat keterangan ini dibuat untuk keperluan [tujuan] dan digunakan sebagaimana m
 Yogyakarta, [Tanggal]
 Ketua DPP UGM,
 
-Prof. Dr. Sari Indah, M.P.`,
+Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.`,
   },
   {
     id: 5, category: "permohonan", name: "Permohonan Dana/Fasilitas",
     subject: "Permohonan [Dana/Fasilitas] untuk [Kegiatan]",
     body: `Dengan hormat,
 
-Dalam rangka [tujuan/konteks kegiatan], Departemen Pendidikan Profesi (DPP) Universitas Gadjah Mada bermaksud mengajukan permohonan [jenis permohonan] kepada Bapak/Ibu.
+Dalam rangka [tujuan/konteks kegiatan], Departemen Politik dan Pemerintahan (DPP) Universitas Gadjah Mada bermaksud mengajukan permohonan [jenis permohonan] kepada Bapak/Ibu.
 
 Adapun rincian permohonan adalah sebagai berikut:
 1. [Rincian pertama]
@@ -475,7 +475,7 @@ Besar harapan kami permohonan ini dapat dikabulkan demi kelancaran kegiatan ters
 Hormat kami,
 Ketua DPP UGM,
 
-Prof. Dr. Sari Indah, M.P.`,
+Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.`,
   },
   {
     id: 6, category: "pemberitahuan", name: "Pemberitahuan Umum",
@@ -520,9 +520,9 @@ export const notulensiList: NotulensiItem[] = [
   {
     id: 1, judul: "Rapat Koordinasi Tim Penelitian Semester Genap 2025/2026",
     tanggal: "2026-04-15", tempat: "Ruang Rapat Utama DPP UGM",
-    pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
-    peserta: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Budi Santoso, M.Sc."],
-    anggota: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Budi Santoso, M.Sc."],
+    pimpinanRapat: "Prof. Dr. Amalinda Savirani, S.IP., M.A.",
+    peserta: ["Dr. Nanang Indra Kurniawan","Dr. Bayu Dardias Kurniadi","Hasrul Hanif","Dr. Indah Surya Wardhani","Arie Ruhyanto","Arya Budi, S.I.P., MAPS."],
+    anggota: ["Dr. Nanang Indra Kurniawan","Dr. Bayu Dardias Kurniadi","Hasrul Hanif","Dr. Indah Surya Wardhani","Arie Ruhyanto","Arya Budi, S.I.P., MAPS."],
     akses: "anggota", label: "Departemen",
     agenda: ["Evaluasi progres penelitian semester ganjil","Pembagian tugas penelitian semester genap","Rencana publikasi 2026"],
     keputusan: [
@@ -532,17 +532,17 @@ export const notulensiList: NotulensiItem[] = [
     ],
     tindakLanjut: [
       { item: "Kumpulkan laporan kemajuan penelitian", penanggungJawab: "Semua PI Penelitian", tenggat: "2026-04-30" },
-      { item: "Susun roadmap publikasi 2026", penanggungJawab: "Dr. Ahmad Rizky", tenggat: "2026-05-10" },
-      { item: "Ajukan revisi anggaran ke DRPM", penanggungJawab: "Dr. Hendra Wijaya", tenggat: "2026-05-05" },
+      { item: "Susun roadmap publikasi 2026", penanggungJawab: "Dr. Bayu Dardias Kurniadi", tenggat: "2026-05-10" },
+      { item: "Ajukan revisi anggaran ke DRPM", penanggungJawab: "Sekretaris Departemen", tenggat: "2026-05-05" },
     ],
     status: "Disetujui",
   },
   {
-    id: 2, judul: "Rapat Persiapan Akreditasi BAN-PT Program Studi Agronomi",
+    id: 2, judul: "Rapat Persiapan Akreditasi BAN-PT Program Studi Politik dan Pemerintahan",
     tanggal: "2026-04-22", tempat: "Ruang Rapat Kecil DPP UGM",
-    pimpinanRapat: "Dr. Hendra Wijaya",
-    peserta: ["Prof. Dr. Sari Indah","Dr. Herlan Kusuma","Dewi Lestari","Rina Kusuma","Budi Santoso"],
-    anggota: ["Prof. Dr. Sari Indah","Dr. Herlan Kusuma","Dewi Lestari","Rina Kusuma","Budi Santoso"],
+    pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.",
+    peserta: ["Prof. Dr. Amalinda Savirani","Dr. Mada Sukmajati","Nur Azizah","Dr. Nanang Indra Kurniawan","Arya Budi"],
+    anggota: ["Prof. Dr. Amalinda Savirani","Dr. Mada Sukmajati","Nur Azizah","Dr. Nanang Indra Kurniawan","Arya Budi"],
     akses: "anggota", label: "Prodi",
     agenda: ["Review borang akreditasi","Pembagian tugas pengisian borang","Jadwal visitasi"],
     keputusan: [
@@ -551,37 +551,37 @@ export const notulensiList: NotulensiItem[] = [
       "Simulasi visitasi dijadwalkan tanggal 20 Mei 2026.",
     ],
     tindakLanjut: [
-      { item: "Isi borang Standar 1–4", penanggungJawab: "Dr. Herlan Kusuma", tenggat: "2026-05-10" },
-      { item: "Update data alumni", penanggungJawab: "Rina Kusuma", tenggat: "2026-05-08" },
-      { item: "Siapkan dokumen pendukung", penanggungJawab: "Dewi Lestari", tenggat: "2026-05-15" },
+      { item: "Isi borang Standar 1–4", penanggungJawab: "Dr. Mada Sukmajati", tenggat: "2026-05-10" },
+      { item: "Update data alumni", penanggungJawab: "Dr. Nanang Indra Kurniawan", tenggat: "2026-05-08" },
+      { item: "Siapkan dokumen pendukung", penanggungJawab: "Nur Azizah", tenggat: "2026-05-15" },
     ],
     status: "Disetujui",
   },
   {
-    id: 3, judul: "Rapat Penyusunan Kurikulum 2026 Program Studi Ilmu Tanah",
+    id: 3, judul: "Rapat Penyusunan Kurikulum 2026 Program Studi Politik dan Pemerintahan",
     tanggal: "2026-04-28", tempat: "Ruang Kelas 201 DPP UGM",
-    pimpinanRapat: "Prof. Dr. Bambang Sutrisno",
-    peserta: ["Dr. Dewi Rahayu","Dr. Agus Hartono","Andi Prasetyo","Budi Santoso"],
-    anggota: ["Dr. Dewi Rahayu","Dr. Agus Hartono","Andi Prasetyo","Budi Santoso"],
+    pimpinanRapat: "Prof. Dr. Purwo Santoso, M.A.",
+    peserta: ["Dr. Indah Surya Wardhani","Arie Ruhyanto","Alfath Bagus Panuntun","Arya Budi"],
+    anggota: ["Dr. Indah Surya Wardhani","Arie Ruhyanto","Alfath Bagus Panuntun","Arya Budi"],
     akses: "publik", label: "Prodi",
     agenda: ["Evaluasi kurikulum 2022","Usulan mata kuliah baru","Sinkronisasi dengan KKNI"],
     keputusan: [
-      "Mata kuliah Precision Agriculture dimasukkan sebagai mata kuliah wajib mulai 2026.",
+      "Mata kuliah E-Participation dan Demokrasi Digital dimasukkan sebagai mata kuliah pilihan mulai 2026.",
       "Beban SKS disesuaikan dari 148 SKS menjadi 144 SKS.",
       "Mata kuliah pilihan diperluas dengan 3 mata kuliah baru.",
     ],
     tindakLanjut: [
-      { item: "Draft RPS mata kuliah Precision Agriculture", penanggungJawab: "Dr. Ahmad Rizky", tenggat: "2026-05-20" },
-      { item: "Revisi dokumen kurikulum", penanggungJawab: "Dr. Dewi Rahayu", tenggat: "2026-05-25" },
+      { item: "Draft RPS mata kuliah E-Participation dan Demokrasi Digital", penanggungJawab: "Alfath Bagus Panuntun", tenggat: "2026-05-20" },
+      { item: "Revisi dokumen kurikulum", penanggungJawab: "Dr. Indah Surya Wardhani", tenggat: "2026-05-25" },
     ],
     status: "Disetujui",
   },
   {
     id: 4, judul: "Rapat Evaluasi Kinerja Dosen Semester Ganjil 2025/2026",
     tanggal: "2026-05-02", tempat: "Aula Gedung A DPP UGM",
-    pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
-    peserta: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Dr. Herlan Kusuma","Prof. Dr. Bambang Sutrisno"],
-    anggota: ["Dr. Hendra Wijaya","Dr. Ahmad Rizky","Dr. Rini Setiawati","Dr. Dewi Rahayu","Dr. Agus Hartono","Dr. Herlan Kusuma","Prof. Dr. Bambang Sutrisno"],
+    pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.",
+    peserta: ["Sekretaris Departemen","Dr. Bayu Dardias Kurniadi","Hasrul Hanif","Dr. Indah Surya Wardhani","Arie Ruhyanto","Dr. Mada Sukmajati","Prof. Dr. Purwo Santoso"],
+    anggota: ["Sekretaris Departemen","Dr. Bayu Dardias Kurniadi","Hasrul Hanif","Dr. Indah Surya Wardhani","Arie Ruhyanto","Dr. Mada Sukmajati","Prof. Dr. Purwo Santoso"],
     akses: "anggota", label: "Departemen",
     agenda: ["Evaluasi nilai EDOM","Tindak lanjut keluhan mahasiswa","Rencana pengembangan kompetensi dosen"],
     keputusan: [
@@ -590,17 +590,17 @@ export const notulensiList: NotulensiItem[] = [
       "Program mentoring dosen junior akan dimulai Juni 2026.",
     ],
     tindakLanjut: [
-      { item: "Daftar dosen untuk pelatihan PBL", penanggungJawab: "Dr. Hendra Wijaya", tenggat: "2026-05-15" },
-      { item: "Siapkan program mentoring", penanggungJawab: "Prof. Dr. Bambang", tenggat: "2026-05-30" },
+      { item: "Daftar dosen untuk pelatihan PBL", penanggungJawab: "Sekretaris Departemen", tenggat: "2026-05-15" },
+      { item: "Siapkan program mentoring", penanggungJawab: "Prof. Dr. Amalinda Savirani", tenggat: "2026-05-30" },
     ],
     status: "Disetujui",
   },
   {
     id: 5, judul: "Rapat Koordinasi Kegiatan Kemahasiswaan Mei 2026",
     tanggal: "2026-05-06", tempat: "Ruang Rapat Kecil DPP UGM",
-    pimpinanRapat: "Dr. Hendra Wijaya",
-    peserta: ["Rina Kusuma","Dewi Lestari","Ketua BEM DPP","Ketua HIMA Agronomi","Ketua HIMA Ilmu Tanah"],
-    anggota: ["Rina Kusuma","Dewi Lestari","Ketua BEM DPP","Ketua HIMA Agronomi","Ketua HIMA Ilmu Tanah"],
+    pimpinanRapat: "Wawan Mas'udi, S.IP., M.P.A., Ph.D.",
+    peserta: ["Dr. Nanang Indra Kurniawan","Nur Azizah","Ketua BEM DPP","Ketua HIMA DPP","Ketua HIMA Pemerintahan"],
+    anggota: ["Dr. Nanang Indra Kurniawan","Nur Azizah","Ketua BEM DPP","Ketua HIMA DPP","Ketua HIMA Pemerintahan"],
     akses: "publik", label: "General",
     agenda: ["Rencana kegiatan dies natalis departemen","Koordinasi PKM mahasiswa","Program KKN 2026"],
     keputusan: [
@@ -610,16 +610,16 @@ export const notulensiList: NotulensiItem[] = [
     ],
     tindakLanjut: [
       { item: "Panitia dies natalis departemen", penanggungJawab: "Ketua BEM DPP", tenggat: "2026-05-15" },
-      { item: "Workshop penulisan PKM", penanggungJawab: "Dewi Lestari", tenggat: "2026-05-20" },
+      { item: "Workshop penulisan PKM", penanggungJawab: "Nur Azizah", tenggat: "2026-05-20" },
     ],
     status: "Draft",
   },
   {
     id: 6, judul: "Rapat Tinjauan Anggaran RKAT Triwulan I 2026",
     tanggal: "2026-05-07", tempat: "Ruang Rapat Utama DPP UGM",
-    pimpinanRapat: "Prof. Dr. Sari Indah, M.P.",
-    peserta: ["Dr. Hendra Wijaya","Budi Santoso","Rina Kusuma","Dewi Lestari"],
-    anggota: ["Dr. Hendra Wijaya","Budi Santoso","Rina Kusuma","Dewi Lestari"],
+    pimpinanRapat: "Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.",
+    peserta: ["Sekretaris Departemen","Arya Budi","Dr. Nanang Indra Kurniawan","Nur Azizah"],
+    anggota: ["Sekretaris Departemen","Arya Budi","Dr. Nanang Indra Kurniawan","Nur Azizah"],
     akses: "anggota", label: "Departemen",
     agenda: ["Realisasi anggaran Januari–Maret 2026","Proyeksi kebutuhan April–Juni","Efisiensi anggaran"],
     keputusan: [
@@ -628,8 +628,8 @@ export const notulensiList: NotulensiItem[] = [
       "Pengajuan revisi RKAT paling lambat 31 Mei 2026.",
     ],
     tindakLanjut: [
-      { item: "Laporan realisasi anggaran detail", penanggungJawab: "Budi Santoso", tenggat: "2026-05-12" },
-      { item: "Dokumen revisi RKAT", penanggungJawab: "Rina Kusuma", tenggat: "2026-05-31" },
+      { item: "Laporan realisasi anggaran detail", penanggungJawab: "Arya Budi", tenggat: "2026-05-12" },
+      { item: "Dokumen revisi RKAT", penanggungJawab: "Dr. Nanang Indra Kurniawan", tenggat: "2026-05-31" },
     ],
     status: "Draft",
   },
@@ -639,15 +639,15 @@ export const notulensiList: NotulensiItem[] = [
 
 export const calendarEvents: CalendarEvent[] = [
   { id: 1,  judul: "Ujian Akhir Semester Genap",       tanggal: "2026-05-04", tanggalAkhir: "2026-05-22", waktuMulai: "08:00", waktuSelesai: "11:00", tipe: "lainnya",    lokasi: "Gedung DPP UGM",            penyelenggara: "Sekretariat", deskripsi: "UAS seluruh prodi semester genap 2025/2026" },
-  { id: 2,  judul: "Workshop Penulisan Ilmiah",         tanggal: "2026-05-06", waktuMulai: "08:00", waktuSelesai: "15:00", tipe: "seminar",    lokasi: "Aula Gedung A",             penyelenggara: "Dr. Rini Setiawati" },
-  { id: 3,  judul: "Rapat Koordinasi Kemahasiswaan",   tanggal: "2026-05-06", waktuMulai: "15:30", waktuSelesai: "17:00", tipe: "rapat",      lokasi: "Ruang Rapat Kecil",         penyelenggara: "Dr. Hendra Wijaya" },
-  { id: 4,  judul: "Tinjauan Anggaran RKAT Q1",        tanggal: "2026-05-07", waktuMulai: "09:00", waktuSelesai: "11:00", tipe: "rapat",      lokasi: "Ruang Rapat Utama",         penyelenggara: "Prof. Dr. Sari Indah" },
-  { id: 5,  judul: "Praktikum Analisis Data Pertanian",tanggal: "2026-05-14", waktuMulai: "08:00", waktuSelesai: "10:00", tipe: "lainnya",    lokasi: "Lab Komputer",              penyelenggara: "Dr. Ahmad Rizky" },
-  { id: 6,  judul: "Seminar Nasional Agronomi",        tanggal: "2026-05-16", waktuMulai: "08:00", waktuSelesai: "17:00", tipe: "seminar",    lokasi: "Aula Gedung A",             penyelenggara: "DPP UGM", deskripsi: "Seminar nasional dengan tema Ketahanan Pangan dan Perubahan Iklim" },
-  { id: 7,  judul: "Kuliah Umum: Sustainable Farming", tanggal: "2026-05-20", waktuMulai: "09:00", waktuSelesai: "12:00", tipe: "kuliah_umum",lokasi: "Aula Gedung A",             penyelenggara: "Prof. Dr. Bambang Sutrisno" },
-  { id: 8,  judul: "Rapat Kurikulum 2026",             tanggal: "2026-05-21", waktuMulai: "14:00", waktuSelesai: "16:00", tipe: "rapat",      lokasi: "Ruang Rapat Utama",         penyelenggara: "Prof. Dr. Bambang Sutrisno" },
-  { id: 9,  judul: "Simulasi Visitasi Akreditasi",     tanggal: "2026-05-20", waktuMulai: "13:00", waktuSelesai: "17:00", tipe: "akreditasi", lokasi: "Gedung DPP UGM",            penyelenggara: "Dr. Hendra Wijaya" },
-  { id: 10, judul: "Workshop Metode PBL untuk Dosen",  tanggal: "2026-05-28", waktuMulai: "08:00", waktuSelesai: "15:00", tipe: "seminar",    lokasi: "Aula Gedung A",             penyelenggara: "Prof. Dr. Bambang Sutrisno" },
+  { id: 2,  judul: "Workshop Penulisan Ilmiah",                 tanggal: "2026-05-06", waktuMulai: "08:00", waktuSelesai: "15:00", tipe: "seminar",    lokasi: "Aula Gedung A",         penyelenggara: "Hasrul Hanif" },
+  { id: 3,  judul: "Rapat Koordinasi Kemahasiswaan",           tanggal: "2026-05-06", waktuMulai: "15:30", waktuSelesai: "17:00", tipe: "rapat",      lokasi: "Ruang Rapat Kecil",     penyelenggara: "Wawan Mas'udi" },
+  { id: 4,  judul: "Tinjauan Anggaran RKAT Q1",                tanggal: "2026-05-07", waktuMulai: "09:00", waktuSelesai: "11:00", tipe: "rapat",      lokasi: "Ruang Rapat Utama",     penyelenggara: "Dr. Anak Agung Ari Dwipayana" },
+  { id: 5,  judul: "Praktikum Analisis Data Politik",          tanggal: "2026-05-14", waktuMulai: "08:00", waktuSelesai: "10:00", tipe: "lainnya",    lokasi: "Lab Komputer",          penyelenggara: "Dr. Mada Sukmajati" },
+  { id: 6,  judul: "Seminar Nasional Tata Kelola Pemerintahan",tanggal: "2026-05-16", waktuMulai: "08:00", waktuSelesai: "17:00", tipe: "seminar",    lokasi: "Aula Gedung A",         penyelenggara: "DPP UGM", deskripsi: "Seminar nasional dengan tema Inovasi Tata Kelola dan Demokrasi Digital" },
+  { id: 7,  judul: "Kuliah Umum: Politik dan Kebijakan Publik",tanggal: "2026-05-20", waktuMulai: "09:00", waktuSelesai: "12:00", tipe: "kuliah_umum",lokasi: "Aula Gedung A",         penyelenggara: "Prof. Dr. Purwo Santoso" },
+  { id: 8,  judul: "Rapat Kurikulum 2026",                     tanggal: "2026-05-21", waktuMulai: "14:00", waktuSelesai: "16:00", tipe: "rapat",      lokasi: "Ruang Rapat Utama",     penyelenggara: "Prof. Dr. Amalinda Savirani" },
+  { id: 9,  judul: "Simulasi Visitasi Akreditasi",             tanggal: "2026-05-20", waktuMulai: "13:00", waktuSelesai: "17:00", tipe: "akreditasi", lokasi: "Gedung DPP UGM",        penyelenggara: "Dr. Anak Agung Ari Dwipayana" },
+  { id: 10, judul: "Workshop Metode PBL untuk Dosen",          tanggal: "2026-05-28", waktuMulai: "08:00", waktuSelesai: "15:00", tipe: "seminar",    lokasi: "Aula Gedung A",         penyelenggara: "Prof. Dr. Amalinda Savirani" },
   { id: 11, judul: "Dies Natalis DPP UGM",             tanggal: "2026-06-15", waktuMulai: "08:00", waktuSelesai: "20:00", tipe: "lainnya",    lokasi: "Lapangan DPP UGM",          penyelenggara: "Panitia Dies Natalis" },
   { id: 12, judul: "Rapat Senat Akademik UGM",         tanggal: "2026-05-30", waktuMulai: "10:00", waktuSelesai: "13:00", tipe: "rapat",      lokasi: "Gedung Pusat UGM",          penyelenggara: "Senat UGM" },
 ];
@@ -656,11 +656,11 @@ export const calendarEvents: CalendarEvent[] = [
 
 export const renstra: Renstra = {
   id: 1, periodeMulai: 2025, periodeAkhir: 2030, isActive: true,
-  visi: "Menjadi departemen pendidikan profesi terkemuka di Asia Tenggara yang menghasilkan lulusan berkarakter unggul, inovatif, dan berdaya saing global dalam bidang pertanian berkelanjutan pada tahun 2030.",
+  visi: "Menjadi departemen politik dan pemerintahan terkemuka di Asia Tenggara yang menghasilkan lulusan berkarakter unggul, inovatif, dan berdaya saing global dalam bidang tata kelola dan demokrasi pada tahun 2030.",
   misi: [
     "Menyelenggarakan pendidikan profesi berbasis riset yang relevan dengan kebutuhan industri dan perkembangan IPTEK.",
     "Mengembangkan penelitian inovatif yang berorientasi pada solusi ketahanan pangan dan pertanian berkelanjutan.",
-    "Melaksanakan pengabdian kepada masyarakat yang berdampak nyata bagi pengembangan sektor pertanian nasional.",
+    "Melaksanakan pengabdian kepada masyarakat yang berdampak nyata bagi pengembangan tata kelola dan demokrasi nasional.",
     "Membangun tata kelola departemen yang transparan, akuntabel, dan berbasis data.",
     "Menjalin kemitraan strategis dengan industri, pemerintah, dan lembaga internasional.",
   ],

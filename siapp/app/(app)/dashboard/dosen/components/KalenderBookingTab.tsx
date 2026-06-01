@@ -41,7 +41,7 @@ const STATUS_COLORS: Record<BookingStatus, string> = {
   Ditolak:      'bg-red-100 text-red-600',
 };
 
-const DOSEN_NAME = 'Dr. Ahmad Fauzi';
+const DOSEN_NAME = 'Prof. Dr. Purwo Santoso';
 
 function timeToMinutes(t: string) {
   const [h, m] = t.split(':').map(Number);

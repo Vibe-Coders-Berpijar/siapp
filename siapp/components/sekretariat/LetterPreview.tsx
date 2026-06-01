@@ -288,7 +288,7 @@ export function LetterPreview({ letter, onClose, onUpdate }: LetterPreviewProps)
                     )}
 
                     <p className="text-xs font-bold text-gray-700 border-t border-gray-200 pt-1">
-                      Prof. Dr. Sari Indah, M.P.
+                      Dr. Anak Agung Gde Ngurah Ari Dwipayana, S.IP., M.Si.
                     </p>
                     <p className="text-[10px] text-gray-500">Kepala Departemen</p>
                   </div>

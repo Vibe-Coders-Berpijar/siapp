@@ -28,7 +28,7 @@ const MOCK_PROPOSALS: Record<string, Proposal> = {
     status: 'Menunggu',
     tanggal: '15 Jan 2025',
     stage: 1,
-    anggota: ['Dr. Ahmad Fauzi (Ketua)', 'Dr. Siti Nuraini', 'Budi Santoso, S.IP (Asisten Peneliti)'],
+    anggota: ['Dr. Bayu Dardias Kurniadi (Ketua)', 'Nur Azizah', 'Budi Santoso, S.IP (Asisten Peneliti)'],
   },
   '2': {
     id: '2',
@@ -41,7 +41,7 @@ const MOCK_PROPOSALS: Record<string, Proposal> = {
     status: 'Aktif',
     tanggal: '3 Feb 2025',
     stage: 3,
-    anggota: ['Dr. Ahmad Fauzi (Ketua)', 'Dr. Maya Indira', 'Reza Firmansyah, M.IP'],
+    anggota: ['Dr. Bayu Dardias Kurniadi (Ketua)', 'Dr. Mada Sukmajati', 'Reza Firmansyah, M.IP'],
   },
   '3': {
     id: '3',
@@ -54,7 +54,7 @@ const MOCK_PROPOSALS: Record<string, Proposal> = {
     status: 'Draft',
     tanggal: '20 Mar 2025',
     stage: 0,
-    anggota: ['Dr. Ahmad Fauzi (Ketua)', 'Dr. Ratih Dewi Kusuma'],
+    anggota: ['Dr. Bayu Dardias Kurniadi (Ketua)', 'Dr. Nanang Indra Kurniawan'],
   },
 };
 
