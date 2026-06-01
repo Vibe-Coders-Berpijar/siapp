@@ -74,21 +74,6 @@ export function ProfilPublikTab({ initialDosen }: { initialDosen?: DosenPublik }
         </div>
       </div>
 
-      <Separator />
-
-      {/* Mata Kuliah */}
-      <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">Mata Kuliah Aktif</h3>
-        <div className="flex flex-wrap gap-2">
-          {MOCK_DOSEN.mataKuliahAktif.map((mk) => (
-            <div key={mk.kode} className="bg-white/70 border border-gray-100 rounded-lg px-3 py-2 text-sm">
-              <span className="font-mono text-xs text-gray-400">{mk.kode}</span>
-              <p className="font-medium text-gray-800">{mk.nama}</p>
-              <p className="text-xs text-gray-400">{mk.sks} SKS</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,11 +1,21 @@
 "use client";
 
 import { useState } from 'react'
-import { pendingApprovals } from '@/lib/mock-data-kadep'
 import { StatusBadge } from '@/components/shared/StatusBadge'
 import { useToast } from '@/components/shared/Toast'
 
-export function PendingApprovals() {
+export interface ApprovalItem {
+  id: number
+  nomor: string
+  perihal: string
+  pengaju: string
+  tanggal: string
+  status: string
+}
+
+export function PendingApprovals({ initialApprovals }: { initialApprovals?: ApprovalItem[] }) {
+  const fallback: ApprovalItem[] = []
+  const [items, setItems] = useState<ApprovalItem[]>(initialApprovals ?? fallback)
   const [signed, setSigned] = useState<number[]>([])
   const { show, node } = useToast()
 
@@ -18,7 +28,7 @@ export function PendingApprovals() {
     show(`Membuka surat ${nomor}`, 'info')
   }
 
-  const pending = pendingApprovals.filter(s => !signed.includes(s.id))
+  const pending = items.filter(s => !signed.includes(s.id))
 
   return (
     <div className="rounded-2xl p-5 h-full bg-white border border-slate-100 shadow-sm">
