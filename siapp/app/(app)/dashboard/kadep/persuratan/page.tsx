@@ -31,13 +31,13 @@ export default async function PersuratanPage() {
     id: i + 1,
     nomor: l.nomor ?? '—',
     perihal: l.perihal,
-    pengaju: (l.profiles as { full_name: string }).full_name ?? '—',
+    pengaju: (l.profiles as unknown as { full_name: string }).full_name ?? '—',
     tanggal: new Date(l.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
     status: mapStatus(l.status),
   }))
 
   const kadepName = kadepRow
-    ? (kadepRow.profiles as { full_name: string }).full_name
+    ? (kadepRow.profiles as unknown as { full_name: string }).full_name
     : 'Kepala Departemen'
 
   return (

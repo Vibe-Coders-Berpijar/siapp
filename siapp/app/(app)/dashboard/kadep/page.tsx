@@ -29,13 +29,13 @@ export default async function KadepPage() {
     supabase.from('lecturers').select('jabatan, profiles!inner(full_name)').eq('nidn', KADEP_NIDN).single(),
   ])
 
-  const kadepName = kadepRow ? (kadepRow.profiles as { full_name: string }).full_name : 'Kepala Departemen'
+  const kadepName = kadepRow ? (kadepRow.profiles as unknown as { full_name: string }).full_name : 'Kepala Departemen'
 
   const approvals: ApprovalItem[] = (pendingLetters ?? []).map((l, i) => ({
     id: i + 1,
     nomor: l.nomor ?? '—',
     perihal: l.perihal,
-    pengaju: (l.profiles as { full_name: string }).full_name ?? '—',
+    pengaju: (l.profiles as unknown as { full_name: string }).full_name ?? '—',
     tanggal: new Date(l.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
     status: l.status,
   }))

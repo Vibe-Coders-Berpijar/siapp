@@ -37,7 +37,9 @@ INSERT INTO profiles (id, email, primary_role, full_name) VALUES
   ('6177315c-2ff7-1c16-51ec-64334ecb52e5', 'muhammaddjindan01@ugm.ac.id', 'dosen', 'Muhammad Djindan, S.I.P., M.Sc.'),
   ('1b164fd8-9a3b-12ee-898d-bded3c1be1a3', 'wigke.capri@ugm.ac.id', 'dosen', 'Wigke Capri Arti Sukmana Putri, S.I.P., M.A.'),
   ('2721a5bb-b556-4a1a-6711-4e09e8dd4023', 'evi.lina.sutrisno@ugm.ac.id', 'dosen', 'Evi Lina Sutrisno, S.Psi., M.A., Ph.D.'),
-  ('6a877623-b06c-8379-5ddd-1706362ae76d', 'alfath.bagus.p@mail.ugm.ac.id', 'dosen', 'Alfath Bagus Panuntun El Nur Indonesia, S.I.P., M.A.');
+  ('6a877623-b06c-8379-5ddd-1706362ae76d', 'alfath.bagus.p@mail.ugm.ac.id', 'dosen', 'Alfath Bagus Panuntun El Nur Indonesia, S.I.P., M.A.'),
+  -- Tenaga Kependidikan / IT Fisipol (tambahkan nama lengkap jika diketahui)
+  ('b9e4f729-1c2d-4a3e-8b7f-3d5e4f6a7b8c', 'asepwap@ugm.ac.id', 'tendik', 'Asep (IT Fisipol UGM)');
 
 -- ─── Lecturers (28 dosen — real data from OSS API) ─────────────────────────────
 INSERT INTO lecturers (id, profile_id, nidn, jabatan) VALUES

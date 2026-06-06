@@ -27,7 +27,7 @@ export default async function KepegawaianPage() {
   const dosens: Dosen[] = (rows ?? [])
     .map((r, idx) => ({
       id: idx + 1,
-      nama: (r.profiles as { full_name: string }).full_name ?? '—',
+      nama: (r.profiles as unknown as { full_name: string }).full_name ?? '—',
       jabatan: (r.jabatan ?? 'Tenaga Pengajar') as Dosen['jabatan'],
       nidn: r.nidn ?? '—',
       publikasi: Array.isArray(r.publications) ? r.publications.length : 0,
