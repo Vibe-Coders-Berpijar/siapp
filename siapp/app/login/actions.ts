@@ -40,7 +40,7 @@ export async function ssoLogin(formData: FormData) {
   const ssoBase = process.env.UGM_SSO_URL ?? 'http://10.9.11.129:7717';
 
   // Try known endpoint shapes; adjust UGM_SSO_ENDPOINT once Fisipol confirms.
-  const ssoEndpoint = process.env.UGM_SSO_ENDPOINT ?? '/auth';
+  const ssoEndpoint = process.env.UGM_SSO_ENDPOINT ?? '/login';
 
   let ssoOk = false;
   try {
